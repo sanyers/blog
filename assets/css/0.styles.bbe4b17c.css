@@ -1496,17 +1496,6 @@ a.sidebar-link.active {
 }
 }
 
-
-.theme-code-block[data-v-759a7d02] {
-  display: none;
-}
-.theme-code-block__active[data-v-759a7d02] {
-  display: block;
-}
-.theme-code-block > pre[data-v-759a7d02] {
-  background-color: orange;
-}
-
 .badge[data-v-15b7b770] {
   display: inline-block;
   font-size: 14px;
@@ -1531,6 +1520,17 @@ a.sidebar-link.active {
 }
 .badge + .badge[data-v-15b7b770] {
   margin-left: 5px;
+}
+
+
+.theme-code-block[data-v-759a7d02] {
+  display: none;
+}
+.theme-code-block__active[data-v-759a7d02] {
+  display: block;
+}
+.theme-code-block > pre[data-v-759a7d02] {
+  background-color: orange;
 }
 
 .theme-code-group__nav[data-v-deefee04] {
