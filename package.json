@@ -7,11 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy-gh": "GH=1 yarn build && bash scripts/deploy-gh.sh"
+    "deploy-gh": "GH=1 yarn build && bash scripts/deploy-gh.sh",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d docs/.vuepress/dist"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "vuepress": "^1.8.2"
   }
 }
