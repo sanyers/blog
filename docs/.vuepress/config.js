@@ -17,6 +17,21 @@ module.exports = {
         nav: navConfig,
         // 侧边栏配置
         sidebar: getSidebar(),
-        sidebarDepth: 2, // 侧边栏显示2级
-    }
+        sidebarDepth: 3, // 侧边栏显示3级
+    },
+    plugins: [
+        [
+            'vuepress-plugin-comment',
+            {
+                choosen: 'valine',
+                // options选项中的所有参数，会传给Valine的配置
+                options: {
+                    el: '#valine-vuepress-comment',
+                    appId: 'CA6asQcFFU9syNPLsq11HNcl-9Nh9j0Va',
+                    appKey: 'KKFEw48bpVkvzrnuGsijAa8w',
+                    visitor: true // 阅读量统计
+                }
+            }
+        ]
+    ]
 }
