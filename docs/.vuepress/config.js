@@ -29,7 +29,9 @@ module.exports = {
                     el: '#valine-vuepress-comment',
                     appId: 'CA6asQcFFU9syNPLsq11HNcl-9Nh9j0Va',
                     appKey: 'KKFEw48bpVkvzrnuGsijAa8w',
-                    visitor: true // 阅读量统计
+                    visitor: true, // 阅读量统计
+                    placeholder: '在这里请输入你的评论哦',
+                    path: '<%- frontmatter.to.path %>'
                 }
             }
         ]
