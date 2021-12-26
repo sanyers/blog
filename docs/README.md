@@ -6,7 +6,7 @@ heroText: This is sanyer blog.
 tagline: 全栈开发
 
 actionText: 快速开始 →
-actionLink: /book/001/
+actionLink: /web/javascript/
 features:
 - title: “函数应该做一件事。做好这件事。只能做这一件事”
   details: ——罗伯特•C.马丁(Robert C.Martin)

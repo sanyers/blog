@@ -1,0 +1,192 @@
+# undefined与null的区别
+
+许多编程语言都有一个名为null. 它表示一个变量当前没有指向一个对象——例如，当它还没有被初始化时。
+
+相比之下，JavaScript 有两个“非值”表示缺失信息：undefined 和 null：
+
+- undefined 意味着“no value”（既不是原始的也不是对象）。未初始化的变量、缺少的参数和缺少的属性具有该非值。如果没有显式返回，函数会隐式返回它。
+- null 意思是“no object”。它用作期望对象的非值（作为参数，作为对象链中的成员等）。
+
+## 1、undefined与null对比
+
+这两个值非常相似并且经常互换使用。因此，它们的不同之处是微妙的。
+
+ECMAScript 语言规范对它们的描述如下：
+- undefined 是“在变量尚未赋值时使用” [（来源）](https://tc39.es/ecma262/#sec-undefined-value)。
+- null “代表有意不存在任何对象价值” [（来源）](https://tc39.es/ecma262/#sec-null-value)。
+
+### 1.1 相似性
+在 JavaScript 中，将一个变量赋值为 undefined 或 null，老实说，几乎没区别。
+
+```js
+var a = undefined;
+
+var a = null;
+
+```
+
+上面代码中，a变量分别被赋值为 undefined 和 null，这两种写法几乎等价。
+
+undefined 和 null 在 if 语句中，都会被自动转为 false，相等运算符甚至直接报告两者相等。
+
+```js
+if (!undefined) 
+    console.log('undefined is false');
+// undefined is false
+
+if (!null) 
+    console.log('null is false');
+// null is false
+
+undefined == null
+// true
+```
+
+上面代码说明，两者的行为是何等相似！
+
+既然 undefined 和 null 的含义与用法都差不多，为什么要同时设置两个这样的值，这不是无端增加 JavaScript 的复杂度，令初学者困扰吗？Google 公司开发的 JavaScript 语言的替代品 Dart 语言，就明确规定只有null，没有 undefined！
+
+### 1.2 undefined
+
+**undefined表示"缺少值"，就是此处应该有一个值，但是还没有定义。** 典型用法是：
+
+```js
+// 1）如果变量myVar尚未初始化，则其值为 undefined：
+let myVar;
+console.log(myVar); // undefined
+
+// 2）如果缺少某个属性，则访问该属性会生成值 undefined：
+const obj = {};
+console.log(obj.unknownProp); // undefined
+
+// 3）如果函数未显式返回任何内容，则该函数隐式返回 undefined：
+function myFunc() {}
+console.log(myFunc()); // undefined
+
+// 4）如果一个函数有一个 return 没有参数的语句，则该函数隐式返回 undefined：
+function myFunc() {
+  return;
+}
+console.log(myFunc()); // undefined
+
+// 5）如果x省略了参数，则语言会使用以下内容初始化该参数 undefined：
+function myFunc(x) {
+  console.log(x); // undefined
+}
+myFunc();
+
+// 6）obj?.someProp 返回的可选链接：undefined if obj is undefined or null
+
+undefined?.someProp
+// undefined
+null?.someProp
+// undefined
+```
+
+### 1.3 null
+
+**null表示"没有对象"，即该处不应该有值。** 典型用法是：
+
+（1） 作为函数的参数，表示该函数的参数不是对象。
+
+（2） 作为对象原型链的终点。
+
+```js
+Object.getPrototypeOf(Object.prototype)
+// null
+```
+
+如果我们将正则表达式（例如/a/）与字符串（例如'x'）进行匹配，我们将获得具有匹配数据的对象（如果匹配成功）或 null（如果匹配失败）：
+
+```js
+/a/.exec('x')
+// null
+```
+
+JSON 数据格式不支持 undefined，只有 null：
+
+```js
+JSON.stringify({a: undefined, b: null})
+// '{"b":null}'
+```
+
+## 2、检测 undefined 和 null
+
+检查是否为空：
+
+```js
+if (x === null) ...
+```
+
+检查是否为未定义：
+
+```js
+if (x === undefined) ...
+```
+
+检查未定义或空值：
+
+```js
+// x有值吗?
+if (x !== undefined && x !== null) {
+    ...
+}
+// x是非值吗?
+if (x === undefined || x === null) {
+    ...
+}
+```
+
+另一种方法是利用 undefined 和 null 都被考虑的事实 false：
+
+```js
+// x 是否有值（是否真实）？
+if (x) {
+    ...
+}
+// x 是假的吗？
+if (!x) {
+    ...
+}
+```
+
+> 注意：false, 0, NaN, 和''也被考虑false。
+
+## 3、两个非值——一个无法消除的错误
+
+JavaScript 中有两个非值现在被认为是一个设计错误（即使是 JavaScript 的创造者，Brendan Eich）。
+
+那么，为什么不从 JavaScript 中删除这些值之一呢？JavaScript 的一项核心原则是永不破坏向后兼容性。这个原则有很多好处。它最大的缺点是无法消除设计错误。
+
+## 4、历史原因
+
+为什么 JavaScript 有两个这样的值？原因是历史的。
+
+1995年 JavaScript 诞生时，最初像 Java 一样，只设置了 null 作为表示"无"的值。
+
+根据 C 语言的传统，null 被设计成可以自动转为0。
+
+```js
+Number(null)
+// 0
+
+5 + null
+// 5
+
+```
+
+但是，JavaScript 的设计者 Brendan Eich，觉得这样做还不够，有两个原因。
+
+首先，null 像在 Java 里一样，被当成一个对象。但是，JavaScript 的数据类型分成原始类型（primitive）和合成类型（complex）两大类，Brendan Eich 觉得表示"无"的值最好不是对象。
+
+其次，JavaScript 的最初版本没有包括错误处理机制，发生数据类型不匹配时，往往是自动转换类型或者默默地失败。Brendan Eich 觉得，如果 null 自动转为0，很不容易发现错误。
+
+因此，Brendan Eich 又设计了一个 undefined。他强制 undefined 为 NaN：
+
+```js
+Number(undefined)
+// NaN
+
+5 + undefined
+// NaN
+```

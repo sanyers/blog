@@ -2,52 +2,44 @@ const navConfig = require('./navConfig');
 const fs = require('fs');
 const util = require('util');
 
-function getSidebar () {
-    const groupList = navConfig.filter(item => item.type === 'group');
-    const navList = navConfig.filter(item => item.isList);
-    const list = getGroupName(groupList);
-    navList.forEach(element => {
-        const files = fs.readdirSync('./docs' + element.link);
-        const filesList = [];
-        files.forEach(element => {
-            const splitStr = element.split('.');
-            if (splitStr[1] === 'md' && splitStr[0] !== 'README') {
-                filesList.push(splitStr[0]);
-            }
-        });
-        list[element.link] = ['', ...filesList];
-    });
-    return list;
+function getSidebar() {
+    const groupList = getGroup('group');
+    const groupxList = getGroup('groupx');
+    return { ...groupList, ...groupxList };
 }
 
-function getGroupName (groupList) {
+function getGroup(name) {
+    const filterList = navConfig.filter(item => item.type === name)
     const list = {};
-    groupList.forEach(element => {
+    filterList.forEach(element => {
         element.items.forEach(item => {
-            const newItem = getGroupList(item.text);
-            Object.assign(list, newItem);
+            if (name === 'group') {
+                getItems(list, item);
+            } else {
+                item.items.forEach(ele => {
+                    getItems(list, ele);
+                });
+            }
         });
     });
     return list;
 }
 
-function getGroupList (groupName) {
-    const url = './docs/' + groupName;
-    const dir = fs.readdirSync(url);
-    const list = {};
-    dir.forEach(element => {
-        const filesList = [['/' + groupName + '/' + element + '/', '开始']];
-        const files = fs.readdirSync(url + '/' + element);
-        files.forEach(item => {
-            const splitStr = item.split('.');
-            if (splitStr[1] === 'md' && splitStr[0] !== 'README') {
-                filesList.push(['/' + groupName + '/' + element + '/' + splitStr[0], splitStr[0]]);
+function getItems(list, item) {
+    const newList = {};
+    const filesList = [[item.link, item.firstName]];
+    const files = fs.readdirSync('./docs' + item.link);
+    files.forEach(index => {
+        const isSearch = index.search('.md') > 0;
+        if(isSearch){
+            const splitStr = index.split('.md');
+            if (splitStr[0] !== 'README') {
+                filesList.push([item.link + splitStr[0], splitStr[0]]);
             }
-        });
-
-        list['/' + groupName + '/' + element] = filesList;
+        }
     });
-    return list;
+    newList[item.link] = filesList;
+    Object.assign(list, newList);
 }
 
 module.exports = { getSidebar };

@@ -43,7 +43,7 @@ IEC-16262）。自此以后，各家浏览器均以 ECMAScript 作为自己 Java
 - 文档对象模型（DOM）
 - 浏览器对象模型（BOM）
 
-<img :src="$withBase('/img/001/1-1.jpg')" alt="1-1">
+<a data-fancybox title="xx" href="/img/book/001/1-1.jpg"><img :src="$withBase('/img/book/001/1-1.jpg')" alt="1-1"></a>
 
 ### 1.2.1 ECMAScript
 **ECMAScript**，即 ECMA-262 定义的语言，并不局限于 Web 浏览器。事实上，这门语言没有输入和
@@ -149,7 +149,8 @@ IE8 率先实现 ECMA-262 第 5 版，并在 IE9 中完整支持。Firefox 4 很
 </html>
 ```
 这些代码通过 DOM 可以表示为一组分层节点，如图 1-2 所示。
-<img :src="$withBase('/img/001/1-2.jpg')" alt="1-2">
+<a data-fancybox title="1-2" href="/img/book/001/1-2.jpg"><img :src="$withBase('/img/book/001/1-2.jpg')" alt="1-2"></a>
+
 
 #### 1. 为什么 DOM 是必需的
 在 IE4 和 Netscape Navigator 4支持不同形式的动态 HTML（DHTML）的情况下，开发者首先可以
@@ -209,15 +210,3 @@ IE3 和 Netscape Navigator 3 提供了**浏览器对象模型**（BOM） API，�
 其源代码开源时（项目名为 Mozilla Project），JavaScript 在其浏览器中最后的版本是 1.3。（前面提到过，
 1.4 版是专门为服务器实现的。）因为 Mozilla Foundation 在持续开发 JavaScript，为它增加新特性、关键
 字和语法，所以 JavaScript 的版本号也在不断递增。
-
-## 1.4 小结
-JavaScript 是一门用来与网页交互的脚本语言，包含以下三个组成部分。
-- ECMAScript：由 ECMA-262 定义并提供核心功能。
-- 文档对象模型（DOM）：提供与网页内容交互的方法和接口。
-- 浏览器对象模型（BOM）：提供与浏览器交互的方法和接口。
-
-JavaScript 的这三个部分得到了五大 Web 浏览器（IE、Firefox、Chrome、Safari 和 Opera）不同程度
-的支持。所有浏览器基本上对 ES5（ECMAScript 5）提供了完善的支持，而对 ES6（ECMAScript 6）和
-ES7（ECMAScript 7）的支持度也在不断提升。这些浏览器对 DOM 的支持各不相同，但对 Level 3 的支
-持日益趋于规范。HTML5 中收录的 BOM 会因浏览器而异，不过开发者仍然可以假定存在很大一部分
-公共特性。
