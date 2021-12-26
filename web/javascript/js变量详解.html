@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>js变量详解 | sanyer</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blog/favicon.ico">
+    <link rel="stylesheet" href="/blog/css/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="This is sanyer blog.">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.9d204e9f.css" as="style"><link rel="preload" href="/blog/assets/js/app.aa93f5ac.js" as="script"><link rel="preload" href="/blog/assets/js/2.e4a3a743.js" as="script"><link rel="preload" href="/blog/assets/js/38.e06d88ba.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.7fb10a21.js"><link rel="prefetch" href="/blog/assets/js/11.3cd992ad.js"><link rel="prefetch" href="/blog/assets/js/12.afe8ac02.js"><link rel="prefetch" href="/blog/assets/js/13.bf65ad5f.js"><link rel="prefetch" href="/blog/assets/js/14.ddd22f57.js"><link rel="prefetch" href="/blog/assets/js/15.713b162f.js"><link rel="prefetch" href="/blog/assets/js/16.a01cda23.js"><link rel="prefetch" href="/blog/assets/js/17.80d88bd3.js"><link rel="prefetch" href="/blog/assets/js/18.df634d06.js"><link rel="prefetch" href="/blog/assets/js/19.f1f7ce40.js"><link rel="prefetch" href="/blog/assets/js/20.8624b7ea.js"><link rel="prefetch" href="/blog/assets/js/21.06b02cf0.js"><link rel="prefetch" href="/blog/assets/js/22.b0efd8d3.js"><link rel="prefetch" href="/blog/assets/js/23.2fe2b332.js"><link rel="prefetch" href="/blog/assets/js/24.d3f8577e.js"><link rel="prefetch" href="/blog/assets/js/25.0dd709f2.js"><link rel="prefetch" href="/blog/assets/js/26.4eb3bead.js"><link rel="prefetch" href="/blog/assets/js/27.ed4c1ccd.js"><link rel="prefetch" href="/blog/assets/js/28.0d29af95.js"><link rel="prefetch" href="/blog/assets/js/29.cb3cf8ad.js"><link rel="prefetch" href="/blog/assets/js/3.fa1d3fb8.js"><link rel="prefetch" href="/blog/assets/js/30.56d45d6f.js"><link rel="prefetch" href="/blog/assets/js/31.0e72930b.js"><link rel="prefetch" href="/blog/assets/js/32.966ff525.js"><link rel="prefetch" href="/blog/assets/js/33.22cb0ad5.js"><link rel="prefetch" href="/blog/assets/js/34.59227016.js"><link rel="prefetch" href="/blog/assets/js/35.3dda5f06.js"><link rel="prefetch" href="/blog/assets/js/36.9fee7495.js"><link rel="prefetch" href="/blog/assets/js/37.c0cc5123.js"><link rel="prefetch" href="/blog/assets/js/39.376155fc.js"><link rel="prefetch" href="/blog/assets/js/4.5d8c3c4a.js"><link rel="prefetch" href="/blog/assets/js/40.d545391a.js"><link rel="prefetch" href="/blog/assets/js/41.6b2ee335.js"><link rel="prefetch" href="/blog/assets/js/42.4a17cbf8.js"><link rel="prefetch" href="/blog/assets/js/43.8997c8fb.js"><link rel="prefetch" href="/blog/assets/js/44.f9f540df.js"><link rel="prefetch" href="/blog/assets/js/45.f0ce8f3a.js"><link rel="prefetch" href="/blog/assets/js/46.ea53a6bf.js"><link rel="prefetch" href="/blog/assets/js/47.b88e8372.js"><link rel="prefetch" href="/blog/assets/js/48.3cfafc17.js"><link rel="prefetch" href="/blog/assets/js/49.3899aac2.js"><link rel="prefetch" href="/blog/assets/js/5.c0795999.js"><link rel="prefetch" href="/blog/assets/js/50.b34592fe.js"><link rel="prefetch" href="/blog/assets/js/51.6cde0c7e.js"><link rel="prefetch" href="/blog/assets/js/52.fc857ec7.js"><link rel="prefetch" href="/blog/assets/js/53.d8da0289.js"><link rel="prefetch" href="/blog/assets/js/54.2a951e65.js"><link rel="prefetch" href="/blog/assets/js/55.0ad72202.js"><link rel="prefetch" href="/blog/assets/js/56.e66a9fd4.js"><link rel="prefetch" href="/blog/assets/js/57.bec2ffa4.js"><link rel="prefetch" href="/blog/assets/js/58.a717fa02.js"><link rel="prefetch" href="/blog/assets/js/59.eed0d28b.js"><link rel="prefetch" href="/blog/assets/js/6.31352850.js"><link rel="prefetch" href="/blog/assets/js/60.7b9452ba.js"><link rel="prefetch" href="/blog/assets/js/61.1516dd12.js"><link rel="prefetch" href="/blog/assets/js/62.fbff161d.js"><link rel="prefetch" href="/blog/assets/js/7.1a5893c6.js"><link rel="prefetch" href="/blog/assets/js/8.a5f9205a.js"><link rel="prefetch" href="/blog/assets/js/9.3800d8c7.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.9d204e9f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/img/logo.png" alt="sanyer" class="logo"> <span class="site-name can-hide">sanyer</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端技术分享" class="dropdown-title"><span class="title">前端技术分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端技术分享" class="mobile-dropdown-title"><span class="title">前端技术分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/javascript/" class="nav-link router-link-active">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/babel/" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/weex/" class="nav-link">
+  weex
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webrtc/" class="nav-link">
+  WebRTC
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/" class="nav-link">
+  网络知识
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/design/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/algorithm/" class="nav-link">
+  数据结构/算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/security/" class="nav-link">
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/interview/" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/booklist/" class="nav-link">
+  书单
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="原创文章" class="dropdown-title"><span class="title">原创文章</span> <span class="arrow down"></span></button> <button type="button" aria-label="原创文章" class="mobile-dropdown-title"><span class="title">原创文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/article/website/" class="nav-link">
+  站点分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/configure/" class="nav-link">
+  配置说明
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/android/" class="nav-link">
+  Android
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/resume/" class="nav-link">
+  个人简历
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="git" class="dropdown-title"><span class="title">git</span> <span class="arrow down"></span></button> <button type="button" aria-label="git" class="mobile-dropdown-title"><span class="title">git</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端技术分享" class="dropdown-title"><span class="title">前端技术分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端技术分享" class="mobile-dropdown-title"><span class="title">前端技术分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/javascript/" class="nav-link router-link-active">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/babel/" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/weex/" class="nav-link">
+  weex
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webrtc/" class="nav-link">
+  WebRTC
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/" class="nav-link">
+  网络知识
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/design/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/algorithm/" class="nav-link">
+  数据结构/算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/security/" class="nav-link">
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/interview/" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/booklist/" class="nav-link">
+  书单
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="原创文章" class="dropdown-title"><span class="title">原创文章</span> <span class="arrow down"></span></button> <button type="button" aria-label="原创文章" class="mobile-dropdown-title"><span class="title">原创文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/article/website/" class="nav-link">
+  站点分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/configure/" class="nav-link">
+  配置说明
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/android/" class="nav-link">
+  Android
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/resume/" class="nav-link">
+  个人简历
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="git" class="dropdown-title"><span class="title">git</span> <span class="arrow down"></span></button> <button type="button" aria-label="git" class="mobile-dropdown-title"><span class="title">git</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/blog/web/javascript/" aria-current="page" class="sidebar-link">js基础知识</a></li><li><a href="/blog/web/javascript/axios文件的上传与下载.html" class="sidebar-link">axios文件的上传与下载</a></li><li><a href="/blog/web/javascript/js作用域及作用域链.html" class="sidebar-link">js作用域及作用域链</a></li><li><a href="/blog/web/javascript/js变量详解.html" class="active sidebar-link">js变量详解</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/web/javascript/js变量详解.html#_1、var-关键字" class="sidebar-link">1、var 关键字</a></li><li class="sidebar-sub-header"><a href="/blog/web/javascript/js变量详解.html#_2、let-声明" class="sidebar-link">2、let 声明</a></li><li class="sidebar-sub-header"><a href="/blog/web/javascript/js变量详解.html#_3、const-声明" class="sidebar-link">3、const 声明</a></li><li class="sidebar-sub-header"><a href="/blog/web/javascript/js变量详解.html#_4、声明风格及最佳实践" class="sidebar-link">4、声明风格及最佳实践</a></li><li class="sidebar-sub-header"><a href="/blog/web/javascript/js变量详解.html#_5、总结" class="sidebar-link">5、总结</a></li></ul></li><li><a href="/blog/web/javascript/js基本引用类型详解.html" class="sidebar-link">js基本引用类型详解</a></li><li><a href="/blog/web/javascript/js基础数据类型详解.html" class="sidebar-link">js基础数据类型详解</a></li><li><a href="/blog/web/javascript/js处理二进制.html" class="sidebar-link">js处理二进制</a></li><li><a href="/blog/web/javascript/js对象详解.html" class="sidebar-link">js对象详解</a></li><li><a href="/blog/web/javascript/js执行上下文.html" class="sidebar-link">js执行上下文</a></li><li><a href="/blog/web/javascript/js数据类型.html" class="sidebar-link">js数据类型</a></li><li><a href="/blog/web/javascript/js运算符优先级.html" class="sidebar-link">js运算符优先级</a></li><li><a href="/blog/web/javascript/js集合引用类型详解.html" class="sidebar-link">js集合引用类型详解</a></li><li><a href="/blog/web/javascript/Symbol.html" class="sidebar-link">Symbol</a></li><li><a href="/blog/web/javascript/undefined与null的区别.html" class="sidebar-link">undefined与null的区别</a></li><li><a href="/blog/web/javascript/VUE之虚拟DOM、diff算法.html" class="sidebar-link">VUE之虚拟DOM、diff算法</a></li><li><a href="/blog/web/javascript/vue自定义指令.html" class="sidebar-link">vue自定义指令</a></li><li><a href="/blog/web/javascript/一道js面试题引发的思考.html" class="sidebar-link">一道js面试题引发的思考</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="js变量详解"><a href="#js变量详解" class="header-anchor">#</a> js变量详解</h1> <p>JavaScript 变量是松散类型的，而且变量不过就是特定时间点一个特定值的名称而已。由于没有规则定义变量必须包含什么数据类型，变量的值和数据类型在脚本生命期内可以改变。</p> <p>有 3 个关键字可以声明变量：var、const 和 let。其中，var 在 ES 的所有版本中都可以使用，而 const 和 let 只能在 ES6 及更晚的版本中使用。</p> <h2 id="_1、var-关键字"><a href="#_1、var-关键字" class="header-anchor">#</a> 1、var 关键字</h2> <p>要定义变量，可以使用 var 操作符（注意 var 是一个关键字），后跟变量名（即标识符，如前所述）:</p> <p><code>var message;</code></p> <p>不初始化的情况下，变量会保存一个特殊值 undefined。</p> <ol><li>var 声明作用域</li></ol> <p>使用 var 操作符定义的变量会成为包含它的函数的局部变量。省略 var 操作符，可以创建一个全局变量。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ <span class="token keyword">var</span> message <span class="token operator">=</span> <span class="token string">&quot;hi&quot;</span><span class="token punctuation">;</span> <span class="token comment">// 局部变量</span>
+ name <span class="token operator">=</span> <span class="token string">&quot;xiaoming&quot;</span><span class="token punctuation">;</span> <span class="token comment">// 全局变量</span>
+<span class="token punctuation">}</span> 
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 出错！</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &quot;xiaoming&quot;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><blockquote><p>使用关键字声明的称为<strong>显式声明</strong>，未使用任何关键字声明的称为<strong>隐式声明</strong></p></blockquote> <ol start="2"><li>var 声明提升</li></ol> <p>var 声明的变量会自动提升到函数作用域顶部：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="_2、let-声明"><a href="#_2、let-声明" class="header-anchor">#</a> 2、let 声明</h2> <p>let 跟 var 的作用差不多，但有着非常重要的区别。最明显的区别是，let 声明的范围是块作用域，而 var 声明的范围是函数作用域。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Matt'</span><span class="token punctuation">;</span> 
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Matt </span>
+<span class="token punctuation">}</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Matt</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ <span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">;</span> 
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 26 </span>
+<span class="token punctuation">}</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ReferenceError: age 没有定义</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>let 也不允许同一个块作用域中出现冗余声明。</p> <ol><li>暂时性死区</li></ol> <p>let 与 var 的另一个重要的区别，就是 let 声明的变量不会在作用域中被提升。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// name 会被提升</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined </span>
+<span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Matt'</span><span class="token punctuation">;</span> 
+<span class="token comment">// age 不会被提升</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ReferenceError：age 没有定义</span>
+<span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">;</span> 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>在解析代码时，JavaScript 引擎也会注意出现在块后面的 let 声明，只不过在此之前不能以任何方式来引用未声明的变量。在 let 声明之前的执行瞬间被称为“<strong>暂时性死区</strong>”（temporal dead zone），在此阶段引用任何后面才声明的变量都会抛出 ReferenceError</p> <ol start="2"><li>全局声明</li></ol> <p>与 var 关键字不同，使用 let 在全局作用域中声明的变量不会成为 window 对象的属性（var 声明的变量则会）</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Matt'</span><span class="token punctuation">;</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'Matt' </span>
+<span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">;</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ol start="3"><li>条件声明</li></ol> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span> 
+ <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Nicholas'</span><span class="token punctuation">;</span> 
+ <span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">;</span> 
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span> 
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span> 
+ <span class="token comment">// 假设脚本不确定页面中是否已经声明了同名变量</span>
+ <span class="token comment">// 那它可以假设还没有声明过</span>
+ <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Matt'</span><span class="token punctuation">;</span> 
+ <span class="token comment">// 这里没问题，因为可以被作为一个提升声明来处理</span>
+ <span class="token comment">// 不需要检查之前是否声明过同名变量</span>
+ <span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">36</span><span class="token punctuation">;</span> 
+ <span class="token comment">// 如果 age 之前声明过，这里会报错</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ol start="4"><li>for 循环中的 let 声明</li></ol> <p>在 let 出现之前，for 循环定义的迭代变量会渗透到循环体外部：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ <span class="token comment">// 循环逻辑 </span>
+<span class="token punctuation">}</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>改成使用 let 之后，这个问题就消失了，因为迭代变量的作用域仅限于 for 循环块内部：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ <span class="token comment">// 循环逻辑</span>
+<span class="token punctuation">}</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ReferenceError: i 没有定义</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="_3、const-声明"><a href="#_3、const-声明" class="header-anchor">#</a> 3、const 声明</h2> <p>const 的行为与 let 基本相同，唯一一个重要的区别是用它声明变量时必须同时初始化变量，且尝试修改 const 声明的变量会导致运行时错误。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> age <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">;</span> 
+age <span class="token operator">=</span> <span class="token number">36</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: 给常量赋值</span>
+
+<span class="token comment">// const 也不允许重复声明</span>
+<span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'Matt'</span><span class="token punctuation">;</span> 
+<span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'Nicholas'</span><span class="token punctuation">;</span> <span class="token comment">// SyntaxError </span>
+
+<span class="token comment">// const 声明的作用域也是块</span>
+<span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'Matt'</span><span class="token punctuation">;</span> 
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'Nicholas'</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Matt</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>const 声明的限制只适用于它指向的变量的引用。换句话说，如果 const 变量引用的是一个对象，那么修改这个对象内部的属性并不违反 const 的限制。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> person <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> 
+person<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'Matt'</span><span class="token punctuation">;</span> <span class="token comment">// ok</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>const 在 for 循环中的示例：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">// TypeError：给常量赋值</span>
+
+<span class="token comment">// 如果你只想用 const 声明一个不会被修改的 for 循环变量，那也是可以的。</span>
+<span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> j <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span> 
+<span class="token comment">// 7, 7, 7, 7, 7</span>
+
+<span class="token comment">// 这对 for-of 和 for-in 循环特别有意义：</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> key <span class="token keyword">in</span> <span class="token punctuation">{</span>a<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span> 
+<span class="token comment">// a, b </span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> value <span class="token keyword">of</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span> 
+<span class="token comment">// 1, 2, 3, 4, 5 </span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h2 id="_4、声明风格及最佳实践"><a href="#_4、声明风格及最佳实践" class="header-anchor">#</a> 4、声明风格及最佳实践</h2> <p>ES6 增加 let 和 const 从客观上为这门语言更精确地声明作用域和语义提供了更好的支持。</p> <ol><li><p>不使用 var
+有了 let 和 const，大多数开发者会发现自己不再需要 var 了。限制自己只使用 let 和 const 有助于提升代码质量，因为变量有了明确的作用域、声明位置，以及不变的值。</p></li> <li><p>const 优先，let 次之使用 const 声明可以让浏览器运行时强制保持变量不变，也可以让静态代码分析工具提前发现不合法的赋值操作。因此，很多开发者认为应该优先使用 const 来声明变量，只在提前知道未来会有修改时，再使用 let。这样可以让开发者更有信心地推断某些变量的值永远不会变，同时也能迅速发现因意外赋值导致的非预期行为</p></li></ol> <h2 id="_5、总结"><a href="#_5、总结" class="header-anchor">#</a> 5、总结</h2> <ol><li><p>3 个关键字可以声明变量：var、const 和 let。</p></li> <li><p>定义变量：操作符+变量名(标识符)</p></li> <li><p>var 声明的特点：</p></li></ol> <p>（1）可以省略关键字自动变为全局变量</p> <p>（2）可以重复声明</p> <p>（3）可以先访问后声明（声明提升）</p> <p>（4）声明范围是函数作用域</p> <ol start="4"><li>let 声明的特点：</li></ol> <p>（1）未声明不可使用，会报错</p> <p>（2）不可以重复声明</p> <p>（3）声明范围是块作用域</p> <ol start="5"><li>const 声明的特点：</li></ol> <p>（1）包含 let 所以特点</p> <p>（2）声明变量时必须同时初始化变量</p> <p>（3）值类型不可修改，引用类型不可修改引用地址</p> <ol start="6"><li>var、let、const 共同点：都可以声明为全局作用域</li></ol></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/web/javascript/js作用域及作用域链.html" class="prev">
+        js作用域及作用域链
+      </a></span> <span class="next"><a href="/blog/web/javascript/js基本引用类型详解.html">
+        js基本引用类型详解
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div></div></div></div>
+    <script src="/blog/assets/js/app.aa93f5ac.js" defer></script><script src="/blog/assets/js/2.e4a3a743.js" defer></script><script src="/blog/assets/js/38.e06d88ba.js" defer></script>
+  </body>
+</html>
