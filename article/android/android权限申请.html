@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>android权限管理 | sanyer</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blog/favicon.ico">
+    <link rel="stylesheet" href="/blog/css/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="This is sanyer blog.">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.dff9e8f8.css" as="style"><link rel="preload" href="/blog/assets/js/app.735524a7.js" as="script"><link rel="preload" href="/blog/assets/js/2.e4a3a743.js" as="script"><link rel="preload" href="/blog/assets/js/18.87a0afa4.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.72bc3cf3.js"><link rel="prefetch" href="/blog/assets/js/100.29d6a02d.js"><link rel="prefetch" href="/blog/assets/js/101.67243815.js"><link rel="prefetch" href="/blog/assets/js/102.4366cf53.js"><link rel="prefetch" href="/blog/assets/js/103.27664751.js"><link rel="prefetch" href="/blog/assets/js/104.9d626429.js"><link rel="prefetch" href="/blog/assets/js/105.d1f1da00.js"><link rel="prefetch" href="/blog/assets/js/106.52f4f136.js"><link rel="prefetch" href="/blog/assets/js/107.236686d3.js"><link rel="prefetch" href="/blog/assets/js/108.6f5c2b3f.js"><link rel="prefetch" href="/blog/assets/js/109.c02f2251.js"><link rel="prefetch" href="/blog/assets/js/11.93be5faf.js"><link rel="prefetch" href="/blog/assets/js/110.55cdb822.js"><link rel="prefetch" href="/blog/assets/js/111.c2532ebd.js"><link rel="prefetch" href="/blog/assets/js/112.c1af868e.js"><link rel="prefetch" href="/blog/assets/js/113.a837e6f4.js"><link rel="prefetch" href="/blog/assets/js/114.c13499ac.js"><link rel="prefetch" href="/blog/assets/js/115.3b70d0cf.js"><link rel="prefetch" href="/blog/assets/js/116.705fed76.js"><link rel="prefetch" href="/blog/assets/js/117.0202731c.js"><link rel="prefetch" href="/blog/assets/js/118.3ac65981.js"><link rel="prefetch" href="/blog/assets/js/119.dd63b5ac.js"><link rel="prefetch" href="/blog/assets/js/12.1d2d858b.js"><link rel="prefetch" href="/blog/assets/js/120.ae1f1f73.js"><link rel="prefetch" href="/blog/assets/js/121.39567bf1.js"><link rel="prefetch" href="/blog/assets/js/122.6b57691c.js"><link rel="prefetch" href="/blog/assets/js/13.668070f7.js"><link rel="prefetch" href="/blog/assets/js/14.e3beb8f0.js"><link rel="prefetch" href="/blog/assets/js/15.f15de56c.js"><link rel="prefetch" href="/blog/assets/js/16.90961164.js"><link rel="prefetch" href="/blog/assets/js/17.55507301.js"><link rel="prefetch" href="/blog/assets/js/19.b96faeae.js"><link rel="prefetch" href="/blog/assets/js/20.c93085f6.js"><link rel="prefetch" href="/blog/assets/js/21.796b87e0.js"><link rel="prefetch" href="/blog/assets/js/22.75380c78.js"><link rel="prefetch" href="/blog/assets/js/23.b1facafb.js"><link rel="prefetch" href="/blog/assets/js/24.ce13b665.js"><link rel="prefetch" href="/blog/assets/js/25.c974d1e2.js"><link rel="prefetch" href="/blog/assets/js/26.0ccf2e79.js"><link rel="prefetch" href="/blog/assets/js/27.ebe22817.js"><link rel="prefetch" href="/blog/assets/js/28.30784ce3.js"><link rel="prefetch" href="/blog/assets/js/29.9fc94a56.js"><link rel="prefetch" href="/blog/assets/js/3.0077d2c5.js"><link rel="prefetch" href="/blog/assets/js/30.b9700c30.js"><link rel="prefetch" href="/blog/assets/js/31.632173de.js"><link rel="prefetch" href="/blog/assets/js/32.94378970.js"><link rel="prefetch" href="/blog/assets/js/33.9a62c77f.js"><link rel="prefetch" href="/blog/assets/js/34.d8270e8b.js"><link rel="prefetch" href="/blog/assets/js/35.ed791894.js"><link rel="prefetch" href="/blog/assets/js/36.91f4dcfd.js"><link rel="prefetch" href="/blog/assets/js/37.3d9b1168.js"><link rel="prefetch" href="/blog/assets/js/38.3a520169.js"><link rel="prefetch" href="/blog/assets/js/39.d651e60a.js"><link rel="prefetch" href="/blog/assets/js/4.1b9f3883.js"><link rel="prefetch" href="/blog/assets/js/40.48dcb776.js"><link rel="prefetch" href="/blog/assets/js/41.5e729bfc.js"><link rel="prefetch" href="/blog/assets/js/42.dcbd8432.js"><link rel="prefetch" href="/blog/assets/js/43.39092edd.js"><link rel="prefetch" href="/blog/assets/js/44.6355bbe4.js"><link rel="prefetch" href="/blog/assets/js/45.ea15a6f2.js"><link rel="prefetch" href="/blog/assets/js/46.40759cfe.js"><link rel="prefetch" href="/blog/assets/js/47.ccabe751.js"><link rel="prefetch" href="/blog/assets/js/48.c07dce13.js"><link rel="prefetch" href="/blog/assets/js/49.1a9025ee.js"><link rel="prefetch" href="/blog/assets/js/5.ae873fc3.js"><link rel="prefetch" href="/blog/assets/js/50.24b00a6c.js"><link rel="prefetch" href="/blog/assets/js/51.ff905937.js"><link rel="prefetch" href="/blog/assets/js/52.45e6f375.js"><link rel="prefetch" href="/blog/assets/js/53.d8d6d289.js"><link rel="prefetch" href="/blog/assets/js/54.496b2cf8.js"><link rel="prefetch" href="/blog/assets/js/55.cf6a5ff4.js"><link rel="prefetch" href="/blog/assets/js/56.2af8b2b9.js"><link rel="prefetch" href="/blog/assets/js/57.75af43b7.js"><link rel="prefetch" href="/blog/assets/js/58.24005acb.js"><link rel="prefetch" href="/blog/assets/js/59.48b3976f.js"><link rel="prefetch" href="/blog/assets/js/6.917a04df.js"><link rel="prefetch" href="/blog/assets/js/60.a321c325.js"><link rel="prefetch" href="/blog/assets/js/61.a4f0e103.js"><link rel="prefetch" href="/blog/assets/js/62.bcd909e1.js"><link rel="prefetch" href="/blog/assets/js/63.477525b7.js"><link rel="prefetch" href="/blog/assets/js/64.0ace9b4b.js"><link rel="prefetch" href="/blog/assets/js/65.52bfba7a.js"><link rel="prefetch" href="/blog/assets/js/66.a3a9ec7a.js"><link rel="prefetch" href="/blog/assets/js/67.651ca825.js"><link rel="prefetch" href="/blog/assets/js/68.09c0b1ca.js"><link rel="prefetch" href="/blog/assets/js/69.4f7e93b5.js"><link rel="prefetch" href="/blog/assets/js/7.45219830.js"><link rel="prefetch" href="/blog/assets/js/70.55934f07.js"><link rel="prefetch" href="/blog/assets/js/71.df34ae48.js"><link rel="prefetch" href="/blog/assets/js/72.44386d4f.js"><link rel="prefetch" href="/blog/assets/js/73.5eea5d4b.js"><link rel="prefetch" href="/blog/assets/js/74.b590bb60.js"><link rel="prefetch" href="/blog/assets/js/75.75e299a0.js"><link rel="prefetch" href="/blog/assets/js/76.a2940f4e.js"><link rel="prefetch" href="/blog/assets/js/77.c9102501.js"><link rel="prefetch" href="/blog/assets/js/78.1331fb7a.js"><link rel="prefetch" href="/blog/assets/js/79.fcb19c9f.js"><link rel="prefetch" href="/blog/assets/js/8.f80ebd56.js"><link rel="prefetch" href="/blog/assets/js/80.d9781a41.js"><link rel="prefetch" href="/blog/assets/js/81.4ddf3000.js"><link rel="prefetch" href="/blog/assets/js/82.57f37186.js"><link rel="prefetch" href="/blog/assets/js/83.1aa4b9ae.js"><link rel="prefetch" href="/blog/assets/js/84.95bb596e.js"><link rel="prefetch" href="/blog/assets/js/85.58f8cafe.js"><link rel="prefetch" href="/blog/assets/js/86.a84e2b80.js"><link rel="prefetch" href="/blog/assets/js/87.2b8f3871.js"><link rel="prefetch" href="/blog/assets/js/88.4becbabb.js"><link rel="prefetch" href="/blog/assets/js/89.840536ce.js"><link rel="prefetch" href="/blog/assets/js/9.dc022dd0.js"><link rel="prefetch" href="/blog/assets/js/90.ff9abe63.js"><link rel="prefetch" href="/blog/assets/js/91.64dbc09b.js"><link rel="prefetch" href="/blog/assets/js/92.ff5509c4.js"><link rel="prefetch" href="/blog/assets/js/93.d4c33812.js"><link rel="prefetch" href="/blog/assets/js/94.6da24fd9.js"><link rel="prefetch" href="/blog/assets/js/95.617d3979.js"><link rel="prefetch" href="/blog/assets/js/96.ef831fc7.js"><link rel="prefetch" href="/blog/assets/js/97.5fbb2d5d.js"><link rel="prefetch" href="/blog/assets/js/98.6fb88938.js"><link rel="prefetch" href="/blog/assets/js/99.517228b4.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.dff9e8f8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/img/logo.png" alt="sanyer" class="logo"> <span class="site-name can-hide">sanyer</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端技术分享" class="dropdown-title"><span class="title">前端技术分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端技术分享" class="mobile-dropdown-title"><span class="title">前端技术分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/babel/" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/weex/" class="nav-link">
+  weex
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webrtc/" class="nav-link">
+  WebRTC
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/" class="nav-link">
+  网络知识
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/design/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/algorithm/" class="nav-link">
+  数据结构/算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/security/" class="nav-link">
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/interview/" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/booklist/" class="nav-link">
+  书单
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="原创文章" class="dropdown-title"><span class="title">原创文章</span> <span class="arrow down"></span></button> <button type="button" aria-label="原创文章" class="mobile-dropdown-title"><span class="title">原创文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/article/website/" class="nav-link">
+  站点分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/configure/" class="nav-link">
+  配置说明
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/android/" class="nav-link router-link-active">
+  Android
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/resume/" class="nav-link">
+  个人简历
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="git" class="dropdown-title"><span class="title">git</span> <span class="arrow down"></span></button> <button type="button" aria-label="git" class="mobile-dropdown-title"><span class="title">git</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端技术分享" class="dropdown-title"><span class="title">前端技术分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端技术分享" class="mobile-dropdown-title"><span class="title">前端技术分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/babel/" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/weex/" class="nav-link">
+  weex
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webrtc/" class="nav-link">
+  WebRTC
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/" class="nav-link">
+  网络知识
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/design/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/algorithm/" class="nav-link">
+  数据结构/算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/security/" class="nav-link">
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/interview/" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/booklist/" class="nav-link">
+  书单
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="原创文章" class="dropdown-title"><span class="title">原创文章</span> <span class="arrow down"></span></button> <button type="button" aria-label="原创文章" class="mobile-dropdown-title"><span class="title">原创文章</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/article/website/" class="nav-link">
+  站点分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/configure/" class="nav-link">
+  配置说明
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/android/" class="nav-link router-link-active">
+  Android
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/resume/" class="nav-link">
+  个人简历
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="git" class="dropdown-title"><span class="title">git</span> <span class="arrow down"></span></button> <button type="button" aria-label="git" class="mobile-dropdown-title"><span class="title">git</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/blog/article/android/" aria-current="page" class="sidebar-link">Android开发</a></li><li><a href="/blog/article/android/adb安装.html" class="sidebar-link">adb安装</a></li><li><a href="/blog/article/android/android mime 类型.html" class="sidebar-link">android mime 类型</a></li><li><a href="/blog/article/android/android webview开发.html" class="sidebar-link">android webview开发</a></li><li><a href="/blog/article/android/android webview开启文件上传.html" class="sidebar-link">android webview开启文件上传</a></li><li><a href="/blog/article/android/android开启服务.html" class="sidebar-link">android开启服务</a></li><li><a href="/blog/article/android/android录屏并上传.html" class="sidebar-link">android录屏并上传</a></li><li><a href="/blog/article/android/android截屏实现.html" class="sidebar-link">android截屏实现</a></li><li><a href="/blog/article/android/android权限申请.html" class="active sidebar-link">android权限申请</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/article/android/android权限申请.html#特殊权限" class="sidebar-link">特殊权限</a></li><li class="sidebar-sub-header"><a href="/blog/article/android/android权限申请.html#普通权限" class="sidebar-link">普通权限</a></li><li class="sidebar-sub-header"><a href="/blog/article/android/android权限申请.html#动态申请" class="sidebar-link">动态申请</a></li></ul></li><li><a href="/blog/article/android/android跳转系统页面.html" class="sidebar-link">android跳转系统页面</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="android权限管理"><a href="#android权限管理" class="header-anchor">#</a> android权限管理</h1> <p>从 Android 6.0 开始，按照是否需要动态申请分为<strong>普通权限</strong>和<strong>特殊权限</strong></p> <p><strong>特殊权限</strong>需要程序运行时申请并通过之后才能使用，或者程序安装为系统应用或系统签名。</p> <p>注意：</p> <p>1、动态申请也需要在清单文件中配置（AndroidMenifest.xml）</p> <p>2、权限是分组的，同一组的权限申请其中一个，同组的权限就全部都申请了</p> <h2 id="特殊权限"><a href="#特殊权限" class="header-anchor">#</a> 特殊权限</h2> <p>特殊权限共有 9 组：</p> <ul><li><code>CALENDAR</code> 日历</li> <li><code>CAMERA</code> 相机</li> <li><code>CONTACTS</code> 联系人</li> <li><code>LOCATION</code> 定位</li> <li><code>MICROPHONE</code> 麦克风相关</li> <li><code>PHONE</code> 手机状态</li> <li><code>SENSORS</code> 传感器</li> <li><code>SMS</code> 短信</li> <li><code>STORAGE</code> 存储权限</li></ul> <p>9 组具体权限列表：</p> <div class="language-txt line-numbers-mode"><pre class="language-text"><code>// CALENDAR 日历
+android.permission.READ_CALENDAR
+android.permission.WRITE_CALENDAR
+
+// CAMERA 相机
+android.permission.CAMERA
+
+// CONTACTS 联系人
+android.permission.WRITE_CONTACTS
+android.permission.GET_ACCOUNTS
+android.permission.READ_CONTACTS
+
+// LOCATION 定位
+android.permission.ACCESS_FINE_LOCATION
+android.permission.ACCESS_COARSE_LOCATION
+
+// MICROPHONE 麦克风相关
+android.permission.RECORD_AUDIO
+
+// PHONE 手机状态
+android.permission.READ_CALL_LOG
+android.permission.READ_PHONE_STATE
+android.permission.CALL_PHONE
+android.permission.WRITE_CALL_LOG
+android.permission.USE_SIP
+android.permission.PROCESS_OUTGOING_CALLS
+
+// SENSORS 传感器
+android.permission.BODY_SENSORS
+
+// SMS 短信
+android.permission.READ_SMS
+android.permission.RECEIVE_WAP_PUSH
+android.permission.RECEIVE_MMS
+android.permission.RECEIVE_SMS
+android.permission.SEND_SMS
+android.permission.READ_CELL_BROADCASTS
+
+// STORAGE 存储权限
+android.permission.READ_EXTERNAL_STORAGE
+android.permission.WRITE_EXTERNAL_STORAGE
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><h2 id="普通权限"><a href="#普通权限" class="header-anchor">#</a> 普通权限</h2> <p>普通权限在清单文件配置（AndroidMenifest.xml）即可使用</p> <div class="language-txt line-numbers-mode"><pre class="language-text"><code>ACCESS_LOCATION_EXTRA_COMMANDS 定位权限
+ACCESS_NETWORK_STATE 网络状态权限
+ACCESS_NOTIFICATION_POLICY 通知 APP通知显示在状态栏
+ACCESS_WIFI_STATE WiFi状态权限
+BLUETOOTH 使用蓝牙权限
+BLUETOOTH_ADMIN 控制蓝牙开关
+BROADCAST_STICKY 粘性广播
+CHANGE_NETWORK_STATE 改变网络状态
+CHANGE_WIFI_MULTICAST_STATE 改变WiFi多播状态，应该是控制手机热点（猜测）
+CHANGE_WIFI_STATE 控制WiFi开关，改变WiFi状态
+DISABLE_KEYGUARD 改变键盘为不可用
+EXPAND_STATUS_BAR 扩展bar的状态
+GET_PACKAGE_SIZE 获取应用安装包大小
+INTERNET 网络权限
+KILL_BACKGROUND_PROCESSES 杀死后台进程
+MODIFY_AUDIO_SETTINGS 改变音频输出设置
+NFC 支付
+READ_SYNC_SETTINGS 获取手机设置信息
+READ_SYNC_STATS 数据统计
+RECEIVE_BOOT_COMPLETED 监听启动广播
+REORDER_TASKS 创建新栈
+REQUEST_INSTALL_PACKAGES 安装应用程序
+SET_TIME_ZONE 允许应用程序设置系统时间区域
+SET_WALLPAPER 设置壁纸
+SET_WALLPAPER_HINTS 设置壁纸上的提示信息，个性化语言
+TRANSMIT_IR 红外发射
+USE_FINGERPRINT 指纹识别
+VIBRATE 震动
+WAKE_LOCK 锁屏
+WRITE_SYNC_SETTINGS 改变设置
+SET_ALARM 设置警告提示
+INSTALL_SHORTCUT 创建快捷方式
+UNINSTALL_SHORTCUT 删除快捷方式
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h2 id="动态申请"><a href="#动态申请" class="header-anchor">#</a> 动态申请</h2> <p>（1）在 AndroidMenifest.xml 清单文件中申请</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>manifest</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>android.permission.CAMERA<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>android.permission.RECORD_AUDIO<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>android.permission.ACCESS_LOCATION_EXTRA_COMMANDS<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>manifest</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>（2）单个申请</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">getPermission</span><span class="token punctuation">(</span><span class="token class-name">String</span> permission<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token class-name">Build</span><span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">&gt;=</span> <span class="token class-name">Build<span class="token punctuation">.</span>VERSION_CODES<span class="token punctuation">.</span>M</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 6.0之后</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">ContextCompat</span><span class="token punctuation">.</span><span class="token function">checkSelfPermission</span><span class="token punctuation">(</span>_m<span class="token punctuation">,</span> <span class="token class-name">Manifest</span><span class="token punctuation">.</span>permission<span class="token punctuation">.</span>CAMERA<span class="token punctuation">)</span><span class="token operator">!=</span> <span class="token class-name">PackageManager</span><span class="token punctuation">.</span>PERMISSION_GRANTED<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 检查是否有权限</span>
+            <span class="token class-name">ActivityCompat</span><span class="token punctuation">.</span><span class="token function">requestPermissions</span><span class="token punctuation">(</span>_m<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token class-name">Manifest</span><span class="token punctuation">.</span>permission<span class="token punctuation">.</span>CAMERA<span class="token punctuation">}</span><span class="token punctuation">,</span> PERMISSION_REQUEST_CODE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 没有权限则申请</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 6.0之前可以直接使用，无需申请</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">getPermission</span><span class="token punctuation">(</span><span class="token class-name">Manifest</span><span class="token punctuation">.</span>permission<span class="token punctuation">.</span>CAMERA<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 调用</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>（2）批量申请</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> PERMISSION_REQUEST_CODE <span class="token operator">=</span> <span class="token number">0x11</span><span class="token punctuation">;</span> <span class="token comment">// 回调返回code</span>
+<span class="token comment">// 需要申请的权限列表</span>
+<span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> permissionList <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Manifest</span><span class="token punctuation">.</span>permission<span class="token punctuation">.</span>WRITE_EXTERNAL_STORAGE<span class="token punctuation">,</span>
+        <span class="token class-name">Manifest</span><span class="token punctuation">.</span>permission<span class="token punctuation">.</span>ACCESS_FINE_LOCATION<span class="token punctuation">,</span>
+        <span class="token class-name">Manifest</span><span class="token punctuation">.</span>permission<span class="token punctuation">.</span>CAMERA<span class="token punctuation">,</span>
+        <span class="token class-name">Manifest</span><span class="token punctuation">.</span>permission<span class="token punctuation">.</span>RECORD_AUDIO
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">getPermissions</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> mPermissionList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token class-name">Build</span><span class="token punctuation">.</span>VERSION<span class="token punctuation">.</span>SDK_INT <span class="token operator">&gt;=</span> <span class="token class-name">Build<span class="token punctuation">.</span>VERSION_CODES<span class="token punctuation">.</span>M</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> permissionList<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">ContextCompat</span><span class="token punctuation">.</span><span class="token function">checkSelfPermission</span><span class="token punctuation">(</span><span class="token class-name">MainActivity</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span> permissionList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">!=</span> <span class="token class-name">PackageManager</span><span class="token punctuation">.</span>PERMISSION_GRANTED<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 没有权限则申请权限</span>
+                mPermissionList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>permissionList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>mPermissionList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">ActivityCompat</span><span class="token punctuation">.</span><span class="token function">requestPermissions</span><span class="token punctuation">(</span><span class="token class-name">MainActivity</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">,</span> mPermissionList<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> PERMISSION_REQUEST_CODE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>（3）回调处理</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span><span class="token keyword">int</span> requestCode<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> permissions<span class="token punctuation">,</span> <span class="token annotation punctuation">@NonNull</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grantResults<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">onRequestPermissionsResult</span><span class="token punctuation">(</span>requestCode<span class="token punctuation">,</span> permissions<span class="token punctuation">,</span> grantResults<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>requestCode<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">case</span> PERMISSION_REQUEST_CODE<span class="token operator">:</span>
+            <span class="token function">onRequestPermissionsCallback</span><span class="token punctuation">(</span>grantResults<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 回调</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onRequestPermissionsCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">boolean</span> hasPermissionDismiss <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// 有权限没有通过</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> grantResults<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>grantResults<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          hasPermissionDismiss <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 如果有权限没有被允许</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hasPermissionDismiss<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">showPermissionDialog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 跳转到系统设置权限页面，或者直接关闭页面，不让他继续访问</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 全部权限通过，可以进行下一步操作。。。</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">AlertDialog</span> mPermissionDialog<span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">showPermissionDialog</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>mPermissionDialog <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        mPermissionDialog <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AlertDialog<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token class-name">MainActivity</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setMessage</span><span class="token punctuation">(</span><span class="token string">&quot;已禁用权限，请手动授予&quot;</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setPositiveButton</span><span class="token punctuation">(</span><span class="token string">&quot;设置&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>dialog<span class="token punctuation">,</span> which<span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token function">cancelPermissionDialog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token class-name">Intent</span> intent <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">Intent</span><span class="token punctuation">(</span><span class="token class-name">Settings</span><span class="token punctuation">.</span>ACTION_SETTINGS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">startActivity</span><span class="token punctuation">(</span>intent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setNegativeButton</span><span class="token punctuation">(</span><span class="token string">&quot;取消&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>dialog<span class="token punctuation">,</span> which<span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token comment">//关闭页面或者做其他操作</span>
+                    <span class="token function">cancelPermissionDialog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    mPermissionDialog<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//关闭对话框</span>
+<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">cancelPermissionDialog</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    mPermissionDialog<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/article/android/android截屏实现.html" class="prev">
+        android截屏实现
+      </a></span> <span class="next"><a href="/blog/article/android/android跳转系统页面.html">
+        android跳转系统页面
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div></div></div></div>
+    <script src="/blog/assets/js/app.735524a7.js" defer></script><script src="/blog/assets/js/2.e4a3a743.js" defer></script><script src="/blog/assets/js/18.87a0afa4.js" defer></script>
+  </body>
+</html>
