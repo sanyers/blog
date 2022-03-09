@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
+    <title>jsonp</title>
+  </head>
+  <body>
+    hello wolrd
+    <button id="send">send</button>
+    <script>
+      function handleResponse(response) {
+        console.log(response);
+      }
+      document.getElementById('send').onclick = function() {
+        let script = document.createElement('script');
+        script.src =
+          'http://10.10.9.1:8888/api/userInfor/companyList2?callback=handleResponse';
+        document.body.insertBefore(script, document.body.firstChild);
+      };
+    </script>
+  </body>
+</html>

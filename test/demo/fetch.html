@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
+    <title>fetch</title>
+  </head>
+  <body>
+    hello wolrd
+    <button id="send">send</button>
+    <button id="sendjson">发送json</button>
+    <button id="sendurlen">发送x-www-form-urlencoded</button>
+    <script>
+      document.getElementById('send').onclick = function() {
+        const r = fetch('/api/test');
+        r.then(res => res.text()).then(text => {
+          console.log(text);
+        });
+      };
+
+      document.getElementById('sendjson').onclick = function() {
+        const init = {
+          method: 'POST', // 发送请求体时必须使用一种 HTTP 方法
+          body: JSON.stringify({ foo: 'bar' }),
+          headers: new Headers({ 'Content-Type': 'application/json' }),
+        };
+        fetch('/api/user', init)
+          .then(res => res.text())
+          .then(text => {
+            console.log(text);
+          });
+      };
+
+      document.getElementById('sendurlen').onclick = function() {
+        const init = {
+          method: 'POST', // 发送请求体时必须使用一种 HTTP 方法
+          body: 'foo=bar&baz=qux',
+          headers: new Headers({
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+          }),
+        };
+        fetch('/api/user', init)
+          .then(res => res.text())
+          .then(text => {
+            console.log(text);
+          });
+      };
+    </script>
+  </body>
+</html>

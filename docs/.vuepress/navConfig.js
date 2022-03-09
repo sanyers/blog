@@ -60,7 +60,7 @@ module.exports = [
   //         }
   //     ]
   // },
-  { text: "个人简历", link: "/resume/" },
+  { text: "个人简历", link: "https://sanyers.github.io/resume/" },
   {
     text: "git",
     items: [

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
+    <title>api</title>
+  </head>
+  <body>
+    <div>
+      <button id="btnGet">发送get请求</button>
+      <button id="btnPost">发送post请求</button>
+      <button id="btnFormData">发送form/data请求</button>
+      <button id="btnFormUrlencoded">
+        发送application/x-www-form-urlencoded请求
+      </button>
+      <button id="btnImgGet">发送imgGet请求</button>
+    </div>
+    <script>
+      const ajax = {
+        createRequest(method, url, data, fn, contentType) {
+          const xhr = new XMLHttpRequest();
+          xhr.open(method, url, true);
+          contentType && xhr.setRequestHeader('Content-Type', contentType);
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+              fn(xhr.response);
+            }
+          };
+          xhr.send(data);
+        },
+        get(url, fn) {
+          ajax.createRequest('GET', url, null, fn);
+        },
+        post(url, data, fn) {
+          ajax.createRequest('POST', url, data, fn, 'application/json');
+        },
+      };
+
+      const btnGet = document.getElementById('btnGet');
+      btnGet.onclick = function() {
+        ajax.get('/api/test?a=1&b=2', res => {
+          console.log(res);
+        });
+      };
+
+      const btnPost = document.getElementById('btnPost');
+      btnPost.onclick = function() {
+        const str = JSON.stringify({ a: 1, b: 2 });
+        ajax.post('/api/user', str, res => {
+          console.log(res);
+        });
+      };
+
+      const btnImgGet = document.getElementById('btnImgGet');
+      btnImgGet.onclick = function() {
+        const img = new Image();
+        img.src = '/api/test?a=1&b=2';
+      };
+
+      const btnFormData = document.getElementById('btnFormData');
+      btnFormData.onclick = function() {
+        const formData = new FormData();
+        formData.append('a', 1);
+        formData.append('b', 2);
+        ajax.createRequest('POST', '/api/user', formData, res => {
+          console.log(res);
+        });
+      };
+
+      const btnFormUrlencoded = document.getElementById('btnFormUrlencoded');
+      btnFormUrlencoded.onclick = function() {
+        const str = 'a=1&b=2';
+        const contentType = 'application/x-www-form-urlencoded';
+        ajax.createRequest('POST', '/api/user', str, res => {
+          console.log(res);
+        }, contentType);
+      };
+    </script>
+  </body>
+</html>

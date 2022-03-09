@@ -207,3 +207,11 @@ $ git archive  # 生成一个可供发布的压缩包
 $ git commit -m 'xxx' --no-verify
 $ git push origin 'xxx' --no-verify
 ```
+
+## 配置公钥
+
+```sh
+ssh-keygen -t ed25519 -C "xxxxx@xxxxx.com"
+```
+
+目录在 `C:\Users\用户\.ssh\id_ed25519.pub`

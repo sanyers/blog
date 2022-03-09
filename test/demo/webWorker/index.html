@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
+    <title>webWorker</title>
+  </head>
+  <body>
+    <button id="send">send</button>
+    <button id="send2">send2</button>
+    <script>
+      document.getElementById('send').onclick = function() {
+        const worker = new Worker('./workertest.js');
+        worker.postMessage('/file/111.pdf');
+      };
+
+      document.getElementById('send2').onclick = function() {
+        const data = `
+        self.addEventListener('message', evt => {
+          const xhr = new XMLHttpRequest();
+          xhr.open('get', location.origin + evt.data, true);
+          xhr.responseType = 'arraybuffer';
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+              const arrayBuffer = xhr.response;
+              console.log(arrayBuffer.byteLength);
+              self.postMessage(arrayBuffer, [arrayBuffer]);
+              console.log(arrayBuffer.byteLength);
+            }
+          };
+          xhr.send(null);
+        });
+        `;
+        const blob = new Blob([data]);
+        const worker = new Worker(URL.createObjectURL(blob));
+        worker.postMessage('/file/111.pdf');
+        worker.addEventListener('message', event => {
+          console.log(event.data);
+          console.log(event.data.byteLength);
+        });
+      };
+    </script>
+  </body>
+</html>

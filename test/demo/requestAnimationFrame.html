@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="UTF-8" />
+    <title>requestAnimationFrame</title>
+    <style>
+      .test {
+        width: 0%;
+        height: 30px;
+        background-color: blueviolet;
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    hello wolrd
+    <div id="test1" class="test"></div>
+    <div id="test2" class="test"></div>
+    <script>
+      const test1 = document.getElementById("test1");
+      let width1 = 0;
+      let isPlus = true;
+      function updateProgress1() {
+        if (width1 === 100) {
+          isPlus = false;
+        }
+        if (width1 === 0) {
+          isPlus = true;
+        }
+        isPlus ? width1++ : width1--;
+        test1.style.width = width1 + "%";
+        requestAnimationFrame(updateProgress1);
+      }
+      requestAnimationFrame(updateProgress1);
+
+      const test2 = document.getElementById("test2");
+      let width2 = 0;
+      let isPlus2 = true;
+      function updateProgress2() {
+        setInterval(() => {
+          if (width2 === 100) {
+            isPlus2 = false;
+          }
+          if (width2 === 0) {
+            isPlus2 = true;
+          }
+          isPlus2 ? width2++ : width2--;
+          test2.style.width = width2 + "%";
+        }, 16);
+      }
+      updateProgress2();
+    </script>
+  </body>
+</html>
