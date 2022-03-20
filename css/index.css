@@ -62,8 +62,9 @@ body {
     border: none;
 }
 
-.theme-night code {
+.theme-night .theme-default-content code {
     color: var(--c-text-lighter);
+    background-color: rgb(53 153 253 / 5%);
 }
 
 .theme-night h2 {
