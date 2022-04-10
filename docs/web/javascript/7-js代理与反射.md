@@ -399,3 +399,45 @@ proxy.push('John');
 proxy.push('Jacob'); 
 // Jacob 
 ```
+
+## 4、总结
+
+1. 最简单的代理是空代理，即除了作为一个抽象的目标对象
+
+2. 代理是使用 Proxy 构造函数创建的，接收两个参数：**目标对象** 和 **处理程序对象**
+
+3. `Proxy.prototype` 是 `undefined`，因此不能使用 `instanceof` 操作符
+
+4. 捕获器：
+
+   - `get(trapTarget, property, receiver)` trapTarget 目标对象，property 要查询的属性，receiver 代理对象
+   - `Reflect.get(...arguments); or Reflect.get;` 反射，重建原始行为
+
+5. 捕获器不变式：如果目标对象有一个不可配置且不可写的数据属性，那么在捕获器返回一个与该属性不同的值时，会抛出 TypeError
+
+6. 可撤销代理：
+
+   - `Proxy.revocable(target, handler)` 创建可撤销代理
+   - `revoke()` 方法销毁代理
+
+7. 实用反射 API：代理可以捕获 13 种不同的基本操作
+
+   - `get()` 可以替代对象属性访问操作符
+   - `set()` 可以替代=赋值操作符
+   - `has()` 可以替代 in 操作符或 with()
+   - `defineProerty()` 在 Object.defineProperty() 中被调用
+   - `getOwnPropertyDescriptor()` ~
+   - `deleteProperty()` 可以替代 delete 操作符
+   - `ownKeys()` 在 Object.keys() 及类似方法中被调用
+   - `getPrototypeOf()`在 Object.getPrototypeOf() 中被调用
+   - `setPrototypeOf()` ~
+   - `isExtensible()` ~
+   - `preventExtensions()` ~
+   - `construct()` 可以替代 new 操作符
+   - `apply(myFunc, thisVal, argumentsList)` 在调用函数时中被调用
+
+8. 代理模式
+
+   - 跟踪属性访问：通过捕获 get、set 和 has 等操作，可以知道对象属性什么时候被访问、被查询。
+   - 隐藏属性：通过条件判定是否返回属性值
+   - 属性验证：通过 set() 捕获器拦截，根据条件判定是否赋值

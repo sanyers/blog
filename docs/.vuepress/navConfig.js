@@ -1,13 +1,14 @@
 module.exports = [
   { text: "首页", link: "/" },
   {
-    text: "前端技术分享",
+    text: "前端笔记",
     type: "group",
     name: "web",
     items: [
-      { text: "javascript", link: "/web/javascript/", firstName: "js基础知识" },
-      { text: "css", link: "/web/css/", firstName: "css基础知识" },
-      { text: "vue", link: "/web/vue/", firstName: "vue基础知识" },
+      { text: "javascript", link: "/web/javascript/", firstName: "目录" },
+      { text: "html", link: "/web/html/", firstName: "目录" },
+      { text: "css", link: "/web/css/", firstName: "目录" },
+      { text: "vue", link: "/web/vue/", firstName: "目录" },
       { text: "webpack", link: "/web/webpack/", firstName: "webpack基础知识" },
       { text: "babel", link: "/web/babel/", firstName: "babel基础知识" },
       { text: "weex", link: "/web/weex/", firstName: "weex基础知识" },
@@ -23,7 +24,7 @@ module.exports = [
     ],
   },
   {
-    text: "原创文章",
+    text: "其他",
     type: "group",
     name: "article",
     items: [

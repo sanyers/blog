@@ -4,7 +4,7 @@
 
 前端个人博客
 
-[gitee 地址(因审核机制已不更新)](https://sanyers.gitee.io/blog/)
+[gitee 地址](https://sanyers.gitee.io/blog/)
 
 [github 地址](https://sanyers.github.io/blog/)
 

@@ -1,3 +1,119 @@
-.img-page{
-  text-align: center;
+.img-page {
+    text-align: center;
+}
+
+html,
+body {
+    --scrollbar-color: rgba(0, 0, 0, 0.25);
+    --scrollbar-bg: transparent;
+}
+
+.page-theme {
+    margin-right: 13px;
+    border: none;
+    outline: none;
+    background: inherit;
+    color: inherit;
+}
+
+.theme-night {
+    --background-primary: #22272e;
+    --text-primary: #adbac7;
+    --scrollbar-color: hsla(0, 0%, 100%, 0.25);
+    --c-border: #3e4c5a;
+    --c-text-lighter: #8b9eb0;
+    --c-tip: #318a62;
+    --c-bg-light: #2b313a;
+    --c-bg: var(--scrollbar-bg);
+}
+
+.theme-night,
+.theme-night .sidebar,
+.theme-night .navbar,
+.theme-night .navbar .links {
+    background: var(--background-primary);
+    color: var(--text-primary);
+}
+
+.theme-night .dropdown-wrapper .nav-dropdown {
+    background: var(--background-primary);
+}
+
+.theme-night a.sidebar-link,
+.theme-night .dropdown-wrapper .dropdown-title,
+.theme-night .dropdown-wrapper .mobile-dropdown-title,
+.theme-night .nav-links a:hover,
+.theme-night .navbar .site-name {
+    color: var(--text-primary);
+}
+
+.theme-night .navbar,
+.theme-night .sidebar,
+.theme-night .page-nav .inner {
+    border-color: var(--c-border);
+}
+
+.theme-night table tr:nth-child(2n) {
+    background-color: transparent;
+}
+
+.theme-night table tr,
+.theme-night table td {
+    border: none;
+}
+
+.theme-night .theme-default-content code {
+    color: var(--c-text-lighter);
+    background-color: rgb(53 153 253 / 5%);
+}
+
+.theme-night h2 {
+    border-bottom: 1px solid var(--c-border);
+}
+
+.theme-night blockquote {
+    border-color: var(--c-tip);
+    background-color: var(--c-bg-light);
+}
+
+.theme-night .search-box input {
+    background-color: var(--c-bg);
+    color: var(--text-primary);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: var(--scrollbar-bg, auto);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 2px solid var(--scrollbar-bg, auto);
+    background: var(--scrollbar-color);
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.v[data-class=v] {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+}
+
+.theme-night .v[data-class=v] .vwrap {
+    border-color: var(--c-tip);
+}
+
+.theme-night .v[data-class=v] .status-bar,
+.v[data-class=v] .veditor,
+.v[data-class=v] .vinput,
+.v[data-class=v] p,
+.v[data-class=v] pre code {
+    color: var(--text-primary);
+}
+
+pre[class*="language-"] {
+    --scrollbar-color: hsla(0, 0%, 100%, 0.25);
 }

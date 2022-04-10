@@ -60,6 +60,18 @@
 
 [WebrtcNodeJS](https://github.com/androidtencent/WebrtcNodeJS)
 
+[turnserver](https://github.com/coturn/coturn/wiki/turnserver)
+
+[检测turn ice](https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/)
+
+[RTCMultiConnection](https://github.com/muaz-khan/RTCMultiConnection)
+
+[流媒体博客资源](https://www.cnblogs.com/aixing/p/15323563.html)
+
+## Linux
+
+[linux kill 关闭进程命令](http://www.zzvips.com/article/1929.html)
+
 ## 其他网站
 
 [书栈网](https://www.bookstack.cn/cate)
@@ -67,3 +79,5 @@
 [webpack](https://webpack.js.org/concepts/)
 
 [数据中心：系统、平台和应用程序交付](https://sysin.org/)
+
+[国内外代码托管平台汇总](https://www.jianshu.com/p/bd24f3202011)

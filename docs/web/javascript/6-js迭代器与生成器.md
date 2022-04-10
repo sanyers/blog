@@ -454,3 +454,70 @@ console.log(g.next()); // { done: false, value: 1}
 g.throw('foo'); 
 console.log(g.next()); // { done: false, value: 3}
 ```
+
+## 4、总结
+
+1. “迭代”的意思是按照顺序反复多次执行一段程序，通常会有明确的终止条件
+
+2. 迭代器模式：可以把有些结构称为“可迭代对象”（iterable），因为它们实现了正式的 Iterable 接口，而且可以通过迭代器 Iterator 消费
+
+3. 可迭代对象是一种抽象的说法。基本上，可以把可迭代对象理解成数组或集合这样的集合类型的对象。它们包含的元素都是有限的，而且都具有无歧义的遍历顺序
+
+4. 可迭代协议：必须使用特殊的 Symbol.iterator 作为键，引用了一个迭代器工厂函数，调用这个工厂函数必须返回一个新迭代器
+
+5. 很多内置类型都实现了 Iterable 接口：
+
+   - 字符串
+   - 数组
+   - 映射
+   - 集合
+   - arguments 对象
+   - NodeList 等 DOM 集合类型
+
+6. 接收可迭代对象的原生语言特性包括：
+
+   - for-of 循环
+   - 数组解构
+   - 扩展操作符
+   - Array.from()
+   - 创建集合
+   - 创建映射
+   - Promise.all() 接收由期约组成的可迭代对象
+   - Promise.race() 接收由期约组成的可迭代对象
+   - yield* 操作符，在生成器中使用
+
+7. 迭代器协议：
+
+   - `[Symbol.iterator]()` 迭代器入口
+   - `next()` 由迭代器入口返回 next() 方法
+   - `{ done: false, value: '' }` 由 next 返回一个对象，包含 done 和 value，done 为 true 和 value 为 undefined 时，代表迭代到了末尾
+   - `return()` 指定在迭代器提前关闭时执行的逻辑
+
+8. 生成器：拥有在一个函数块内暂停和恢复代码执行的能力
+
+   - 函数声明：`function* g() {}`
+   - 函数表达式：`let g = function* () {}`
+   - 对象字面量：`let foo = { *g(){} }`
+   - 类实例方法：`class Foo { *g(){} }`
+   - 类静态方法：`class Foo { static *g(){} }`
+   - 箭头函数不能用来定义生成器函数
+
+9. 生成器对象
+
+   - `yield` 关键字只能在生成器函数内部使用
+   - `next()` 调用这个方法会让生成器开始或恢复执行
+   - `return()` 提前终止迭代器
+   - `throw()` 在暂停的时候将一个提供的错误注入到生成器对象中。如果错误未被处理，生成器就会关闭
+
+```js
+function *g() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+const gs = g();
+gs.next(); // { done: false, value: 1 }
+gs.next(); // { done: false, value: 2 }
+gs.next(); // { done: false, value: 3 }
+gs.next(); // { done: true, value: undefined }
+```
