@@ -8,6 +8,12 @@ sudo yum install -y make gcc cc gcc-c++ wget
 sudo yum install -y openssl-devel libevent libevent-devel
 ```
 
+生成签名
+
+```
+openssl req -x509 -newkey rsa:2048 -keyout ./turn_server_pkey.pem -out ./turn_server_cert.pem -days 99999 -nodes
+```
+
 ## 2、turn 安装
 
 turn github 地址： [https://github.com/coturn/coturn](https://github.com/coturn/coturn)
@@ -36,47 +42,78 @@ which turnserver
 
 ### 4.1 配置 turnserver.conf
 
-进入配置文件夹
-
-```
-cd /usr/local/etc/
-```
-
 复制出 turnserver.conf.default 为 turnserver.conf
 
 ```
+cd /usr/local/etc/
 cp turnserver.conf.default turnserver.conf
+ifconfig
 ```
 
 vim 编辑配置文件，shift+g 跳到最后一行加上以下内容
 
-```
-listening-ip=你的内网（ifconfig或去控制台查看）
-relay-ip=你的内网
-external-ip=你的外网
-user=你的账号:你的密码
-cli-password=你的密码（这个要加上，不然一会启动服务会报cli-password啥的）
-listening-port=3478
+```conf
+#与前 ifconfig 查到的网卡名称一致
+relay-device=eth0
+#内网IP
+listening-ip=192.168.1.191
+#内网IP
+relay-ip=192.168.1.191
+#公网IP
+external-ip=xxx.xx.xx.xxx
+relay-threads=50
 min-port=49152
 max-port=65535
+#用户名密码，创建IceServer时用
+user=用户名:密码
+#一般与turnadmin创建用户时指定的realm一致
+realm=xxx.com
+#端口号
+listening-port=3478
+#不开启会报CONFIG ERROR: Empty cli-password, and so telnet cli interface is disabled! Please set a non empty cli-password!错误
+cli-password=密码
+#证书
+cert=/etc/turn_server_cert.pem
+pkey=/etc/turn_server_pkey.pem
 ```
 
 ### 4.2 开放 tcp 和 udp 端口
 
 在防火墙开启 3478 端口
 
+```
+firewall-cmd --zone=public --add-port=3478/udp --permanent
+firewall-cmd --zone=public --add-port=3478/tcp --permanent
+firewall-cmd --reload
+# 重启防火墙
+systemctl restart firewalld.service
+```
+
+查看是否开启
+
+```
+firewall-cmd --zone=public --query-port=3478/tcp
+firewall-cmd --zone=public --query-port=3478/udp
+```
+
 在腾讯云（阿里云）控制台把 tcp 和 udp 端口 49152-65535 放开（或者全部开放 1-65535 端口，或者只开放 3478 端口，默认 3478）
 
 ## 5、启动服务
 
 ```
-turnserver -v -r 你的公网id:3478 -a -o -c /usr/local/etc/turnserver.conf
+turnserver -v -z -o -c /usr/local/etc/turnserver.conf
 ```
 
 查看是否在运行
 
 ```
 ps -ef|grep turnserver
+```
+
+关闭服务
+
+```
+killall turnserver
 ```
 
 ## 6、测试访问
@@ -92,3 +129,5 @@ addserver 后点下面的按钮
 ## 7、参考
 
 https://www.cnblogs.com/NanKe-Studying/p/16010426.html
+
+https://blog.csdn.net/qq_44938451/article/details/122158975

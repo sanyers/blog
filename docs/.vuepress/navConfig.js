@@ -67,6 +67,7 @@ module.exports = [
     items: [
       { text: "gitee", link: "https://gitee.com/sanyers/blog.git" },
       { text: "github", link: "https://github.com/sanyers/blog.git" },
+      { text: "简书", link: "https://www.jianshu.com/u/126bb2363acb" },
     ],
   },
 ];
