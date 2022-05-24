@@ -32,6 +32,7 @@ module.exports = [
       { text: "git", link: "/article/git/", firstName: "命令大全" },
       { text: "配置说明", link: "/article/configure/", firstName: "ESLint" },
       { text: "Android", link: "/article/android/", firstName: "Android开发" },
+      { text: "nginx", link: "/article/nginx/", firstName: "Nginx配置" },
       // { text: '历史', link: '/article/history/', firstName: '开始' },
     ],
   },
