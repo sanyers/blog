@@ -3,7 +3,8 @@ const filterItem = require('./filterItem');
 const fs = require('fs');
 const util = require('util');
 
-const isGitee = JSON.parse(process.env.npm_config_argv).cooked.includes('--gitee');
+// const isGitee = JSON.parse(process.env.npm_config_argv).cooked.includes('--gitee');
+const isGitee = false;
 
 function getSidebar() {
     const groupList = getGroup('group');

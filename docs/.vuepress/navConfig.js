@@ -14,6 +14,7 @@ module.exports = [
       { text: "weex", link: "/web/weex/", firstName: "weex基础知识" },
       { text: "typescript", link: "/web/typescript/", firstName: "typescript基础知识", },
       { text: "node", link: "/web/node/", firstName: "node基础知识" },
+      { text: "electron", link: "/web/electron/", firstName: "electron基础知识" },
       { text: "WebRTC", link: "/web/webrtc/", firstName: "WebRTC基础", },
       { text: "网络知识", link: "/web/network/", firstName: "网络知识" },
       { text: "设计模式", link: "/web/design/", firstName: "设计模式" },
