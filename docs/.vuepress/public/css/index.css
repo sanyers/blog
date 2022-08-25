@@ -6,6 +6,7 @@ html,
 body {
     --scrollbar-color: rgba(0, 0, 0, 0.25);
     --scrollbar-bg: transparent;
+    scroll-behavior: smooth;
 }
 
 .page-theme {
