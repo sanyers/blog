@@ -9,6 +9,7 @@ module.exports = [
       { text: "html", link: "/web/html/", firstName: "目录" },
       { text: "css", link: "/web/css/", firstName: "目录" },
       { text: "vue", link: "/web/vue/", firstName: "目录" },
+      { text: "vue3", link: "/web/vue3/", firstName: "目录" },
       { text: "webpack", link: "/web/webpack/", firstName: "webpack基础知识" },
       { text: "babel", link: "/web/babel/", firstName: "babel基础知识" },
       { text: "weex", link: "/web/weex/", firstName: "weex基础知识" },
