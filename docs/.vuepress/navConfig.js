@@ -38,6 +38,14 @@ module.exports = [
       // { text: '历史', link: '/article/history/', firstName: '开始' },
     ],
   },
+  {
+    text: "原创系列",
+    type: "group",
+    name: "original",
+    items: [
+      { text: "《从零开始网页设计》", link: "/original/webdesign/", firstName: "目录" },
+    ],
+  },
   // {
   //     text: '时间线',
   //     type: 'group',
