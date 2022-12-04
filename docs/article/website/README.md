@@ -40,6 +40,8 @@
 
 [axios设置缓存](https://blog.csdn.net/weixin_34148456/article/details/88919284?spm=1001.2101.3001.6650.9&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7EHighlightScore-9.queryctrv2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7EHighlightScore-9.queryctrv2&utm_relevant_index=14)
 
+[lodashjs](https://www.lodashjs.com/)
+
 ## Android
 
 [Android 开发者网站](https://developer.android.google.cn/)
@@ -81,3 +83,5 @@
 [数据中心：系统、平台和应用程序交付](https://sysin.org/)
 
 [国内外代码托管平台汇总](https://www.jianshu.com/p/bd24f3202011)
+
+[cococreator](https://docs.cocos.com/creator/3.3/manual/zh/)

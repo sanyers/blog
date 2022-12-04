@@ -35,6 +35,7 @@ module.exports = [
       { text: "配置说明", link: "/article/configure/", firstName: "ESLint" },
       { text: "Android", link: "/article/android/", firstName: "Android开发" },
       { text: "nginx", link: "/article/nginx/", firstName: "Nginx配置" },
+      { text: "pm2", link: "/article/pm2/", firstName: "pm2配置" },
       // { text: '历史', link: '/article/history/', firstName: '开始' },
     ],
   },
