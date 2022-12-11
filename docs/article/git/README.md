@@ -57,7 +57,7 @@ $ git config [--global] user.name "[name]"  # 设置提交代码时的用户名
 
 $ git config [--global] user.email "[email address]"  # 设置提交代码时的用户邮箱
 
-$ git config --global core.autocrlf false 取消行尾序列自动转换（CRLF或者LF）
+$ git config --global core.autocrlf false # 取消行尾序列自动转换（CRLF或者LF）
 ```
 
 ### 增加/删除文件
@@ -90,6 +90,8 @@ $ git commit -v  # 提交时显示所有 diff 信息
 $ git commit --amend -m [message]  # 使用一次新的 commit，替代上一次提交，如果代码没有任何新变化，则用来改写上一次 commit 的提交信息
 
 $ git commit --amend [file1] [file2] ...  # 重做上一次 commit，并包括指定文件的新变化
+
+$ git commit --amend --author "name <邮箱@163.com>" # 修改提交的作者邮箱
 ```
 
 ### 分支

@@ -45,6 +45,7 @@ module.exports = [
     name: "original",
     items: [
       { text: "《从零开始网页设计》", link: "/original/webdesign/", firstName: "目录" },
+      { text: "《JavaScript权威指南 第七版》 笔记", link: "/original/js-definitive/", firstName: "目录" },
     ],
   },
   // {

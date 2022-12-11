@@ -42,6 +42,12 @@
 
 [lodashjs](https://www.lodashjs.com/)
 
+## web 测试
+
+[vitest](https://cn.vitest.dev/guide/)
+
+[VuetestUtils](https://v1.test-utils.vuejs.org/zh/)
+
 ## Android
 
 [Android 开发者网站](https://developer.android.google.cn/)
