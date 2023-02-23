@@ -1,3 +1,7 @@
-# booklist
+# 书单
 
-博主正在努力构建中，敬请期待~~~
+JavaScript 高级程序设计 第四版 - 已读
+
+JavaScript 权威指南 第七版 - 已读
+
+HTTP 权威指南 - 已读

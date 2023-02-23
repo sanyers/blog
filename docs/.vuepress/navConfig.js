@@ -76,11 +76,12 @@ module.exports = [
   // },
   { text: "个人简历", link: "https://sanyers.github.io/resume/" },
   {
-    text: "git",
+    text: "导航",
     items: [
       { text: "gitee", link: "https://gitee.com/sanyers/blog.git" },
       { text: "github", link: "https://github.com/sanyers/blog.git" },
       { text: "简书", link: "https://www.jianshu.com/u/126bb2363acb" },
+      { text: "面试题", link: "https://sanyers.github.io/qa-system/" },
     ],
   },
 ];
