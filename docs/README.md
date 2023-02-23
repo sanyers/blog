@@ -14,6 +14,6 @@ features:
   details: ——亚伯拉罕•林肯(Abraham LinColn)
 - title: “视代码如诗词，勿要做无所谓的堆砌。”
   details: ——伊利亚•多尔曼(llya Dorman)
-footer: MIT Licensed | Copyright © 2022 sanyer
+footer: MIT Licensed | Copyright © 2023 sanyer
 
 ---
