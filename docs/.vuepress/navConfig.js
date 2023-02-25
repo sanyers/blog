@@ -11,6 +11,7 @@ module.exports = [
       { text: "vue", link: "/web/vue/", firstName: "目录" },
       { text: "vue3", link: "/web/vue3/", firstName: "目录" },
       { text: "webpack", link: "/web/webpack/", firstName: "webpack基础知识" },
+      { text: "vite", link: "/web/vite/", firstName: "vite基础知识" },
       { text: "babel", link: "/web/babel/", firstName: "babel基础知识" },
       { text: "weex", link: "/web/weex/", firstName: "weex基础知识" },
       { text: "typescript", link: "/web/typescript/", firstName: "typescript基础知识", },
