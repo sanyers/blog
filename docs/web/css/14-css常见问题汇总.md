@@ -85,3 +85,46 @@
   }
 }
 ```
+
+## 4、css 修改滚动条样式
+
+```css
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #ccc;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(238, 238, 238, 1);
+  width: 10px;
+  height: 10px;
+  border: 6px;
+}
+::-webkit-scrollbar-button {
+  width: 10px;
+  height: 10px;
+  border: 2px;
+  background: transparent;
+}
+::-webkit-scrollbar-corner {
+  width: 10px;
+  height: 10px;
+  border: 2px;
+  background: transparent;
+}
+::-webkit-scrollbar-track-piece:start {
+  width: 10px;
+  height: 10px;
+  border: 2px;
+  background: transparent;
+}
+```

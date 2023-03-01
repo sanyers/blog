@@ -1,6 +1,6 @@
-# Websocket 示例
+# WebSocket 示例
 
-服务器：
+## 1、服务器(nodejs)
 
 ```js
 var WebSocketServer = require("ws").Server;
@@ -53,7 +53,7 @@ function sendUser(userName, data) {
 }
 ```
 
-客户端：
+## 2、客户端(浏览器页面)
 
 ```js
 const protocols = location.protocol === 'http:' ? 'ws://' : 'wss://';
@@ -98,7 +98,7 @@ function sendUser(userName, msg) {
 }
 ```
 
-封装 WebSocket 库
+### 2.1 封装 WebSocket 库
 
 WebSocketHeart.js
 

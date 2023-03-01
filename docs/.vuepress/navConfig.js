@@ -18,6 +18,7 @@ module.exports = [
       { text: "node", link: "/web/node/", firstName: "node基础知识" },
       { text: "electron", link: "/web/electron/", firstName: "electron基础知识" },
       { text: "WebRTC", link: "/web/webrtc/", firstName: "WebRTC基础", },
+      { text: "WebSocket", link: "/web/websocket/", firstName: "WebSocket基础", },
       { text: "网络知识", link: "/web/network/", firstName: "网络知识" },
       { text: "设计模式", link: "/web/design/", firstName: "设计模式" },
       { text: "数据结构/算法", link: "/web/algorithm/", firstName: "数据结构" },
