@@ -3,32 +3,41 @@
 ## 1、服务器(nodejs)
 
 ```js
-var WebSocketServer = require("ws").Server;
+var WebSocketServer = require('ws').Server;
 
 var wssWeb = new WebSocketServer({ port: 3000 });
-wssWeb.on("connection", function connection(ws) {
-  ws.on("message", function message(data, isBinary) {
-    if (!isBinary) { // 是否为二进制数据
+wssWeb.on('connection', function connection(ws) {
+  
+  // 获取客户端ip
+  // console.log(req.headers['x-forwarded-for'])
+  // console.log(ws._socket.remoteAddress)
+  // console.log(req.socket.remoteAddress)
+
+  ws.on('message', function message(data, isBinary) {
+    if (!isBinary) {
+      // 是否为二进制数据
       const str = data.toString();
       const json = JSON.parse(str);
 
-      if (json.type === "heartbeat") {
+      if (json.type === 'heartbeat') {
         ws.send(str); // 回复心跳
       }
 
-      if (json.type === "conn") { // 新连接
+      if (json.type === 'conn') {
+        // 新连接
         ws.userName = json.userName; // 用户名
         ws.roomId = json.roomId; // 房间id
       }
 
-      if(json.type === 'text') {
+      if (json.type === 'text') {
         sendBroadcast(ws, str, isBinary);
       }
 
-      if(json.type === 'user') {
+      if (json.type === 'user') {
         sendUser(json.userName, str);
       }
-    } else { // 发送二进制数据
+    } else {
+      // 发送二进制数据
       sendBroadcast(ws, data, isBinary);
     }
   });
@@ -37,19 +46,23 @@ wssWeb.on("connection", function connection(ws) {
 // 向房间内广播（除自己）
 function sendBroadcast(ws, data, binary) {
   wssWeb.clients.forEach(client => {
-    if(client.roomId === ws.roomId && client.userName !== ws.userName && client.readState === 1) {
+    if (
+      client.roomId === ws.roomId &&
+      client.userName !== ws.userName &&
+      client.readState === 1
+    ) {
       client.send(data, { binary });
     }
-  })
+  });
 }
 
 // 发送给指定用户
 function sendUser(userName, data) {
   wssWeb.clients.forEach(client => {
-    if(client.userName === userName && client.readState === 1) {
+    if (client.userName === userName && client.readState === 1) {
       client.send(data);
     }
-  })
+  });
 }
 ```
 
@@ -60,29 +73,31 @@ const protocols = location.protocol === 'http:' ? 'ws://' : 'wss://';
 const url = protocols + location.host;
 const ws = new WebSocketHeart({ url });
 ws.onopen = () => {
-  ws.send(JSON.stringify({ type: 'conn', userName: 'xiaoming', roomId: '10001' })); // 发送连接信息
+  ws.send(
+    JSON.stringify({ type: 'conn', userName: 'xiaoming', roomId: '10001' }),
+  ); // 发送连接信息
 };
-ws.onmessage = (evt) => {
-   if (typeof evt.data == 'string'){
-     const json = JSON.parse(evt.data);
+ws.onmessage = evt => {
+  if (typeof evt.data == 'string') {
+    const json = JSON.parse(evt.data);
 
-     // 处理心跳
-     if(json.type === 'heartbeat') {
-       console.log(json);
-     }
+    // 处理心跳
+    if (json.type === 'heartbeat') {
+      console.log(json);
+    }
 
-     // 接收 text 广播信息
-     if(json.type === 'text') {
-       console.log(json);
-     }
+    // 接收 text 广播信息
+    if (json.type === 'text') {
+      console.log(json);
+    }
 
-     // 接收来自 json.userName 的私信
-     if(json.type === 'user') {
-       console.log(json);
-     }
-   } else {
-     // 解析二进制数据
-   }
+    // 接收来自 json.userName 的私信
+    if (json.type === 'user') {
+      console.log(json);
+    }
+  } else {
+    // 解析二进制数据
+  }
 };
 
 // 广播信息
@@ -93,7 +108,7 @@ function sendText(msg) {
 
 // 给指定的人发送信息
 function sendUser(userName, msg) {
-  const str = JSON.stringify({ type: 'user', data: msg , userName });
+  const str = JSON.stringify({ type: 'user', data: msg, userName });
   ws.send(str);
 }
 ```
