@@ -16,7 +16,6 @@ module.exports = {
     markdown: {
         lineNumbers: true // 代码块显示行号
     },
-    lastUpdated: 'Last Updated',
     themeConfig: {
         logo: '/img/logo.png',
         nav: navConfig,
@@ -24,6 +23,7 @@ module.exports = {
         sidebar: getSidebar(),
         sidebarDepth: 3, // 侧边栏显示3级
         // displayAllHeaders: true, // 是否自动展开子目录
+        lastUpdated: '上次更新', //最后更新时间
     },
     plugins: [
         [
