@@ -1,5 +1,9 @@
 # 算法
 
+https://leetcode.cn/problemset/all/
+
+https://zhuanlan.zhihu.com/p/552303981
+
 ## 1、数组
 
 ### 1.1 合并两个有序数组
