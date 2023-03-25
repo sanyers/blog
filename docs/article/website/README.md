@@ -91,3 +91,5 @@
 [国内外代码托管平台汇总](https://www.jianshu.com/p/bd24f3202011)
 
 [cococreator](https://docs.cocos.com/creator/3.3/manual/zh/)
+
+[vue ssr](https://fmfe.github.io/genesis-docs/)
