@@ -193,3 +193,7 @@ const test = new ListNode(1);
 test.push(2).push(3);
 console.log(test.toString()); // 1,2,3
 ```
+
+## 3、参考
+
+https://www.liuyiqi.cn/2017/02/15/linked-list/
