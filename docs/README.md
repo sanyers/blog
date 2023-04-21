@@ -2,8 +2,8 @@
 
 home: true
 heroImage: /img/banner.png
-heroText: This is sanyer blog.
-tagline: 前端开发
+heroText: This is sanyer's blog.
+tagline: 博客笔记
 
 actionText: 快速开始 →
 actionLink: /web/javascript/
