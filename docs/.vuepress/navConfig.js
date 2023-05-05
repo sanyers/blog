@@ -40,6 +40,7 @@ module.exports = [
       { text: "pm2", link: "/article/pm2/", firstName: "pm2配置" },
       { text: "npm", link: "/article/npm/", firstName: "npm" },
       { text: "windows", link: "/article/windows/", firstName: "开始" },
+      { text: "ffmpeg", link: "/article/ffmpeg/", firstName: "开始" },
       // { text: '历史', link: '/article/history/', firstName: '开始' },
     ],
   },
