@@ -103,3 +103,21 @@ model = AutoModel.from_pretrained("chatglm-6b-int4",trust_remote_code=True).floa
 <div class="img-page">
 <a data-fancybox title="web-demo" href="/blog/img/article/python/1.png"><img :src="$withBase('/img/article/python/1.png')" alt="web-demo"></a>
 </div>
+
+## 8、参考
+
+https://github.com/THUDM/ChatGLM-6B
+
+https://www.heywhale.com/mw/project/6436d82948f7da1fee2be59e
+
+https://huggingface.co/THUDM
+
+https://blog.csdn.net/moyong1572/article/details/119438286
+
+https://blog.csdn.net/qq_46941656/article/details/119701547
+
+https://blog.csdn.net/sinat_24948419/article/details/105532537
+
+https://zhuanlan.zhihu.com/p/479848495
+
+https://zhuanlan.zhihu.com/p/535100411
