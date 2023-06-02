@@ -41,11 +41,13 @@ module.exports = [
       { text: "npm", link: "/article/npm/", firstName: "npm" },
       { text: "windows", link: "/article/windows/", firstName: "开始" },
       { text: "ffmpeg", link: "/article/ffmpeg/", firstName: "开始" },
+      { text: "linux", link: "/article/linux/", firstName: "开始" },
+      { text: "python", link: "/article/python/", firstName: "开始" },
       // { text: '历史', link: '/article/history/', firstName: '开始' },
     ],
   },
   {
-    text: "原创系列",
+    text: "书籍系列",
     type: "group",
     name: "original",
     items: [

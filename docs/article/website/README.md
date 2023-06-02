@@ -99,3 +99,7 @@
 [cococreator](https://docs.cocos.com/creator/3.3/manual/zh/)
 
 [vue ssr](https://fmfe.github.io/genesis-docs/)
+
+## python
+
+[python下载](https://www.python.org/downloads/windows/)
