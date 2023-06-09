@@ -36,13 +36,33 @@ dummy: Immediate exit requested
 
 ### 4.2 使用 ffmpeg 推流
 
-`fmpeg -f dshow -i video="BisonCam,NB Pro":audio="Microphone (High Definition Audio Device)" -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -rtsp_transport tcp -f rtsp rtsp://127.0.0.1:8554/test`
+推送rtsp：
+
+`ffmpeg -f dshow -i video="BisonCam,NB Pro":audio="Microphone (High Definition Audio Device)" -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -rtsp_transport tcp -f rtsp rtsp://127.0.0.1:8554/test`
 
 注意：`video="摄像头名称":audio="麦克风名称`
 
+推送rtmp+flv：(需要流媒体服务器支持)
+
+`ffmpeg -f dshow -i video="BisonCam,NB Pro":audio="Microphone (High Definition Audio Device)" -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv rtmp://127.0.0.1/live/test`
+
 ## 5、拉流
 
+ffplay拉流
+
+ffplay.exe -fflags nobuffer rtmp://127.0.0.1/live/test
+
+rtsp拉流
+
 参考 [node 实现 RTSP 在 web 中播放](../../web/node/10-node%E5%AE%9E%E7%8E%B0rtsp%E5%9C%A8web%E4%B8%AD%E6%92%AD%E6%94%BE.md)
+
+rtmp拉流
+
+vlc播放器 rtmp://127.0.0.1/live/test http://127.0.0.1/live?port=1935&app=live&stream=test
+
+web播放(flv.js)
+
+http://127.0.0.1/live?port=1935&app=live&stream=test
 
 ## 6、参考
 
