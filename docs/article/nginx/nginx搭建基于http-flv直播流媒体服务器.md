@@ -121,6 +121,8 @@ rtmp {
 }
 ```
 
+在服务器环境还需开放 `80` 和 `1935` 端口
+
 ## 4、启动 nginx
 
 `cd /usr/local/nginx/sbin/nginx`
@@ -177,6 +179,8 @@ WantedBy=multi-user.target
 - systemctl list-units --type=service 查看所有服务
 
 ## 6、使用 ffmpeg 推流本地摄像头和麦克风
+
+安装ffmpeg（如果已安装则不需要）`sudo apt install ffmpeg`
 
 `ffmpeg -f dshow -i video="BisonCam,NB Pro":audio="Microphone (High Definition Audio Device)" -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv rtmp://127.0.0.1/live/test`
 
@@ -256,3 +260,14 @@ proxy:{
 }
 ```
 
+## 8、参考
+
+https://blog.csdn.net/qq_39296114/article/details/116647929
+
+https://blog.csdn.net/flyawayl/article/details/108218807
+
+https://blog.csdn.net/Prinz_Corn/article/details/120746676
+
+https://www.cnblogs.com/daner1257/p/10549232.html
+
+https://blog.csdn.net/Prinz_Corn/article/details/120746676
