@@ -64,6 +64,10 @@ web播放(flv.js)
 
 http://127.0.0.1/live?port=1935&app=live&stream=test
 
+播放本地摄像头和麦克风
+
+ffplay.exe -f dshow -i video="USB 2.0 Camera ":audio="麦克风 (2- USB Audio)"
+
 ## 6、参考
 
 https://xie.infoq.cn/article/6e53403fa1c72bdfc247acc4f

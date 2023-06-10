@@ -20,6 +20,7 @@
 nginx -s stop   //停止nginx
 nginx -s reload //重新加载nginx
 nginx -s quit   //退出nginx
+nginx -t //检查nginx.conf配置文件是否正确
 ```
 
 ## 2、linux安装

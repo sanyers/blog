@@ -3,11 +3,38 @@
 - 通过nginx开启一个流媒体服务，通过HTTP-FLV拉流
 - 下载VLC软件, VLC播放器实现HTTP-FLV拉流进行播放；或者通过flv.js在web端播放
 
-## 1、编译
+## 1、安装前置组件
 
-下载 https://github.com/winshining/nginx-http-flv-module 源码进行编译
+```
+sudo apt-get update
+sudo apt-get install gcc
+sudo get-get install openssl
+sudo apt-get install libpcre3
+apt install zlib zlib1g zlib1g-dev
+```
 
-## 2、配置 nginx.conf
+## 2、编译nginx
+
+下载 [nginx](http://nginx.org/download/)
+
+`wget http://nginx.org/download/nginx-1.19.9.tar.gz`
+
+下载 [nginx-http-flv-module](https://github.com/winshining/nginx-http-flv-module)
+
+`wget https://github.com/winshining/nginx-http-flv-module/archive/refs/tags/v1.2.11.tar.gz`
+
+解压：`tar -zxvf nginx-1.19.9.tar.gz` `tar -zxvf v1.2.11.tar.gz`
+
+配置：`./configure --add-module=/root/nginx-http-flv-module-1.2.11 --with-http_ssl_module`
+
+```sh
+make
+sudo make install # 安装完会在 /usr/local/nginx
+# 查看是否安装好
+whereis nginx
+```
+
+## 3、配置 nginx.conf
 
 ```conf
 #user  root;
@@ -28,12 +55,6 @@ events {
 http {
     include       mime.types;
     default_type  application/octet-stream;
-
-    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-    #                  '$status $body_bytes_sent "$http_referer" '
-    #                  '"$http_user_agent" "$http_x_forwarded_for"';
-
-    #access_log  logs/access.log  main;
 
     sendfile        on;
     #tcp_nopush     on;
@@ -72,71 +93,11 @@ http {
             add_header 'Access-Control-Allow-Origin' '*'; #添加额外的HTTP头
             add_header 'Access-Control-Allow-Credentials' 'true'; #添加额外的HTTP头
         }
-
-        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
-        #
-        #location ~ \.php$ {
-        #    proxy_pass   http://127.0.0.1;
-        #}
-
-        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-        #
-        #location ~ \.php$ {
-        #    root           html;
-        #    fastcgi_pass   127.0.0.1:9000;
-        #    fastcgi_index  index.php;
-        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-        #    include        fastcgi_params;
-        #}
-
-        # deny access to .htaccess files, if Apache's document root
-        # concurs with nginx's one
-        #
-        #location ~ /\.ht {
-        #    deny  all;
-        #}
     }
-
-
-    # another virtual host using mix of IP-, name-, and port-based configuration
-    #
-    #server {
-    #    listen       8000;
-    #    listen       somename:8080;
-    #    server_name  somename  alias  another.alias;
-
-    #    location / {
-    #        root   html;
-    #        index  index.html index.htm;
-    #    }
-    #}
-
-
-    # HTTPS server
-    #
-    #server {
-    #    listen       443 ssl;
-    #    server_name  localhost;
-
-    #    ssl_certificate      cert.pem;
-    #    ssl_certificate_key  cert.key;
-
-    #    ssl_session_cache    shared:SSL:1m;
-    #    ssl_session_timeout  5m;
-
-    #    ssl_ciphers  HIGH:!aNULL:!MD5;
-    #    ssl_prefer_server_ciphers  on;
-
-    #    location / {
-    #        root   html;
-    #        index  index.html index.htm;
-    #    }
-    #}
 }
 
 rtmp_auto_push on;
 rtmp_auto_push_reconnect 1s;
-rtmp_socket_dir temp;
 
 rtmp {
     out_queue           4096;
@@ -156,33 +117,76 @@ rtmp {
             live on;
             gop_cache off; #GOP缓存，减少首屏等待时间，会有延迟
         }
-
-        application hls {
-            live on;
-            hls on;
-            hls_path temp/hls;
-        }
-
-        application dash {
-            live on;
-            dash on;
-            dash_path temp/dash;
-        }
     }
 }
 ```
 
-## 3、使用 ffmpeg 推流本地摄像头和麦克风
+## 4、启动 nginx
+
+`cd /usr/local/nginx/sbin/nginx`
+
+`./nginx`
+
+配置 nginx 为全局变量
+
+`ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/`
+
+`sudo nginx -c /usr/local/nginx/conf/nginx.conf`
+
+## 5、ubuntu 设置nginx 开机自启
+
+新建 nginx.service
+
+`vim /usr/lib/systemd/system/nginx.service`
+
+```conf
+Description=nginx - high performance web server
+After=network.target remote-fs.target nss-lookup.target
+[Service]
+Type=forking
+ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+ExecReload=/usr/local/nginx/sbin/nginx -s reload
+ExecStop=/usr/local/nginx/sbin/nginx -s stop
+[Install]
+WantedBy=multi-user.target
+```
+
+说明：
+
+- Description:描述服务
+- After:依赖，当依赖的服务启动之后再启动自定义的服务
+- [Service]服务运行参数的设置
+- Type=forking是后台运行的形式
+- ExecStart为服务的具体运行命令(需要根据路径适配)
+- ExecReload为重启命令(需要根据路径适配)
+- ExecStop为停止命令(需要根据路径适配)
+- PrivateTmp=True表示给服务分配独立的临时空间
+
+注意：启动、重启、停止命令全部要求使用绝对路径
+
+- [Install]服务安装的相关设置，可设置为多用户
+
+命令：
+
+- systemctl daemon-reload 重置服务列表
+- systemctl start nginx.service 启动服务
+- systemctl disable nginx.service 关闭开机自启
+- systemctl enable nginx.service 开启开机自启
+- systemctl status nginx.service 查看状态
+- systemctl restart nginx.service 重启服务
+- systemctl list-units --type=service 查看所有服务
+
+## 6、使用 ffmpeg 推流本地摄像头和麦克风
 
 `ffmpeg -f dshow -i video="BisonCam,NB Pro":audio="Microphone (High Definition Audio Device)" -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv rtmp://127.0.0.1/live/test`
 
-## 4、拉流（播放视频流）
+## 7、拉流（播放视频流）
 
-### 4.1 VLC 播放
+### 7.1 VLC 播放
 
 媒体 -> 打开网络串流 -> 网络 -> 输入地址 `rtmp://127.0.0.1/live/test` 或者 `http://127.0.0.1/live?port=1935&app=live&stream=test`
 
-### 4.2 Web 端播放
+### 7.2 Web 端播放
 
 使用 flv.js 直接播放
 
