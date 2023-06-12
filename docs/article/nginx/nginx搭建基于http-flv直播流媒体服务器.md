@@ -25,7 +25,13 @@ apt install zlib zlib1g zlib1g-dev
 
 解压：`tar -zxvf nginx-1.19.9.tar.gz` `tar -zxvf v1.2.11.tar.gz`
 
-配置：`./configure --add-module=/root/nginx-http-flv-module-1.2.11 --with-http_ssl_module`
+配置：`./configure --add-module=/root/nginx-module/nginx-http-flv-module-1.2.11 --with-http_ssl_module`
+
+或者：
+
+```
+./configure --add-module=/root/nginx-module/nginx-http-flv-module-1.2.11 --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_auth_request_module --with-http_v2_module --with-http_dav_module --with-http_slice_module --with-threads --with-http_addition_module --with-http_gunzip_module --with-http_gzip_static_module
+```
 
 ```sh
 make
@@ -37,7 +43,7 @@ whereis nginx
 ## 3、配置 nginx.conf
 
 ```conf
-#user  root;
+user  root; # root启动，user与站点目录有权访问
 worker_processes  1;
 
 #error_log  logs/error.log;

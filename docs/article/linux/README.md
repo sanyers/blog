@@ -14,6 +14,7 @@ $ sudo passwd root # 设置 root 用户密码
 $ su # 输入 root 密码，进入 root 权限，输入 exit 返回用户权限
 
 ```
+
 ## Linux:ln: 无法创建符号链接‘/usr/local/bin/node‘: 文件已存在
 
 ```
