@@ -134,12 +134,12 @@ exit
 gitlab_rails['smtp_enable'] = true
 gitlab_rails['smtp_address'] = "smtp.qq.com"
 gitlab_rails['smtp_port'] = 465
-gitlab_rails['smtp_user_name'] = "948785997@qq.com"
-gitlab_rails['smtp_password'] = "hlldwcjoqscfbeeb"
+gitlab_rails['smtp_user_name'] = "xxx@qq.com"
+gitlab_rails['smtp_password'] = "hlldwcjoqsc******"
 gitlab_rails['smtp_authentication'] = "login"
 gitlab_rails['smtp_enable_starttls_auto'] = true
 gitlab_rails['smtp_tls'] = true
-gitlab_rails['gitlab_email_from'] = '948785997@qq.com'
+gitlab_rails['gitlab_email_from'] = 'xxx@qq.com'
 gitlab_rails['smtp_domain'] = "qq.com"
 ```
 
