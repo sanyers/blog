@@ -110,6 +110,9 @@ docker start|restart|stop [name]
 
 # 删除镜像
 docker rm -f [name]
+
+# 查看docker运行状态
+docker stats
 ```
 
 ## 6、参考

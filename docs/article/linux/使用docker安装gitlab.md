@@ -146,15 +146,95 @@ gitlab_rails['smtp_domain'] = "qq.com"
 ## 4、其他命令
 
 ```sh
-# 查看已运行docket
+# 查看已运行docker
 docker ps
 
-# 查看所有已安装docket
+# 查看所有已安装docker
 docker ps -a -q
+docker ps -a
 
 # 重启
 sudo docker restart gitlab
 
 # 删除
-sudo docker rm -f gitlab
+docker rm -f gitlab
+```
+
+## 5、轻量化运行
+
+```
+# 关闭容器仓库功能
+gitlab_rails['gitlab_default_projects_features_container_registry'] = false
+gitlab_rails['registry_enabled'] = false
+registry['enable'] = false
+registry_nginx['enable'] = false
+
+# 包仓库、依赖管理
+gitlab_rails['packages_enabled'] = false
+gitlab_rails['dependency_proxy_enabled'] = false
+
+# GitLab Pages
+gitlab_pages['enable'] = false
+pages_nginx['enable'] = false
+
+# 关闭监控和性能基准相关功能
+prometheus_monitoring['enable'] = false
+alertmanager['enable'] = false
+node_exporter['enable'] = false
+redis_exporter['enable'] = false
+postgres_exporter['enable'] = false
+pgbouncer_exporter['enable'] = false
+gitlab_exporter['enable'] = false
+grafana['enable'] = false
+sidekiq['metrics_enabled'] = false
+
+# 针对应用的性能分析和上报
+gitlab_rails['usage_ping_enabled'] = false
+gitlab_rails['sentry_enabled'] = false
+grafana['reporting_enabled'] = false
+
+# GitLab KAS
+gitlab_kas['enable'] = false
+gitlab_rails['gitlab_kas_enabled'] = false
+# Terraform
+gitlab_rails['terraform_state_enabled'] = false
+# Kerberos 文档说EE only，但是默认值为 true
+gitlab_rails['kerberos_enabled'] = false
+# Sentinel
+sentinel['enable'] = false
+# Mattermost
+mattermost['enable'] = false
+mattermost_nginx['enable'] = false
+
+# 禁用 PUMA 集群模式
+puma['worker_processes'] = 0
+puma['min_threads'] = 1
+puma['max_threads'] = 2
+
+# 降低后台守护进程并发数
+sidekiq['max_concurrency'] = 5
+
+# 关闭电子邮件相关功能
+gitlab_rails['smtp_enable'] = false
+gitlab_rails['gitlab_email_enabled'] = false
+gitlab_rails['incoming_email_enabled'] = false
+
+# 关闭ci
+gitlab_ci['gitlab_ci_all_broken_builds'] = false
+gitlab_ci['gitlab_ci_add_pusher'] = false
+```
+
+```
+gitlab-ctl start #启动全部服务
+gitlab-ctl restart#重启全部服务
+gitlab-ctl stop #停止全部服务
+gitlab-ctl restart nginx #重启单个服务，如重启nginx
+gitlab-ctl status #查看服务状态
+gitlab-ctl reconfigure #使配置文件生效
+gitlab-ctl show-config #验证配置文件
+gitlab-ctl uninstall #删除gitlab（保留数据）
+gitlab-ctl cleanse #删除所有数据，从新开始
+gitlab-ctl tail <service name>查看服务的日志
+gitlab-ctl tail nginx  #如查看gitlab下nginx日志
+gitlab-rails console  #进入控制台
 ```

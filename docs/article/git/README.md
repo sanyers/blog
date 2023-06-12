@@ -215,7 +215,21 @@ $ git push origin 'xxx' --no-verify
 ## 配置公钥
 
 ```sh
-ssh-keygen -t ed25519 -C "xxxxx@xxxxx.com"
+ssh-keygen -t ed25519 -C "xxx@xxx.com"
+
+ssh-keygen -t rsa -C "xxx@xxx.com"
+
+# 设置公钥名称
+ssh-keygen -t ed25519 -f ./mygit -C "xxx@xxx.com"
 ```
 
 目录在 `C:\Users\用户\.ssh\id_ed25519.pub`
+
+自定义公钥名称，可能发生 Permission denied (publickey) 错误，可以修改 `C:\Program Files\Git\etc\ssh\ssh_config`
+
+```
+Host *
+    IdentityFile ~/.ssh/id_rsa
+    IdentityFile ~/.ssh/id_ed25519
+    IdentityFile ~/.ssh/mygit
+```
