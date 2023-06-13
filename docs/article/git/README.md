@@ -55,7 +55,11 @@ $ git config -e [--global]  # 编辑 Git 配置文件
 
 $ git config [--global] user.name "[name]"  # 设置提交代码时的用户名
 
+$ git config user.name "xxx"
+
 $ git config [--global] user.email "[email address]"  # 设置提交代码时的用户邮箱
+
+$ git config user.email "xxx"
 
 $ git config --global core.autocrlf false # 取消行尾序列自动转换（CRLF或者LF）
 ```
