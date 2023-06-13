@@ -1,5 +1,6 @@
 # pm2 命令
 
+```sh
 npm install pm2 -g -s          #全局安装
 
 pm2 start xxx                  #启动服务器
@@ -11,6 +12,8 @@ pm2 start app.js -i 4          #启动服务器(同时运行四个进程),正确
 pm2 start app.js -i max        #根据有效CPU数目启动最大进程数目,集群模式(负载均衡)
 
 pm2 start npm --name "smartoffice" -- run start #nuxt部署（适用于linux）
+
+pm2 start ./dist/app.js --name xxx-name  # 启动并设置应用名字
 
 pm2 scale <app name> <n>       #增加或减少工作线程的数量，对集群进行扩展
 
@@ -41,3 +44,20 @@ pm2 start script.sh            #启动 bash 脚本
 pm2 save                       #保存 pm2 list 列表
 
 pm2 resurrect                  #恢复 pm2 lsit 列表
+```
+
+设置开机自动启动
+
+```sh
+# 启动项目
+pm2 start ./dist/app.js --name custom_server_name
+
+# 保存启动项目列表
+pm2 save
+
+# 生成开机自启动服务
+pm2 startup
+
+# 设置开机自动启动
+systemctl enable pm2-root
+```

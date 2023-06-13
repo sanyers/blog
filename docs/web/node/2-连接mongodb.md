@@ -134,7 +134,7 @@ db.createUser(
   {
     user: "adminUser",
     pwd: "adminPass",
-    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+    roles: [ { role: "root", db: "admin" } ]
   }
 )
 ```
@@ -164,6 +164,7 @@ db.createUser(
 show users // 查看当前库下的所有用户
 db.dropUser('testAdmin') // 删除用户
 db.updateUser('admin',{pwd:'12345'}) // 修改密码
+db.updateUser('admin',{roles: [ { role: "root", db: "admin" } ]}) // 修改用户权限
 db.auth('admin','12345') // 密码认证
 ```
 
@@ -194,9 +195,23 @@ sudo systemctl restart mongod
 sudo systemctl enable mongod # 开机自动启动
 ```
 
-## 5、启动错误
+## 5、开启外部访问
 
-### 5.1 mongodb /etc/mongod.conf (code=exited, status=1/FAILURE)
+打开配置：
+
+- windows `C:\Program Files\MongoDB\Server\6.0\bin\mongod.cfg`
+- ubuntu `/etc/mongodb.conf`
+
+```
+# bind_ip = 127.0.0.1
+bind_ip = 0.0.0.0
+port = 27017
+auth = true # 设置用户名和密码访问
+```
+
+## 6、启动错误
+
+### 6.1 mongodb /etc/mongod.conf (code=exited, status=1/FAILURE)
 
 遇到这样的问题调试办法：先停止服务，直接运行 `/usr/local/bin/mongod --config /etc/mongodb.conf` 查看是否报错
 

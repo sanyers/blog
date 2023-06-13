@@ -1,3 +1,8 @@
 # windows
 
-博主正在努力构建中，敬请期待~~~
+命令：
+
+```sh
+ipconfig /flushdns
+ipconfig /registerdns
+```
