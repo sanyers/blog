@@ -238,3 +238,7 @@ gitlab-ctl tail <service name>查看服务的日志
 gitlab-ctl tail nginx  #如查看gitlab下nginx日志
 gitlab-rails console  #进入控制台
 ```
+
+## 6、参考
+
+https://zhuanlan.zhihu.com/p/413217715
