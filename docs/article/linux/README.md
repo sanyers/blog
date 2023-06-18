@@ -22,6 +22,12 @@ $ ps -x # 查看属于自己的进程
 $ bash test.sh # 运行一个shell脚本
 
 $ ./test.sh # 直接运行shell脚本
+
+$ sudo ufw status # 查看防火墙状态
+
+$ sudo ufw disable # 关闭防火墙
+
+$ sudo ufw allow 80 # 开启防火墙指定端口
 ```
 
 ## 服务命令
