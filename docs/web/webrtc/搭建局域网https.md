@@ -239,7 +239,7 @@ console.log('https listening on ' + server_port)
 通过输入 `https://192.168.0.101:19001` 地址后，浏览器可直接进入，不会提示拦截证书不安全
 
 <div class="img-page">
-<a data-fancybox title="1" href="/blog/img/web/webrtc/3/1.png"><img :src="$withBase('/img/web/webrtc/3/1.png')" alt="1"></a>
+<a data-fancybox title="4" href="/blog/img/web/webrtc/3/4.png"><img :src="$withBase('/img/web/webrtc/3/4.png')" alt="4"></a>
 </div>
 
 > 使用nodejs创建的mkcert证书在iOS系统上的safari浏览器还是会跳转到不安全的拦截页，可能go版本的mkcert兼容性要好一些
