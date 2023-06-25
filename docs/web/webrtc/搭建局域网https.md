@@ -147,6 +147,16 @@ sudo chmod +x mkcert
 
 # 查看是否安装成功
 mkcert
+
+# 如果出现如下错误提示
+
+# The local CA is already installed in the system trust store! 👍
+# Warning: "certutil" is not available, so the CA can't be automatically installed in Firefox and/or Chrome/Chromium! ⚠️ 
+# Install "certutil" with "apt install libnss3-tools" and re-run "mkcert -install" 👈
+
+# 请安装 libnss3-tools
+
+sudo apt install libnss3-tools
 ```
 
 （2）生成根证书

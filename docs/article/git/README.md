@@ -112,6 +112,8 @@ $ git checkout -  # 切换到上一个分支
 $ git merge [branch]  # 合并指定分支到当前分支
 
 $ git cherry-pick [commit]  # 选择一个commit，合并进当前分支
+
+$ git branch -d [branch] # 删除本地分支
 ```
 
 ### 标签
