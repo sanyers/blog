@@ -15,6 +15,10 @@ $ su # 输入 root 密码，进入 root 权限，输入 exit 返回用户权限
 
 $ ps aux | less # 查看所有运行中的进程
 
+$ px aux|grep xxx # 搜索相关进程
+
+$ sudo kill -s 9 xxx # 关闭进程
+
 $ ps -U root -u root -N # 查看非root运行的进程
 
 $ ps -x # 查看属于自己的进程

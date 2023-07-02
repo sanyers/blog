@@ -82,6 +82,10 @@
 
 [流媒体博客资源](https://www.cnblogs.com/aixing/p/15323563.html)
 
+[webrtc颠覆软件体系的一项技术](https://www.tangyuecan.com/2021/12/10/webrtc%e9%a2%a0%e8%a6%86%e8%bd%af%e4%bb%b6%e4%bd%93%e7%b3%bb%e7%9a%84%e4%b8%80%e9%a1%b9%e6%8a%80%e6%9c%af/)
+
+[WebRTC → 深入浅出](https://zhuanlan.zhihu.com/p/602229179)
+
 ## Linux
 
 [linux kill 关闭进程命令](http://www.zzvips.com/article/1929.html)
@@ -107,3 +111,19 @@
 ## 书库
 
 [无名图书](https://www.book123.info/)
+
+## jetson
+
+[jetson](https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/index.html)
+
+## nextcloud
+
+[nextcloud官网](https://nextcloud.com/)
+
+[管理员手册](https://docs.nextcloud.com/server/latest/admin_manual/)
+
+[用户手册](https://docs.nextcloud.com/server/latest/user_manual/en/)
+
+[开发人员手册](https://docs.nextcloud.com/server/latest/developer_manual/)
+
+[github nextcloud](https://github.com/nextcloud)

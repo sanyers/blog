@@ -257,6 +257,12 @@ app.get('/httpstream', function (req, res) {
 app.listen(3000);
 ```
 
+[参考](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
+
+[EventSource](https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7)
+
+[SSE(Server-Sent Events):替代websocket完成服务器推送](https://zhuanlan.zhihu.com/p/334971653)
+
 ## 5、Web Sockets
 
 不同于 SSE，Web Sockets 采用了一套全新的协议（ws/wss）来建立客户端到服务器端的全双工、双向通信连接。
