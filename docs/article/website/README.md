@@ -116,6 +116,8 @@
 
 [jetson](https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/index.html)
 
+[jetson-inference](https://github.com/dusty-nv/jetson-inference)
+
 ## nextcloud
 
 [nextcloud官网](https://nextcloud.com/)
