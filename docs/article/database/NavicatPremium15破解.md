@@ -49,3 +49,5 @@
 <div class="img-page">
 <a data-fancybox title="9" href="/blog/img/article/database/9.png"><img :src="$withBase('/img/article/database/9.png')" alt="9"></a>
 </div>
+
+参考 https://www.cnblogs.com/kkdaj/p/14987106.html
