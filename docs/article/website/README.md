@@ -129,3 +129,9 @@
 [开发人员手册](https://docs.nextcloud.com/server/latest/developer_manual/)
 
 [github nextcloud](https://github.com/nextcloud)
+
+## win10下载
+
+[系统之家](https://www.xitongzhijia.net/)
+
+[win10微软官方](https://www.microsoft.com/zh-cn/software-download/windows10)
