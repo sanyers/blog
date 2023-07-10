@@ -113,6 +113,20 @@ docker rm -f [name]
 
 # 查看docker运行状态
 docker stats
+
+# 进入容器内部
+docker exec -it xxx /bin/bash
+
+# 在 docker 内使用 sudo 命令，提示 bash: sudo: command not found，安装 sudo
+apt-get update
+apt-get install sudo
+
+# 基于已有容器创建镜像
+sudo docker commit [选项] 容器id/名称 仓库名称:[标签]
+# 例如：
+sudo docker commit nextcloud new_nextcloud:001
+# 启动容器
+sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud2 --restart always new_nextcloud:001
 ```
 
 ## 6、参考

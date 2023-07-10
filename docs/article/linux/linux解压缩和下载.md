@@ -1,4 +1,4 @@
-# linux压缩和解压
+# linux解压缩和下载
 
 ## 1、tar压缩和解压
 
@@ -50,3 +50,16 @@ unrar x test.rar
 - a : 添加到压缩文件
 - -r : 递归处理
 - x : 以绝对路径解压文件
+
+## 4、wget下载
+
+```sh
+# 安装wget
+apt install wget
+
+# 下载文件到当前目录
+wget http://www.xxx.com/test.zip
+
+# 下载文件到指定目录
+wget -P 目录 网址
+```

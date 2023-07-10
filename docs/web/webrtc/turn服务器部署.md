@@ -98,7 +98,7 @@ firewall-cmd --zone=public --query-port=3478/udp
 
 在腾讯云（阿里云）控制台把 tcp 和 udp 端口 49152-65535 放开（或者全部开放 1-65535 端口，或者只开放 3478 端口，默认 3478）
 
-## 5、启动服务
+## 5、后台启动程序
 
 ```
 turnserver -v -z -o -c /usr/local/etc/turnserver.conf
@@ -110,13 +110,44 @@ turnserver -v -z -o -c /usr/local/etc/turnserver.conf
 ps -ef|grep turnserver
 ```
 
-关闭服务
+关闭程序
 
 ```
 killall turnserver
 ```
 
-## 6、测试访问
+## 6、启动服务
+
+新建 turnserver.service
+
+`vim /usr/lib/systemd/system/turnserver.service`
+
+```conf
+[Unit]
+Description=turnserver for p2p
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/turnserver -v -z -o -c /usr/local/etc/turnserver.conf
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+
+命令：
+
+- systemctl daemon-reload 重置服务列表
+- systemctl start turnserver.service 启动服务
+- systemctl restart turnserver.service 重启服务
+- systemctl disable turnserver.service 关闭开机自启
+- systemctl enable turnserver.service 开启开机自启
+- systemctl status turnserver.service 查看状态
+- systemctl restart turnserver.service 重启服务
+
+## 7、测试访问
 
 [https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/](https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/)
 
