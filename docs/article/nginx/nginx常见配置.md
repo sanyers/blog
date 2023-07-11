@@ -123,7 +123,17 @@ server {
 }
 ```
 
-## 6、开启gzip
+## 6、http转https
+
+```conf
+server {
+   listen 80;
+   server_name  test.sanyer.top;
+   rewrite ^(.*) https://test.sanyer.top;
+}
+```
+
+## 7、开启gzip
 
 ```conf
 server {
@@ -136,5 +146,17 @@ server {
     gzip_disable "MSIE [1-6]\.";   
     gzip_buffers 32 4k;
     gzip_http_version 1.1;
+}
+```
+
+## 8、加载多个配置
+
+当nginx代理多个站点时，如果还是一个 nginx.conf 配置文件将变得巨大，因此可以将站点配置分解成多个配置
+
+在 nginx.conf 配置文件中修改：
+
+```conf
+http {
+    include /usr/local/nginx/conf/sites/*; # 导入多个配置文件
 }
 ```
