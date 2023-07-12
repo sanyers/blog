@@ -66,6 +66,10 @@ sudo systemctl enable v2raya.service
 
 在第一次进入页面时，你需要创建一个管理员账号，请妥善保管你的用户名密码，如果遗忘，使用 `sudo v2raya --reset-password` 命令重置。
 
+（5）连接 v2ray 服务器
+
+打开 `http://localhost:2017` 网站，点击 `导入`，输入 vmess 地址后，列表出现该服务器选项，选择该服务器，然后点击左上角启动，当提示 `正在运行` 则表示代理服务器已启动，使用 `lsof -i:1080` 查看端口是否已启动。
+
 ### 2.3 Android 上使用
 
 [v2rayNG](https://github.com/2dust/v2rayNG/releases)

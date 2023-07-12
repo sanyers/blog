@@ -86,6 +86,12 @@
 
 [WebRTC → 深入浅出](https://zhuanlan.zhihu.com/p/602229179)
 
+[我们应该瞄准多少个WebRTC RTCPeerConnection对象](https://bloggeek.me/webrtc-rtcpeerconnection-one-per-stream/)
+
+[WEBRTC三种类型（Mesh、MCU 和 SFU）的多方通信架构](https://www.cnblogs.com/yiyi17/p/12076657.html)
+
+[webrtc.org](https://webrtc.org/?hl=zh-cn)
+
 ## Linux
 
 [linux kill 关闭进程命令](http://www.zzvips.com/article/1929.html)
