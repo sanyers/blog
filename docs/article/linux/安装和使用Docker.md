@@ -110,6 +110,8 @@ docker start|restart|stop [name]
 
 # 删除镜像
 docker rm -f [name]
+# 强制删除
+docker rmi -f [name]:[tag]
 
 # 查看docker运行状态
 docker stats
@@ -121,12 +123,16 @@ docker exec -it xxx /bin/bash
 apt-get update
 apt-get install sudo
 
+# 启动容器
+sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud2 --restart always new_nextcloud:001
+
 # 基于已有容器创建镜像
 sudo docker commit [选项] 容器id/名称 仓库名称:[标签]
 # 例如：
 sudo docker commit nextcloud new_nextcloud:001
-# 启动容器
-sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud2 --restart always new_nextcloud:001
+
+# 将镜像打包成本地文件(注意本地文件挂载的需要手动复制 -v 或 --volume)
+sudo docker save [镜像id]>./xxx.tar
 ```
 
 ## 6、参考

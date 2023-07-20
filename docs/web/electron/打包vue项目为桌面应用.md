@@ -72,9 +72,14 @@ function createWindow() {
     },
   });
 
+  // 设置代理
+  // await mainWindow.webContents.session.setProxy({
+  //   proxyRules: `http://xxx:8888`,
+  // })
+
   // console.log(process.env);
   // and load the index.html of the app.
-  // mainWindow.loadFile('dist/index.html');
+  // mainWindow.loadFile('dist/index.html'); // 如果加载本地文件，需要将vue-router设置hash模式，history模式需要启动一个站点
   mainWindow.loadURL('http://localhost:8071'); // 打开vue项目地址，可以是本地file路径也可以是网络路径
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -144,7 +149,8 @@ contextBridge.exposeInMainWorld('myAPI', {
     "start": "electron ./electron --no-sandbox", // 配置 electron 启动目录
     "dev": "npm run serve && npm run start", // 启动 vue 和 electron
     "build:test": "electron-packager ./electron my-electron-test --platform=win32 --arch=x64 --icon=./public/favicon.ico --out=./dist_electron --asar --app-version=1.0.0 --overwrite --ignore=node_modules", // 配置测试包
-    "build:prod": "electron-packager ./electron my-electron --platform=win32 --arch=x64 --icon=./public/favicon.ico --out=./dist_electron --asar --app-version=1.0.0 --overwrite --ignore=node_modules" // 配置正式包
+    "build:prod": "electron-packager ./electron my-electron --platform=win32 --arch=x64 --icon=./public/favicon.ico --out=./dist_electron --asar --app-version=1.0.0 --overwrite --ignore=node_modules", // 配置正式包
+    "build:aaa": "electron-packager ./electron test --platform=win32 --arch=x64 --icon=./favicon.ico --out=./dist_electron --asar --overwrite --ignore=node_modules --extra-resource=app.config --extra-resource=assets" // 配置额外目录和文件
   }
 }
 ```
