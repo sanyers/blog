@@ -99,8 +99,11 @@ sudo apt autoremove
 # 查看版本
 docker --version
 
-# 查看实例
+# 查看运行中的容器
 docker ps
+
+# 查看所有容器
+docker ps -a
 
 # 启动、重启、停止docker服务
 sudo systemctl docker start|restart|stop
@@ -112,6 +115,8 @@ docker start|restart|stop [name]
 docker rm -f [name]
 # 强制删除
 docker rmi -f [name]:[tag]
+# 删除容器
+docker rm [name]
 
 # 查看docker运行状态
 docker stats
@@ -132,7 +137,16 @@ sudo docker commit [选项] 容器id/名称 仓库名称:[标签]
 sudo docker commit nextcloud new_nextcloud:001
 
 # 将镜像打包成本地文件(注意本地文件挂载的需要手动复制 -v 或 --volume)
-sudo docker save [镜像id]>./xxx.tar
+sudo docker save 镜像id>./xxx.tar
+
+# 从本地文件加载镜像
+sudo docker load > xxx.tar
+
+# 查看已安装镜像
+sudo docker images
+
+# 镜像重命名
+docker tag 镜像id xxx:1.0
 ```
 
 ## 6、参考

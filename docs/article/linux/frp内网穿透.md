@@ -10,12 +10,12 @@
 
 ### 2.1 服务端
 
-`vim /etc/systemd/system/frps.service`
+`vim /usr/lib/systemd/system/frps.service`
 
 ```ini
 [Unit]
 # 服务名称，可自定义
-Description = frp server
+Description = frps server
 After = network.target syslog.target
 Wants = network.target
 
@@ -39,14 +39,17 @@ WantedBy = multi-user.target
 ```ini
 [Unit]
 # 服务名称，可自定义
-Description = frp client
-After = network.target syslog.target
-Wants = network.target
+Description = frpc server
+After=network.target network-online.target
+Requires=network-online.target
 
 [Service]
 Type = simple
+User=root
 # 启动frps的命令，需修改为您的frps的安装路径
-ExecStart = /root/frp/frpc -c /root/frp/frpsc.ini
+ExecStart = /root/frp/frpc -c /root/frp/frpc.ini
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy = multi-user.target
@@ -91,6 +94,8 @@ type = http
 local_port = 8080
 custom_domains = www.yourdomain2.com
 ```
+
+注意：`[web]` `[web2]` 不能重复
 
 3. 分别启动 frps 和 frpc
 

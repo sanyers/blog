@@ -52,7 +52,7 @@ pm2 resurrect                  #恢复 pm2 lsit 列表
 # 启动项目
 pm2 start ./dist/app.js --name custom_server_name
 
-# 保存启动项目列表
+# 保存启动项目列表（该命令会把当前项目列表保存在root目录，非root用户将导致开机自启动失败）
 pm2 save
 
 # 生成开机自启动服务

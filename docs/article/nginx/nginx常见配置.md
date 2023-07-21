@@ -100,6 +100,10 @@ http {
             index  index.html index.htm;
             try_files $uri $uri/ /test/index.html;
         }
+        location /api {
+            # rewrite ^/api/(.*)$ /$1 break;
+            proxy_pass http://localhost:6005;
+        }
         location @router {
             rewrite ^.*$ /index.html last;
         }

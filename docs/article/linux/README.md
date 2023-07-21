@@ -35,7 +35,7 @@ $ sudo ufw disable # 关闭防火墙
 
 $ sudo ufw allow 80 # 开启防火墙指定端口
 
-$ sudo chomd 777 文件路径 # 设置文件权限
+$ sudo chmod 777 文件路径 # 设置文件权限
 
 $ sudo chmod +x xxx # 设置文件为可执行文件
 
@@ -52,6 +52,10 @@ $ ls -al /proc/进程号/cwd # 查看进程号执行文件的路径
 $ top # 查看cpu占用
 
 $ top -Hp 4807 # 查看pid进程的cpu占用
+
+$ sudo reboot # 重启
+
+$ cat /proc/version # 查看cpu型号
 ```
 
 ## 服务命令
@@ -78,6 +82,9 @@ systemctl disable xxx.service
 # 查看服务是否开机启动
 systemctl is-enable xxx.service
 
+# 重置服务列表
+systemctl daemon-reload
+
 # 查看已启动服务列表
 systemctl list-unit-files|grep enabled
 
@@ -96,3 +103,5 @@ cd /usr/local/bin/
 rm -rf node
 # 重新建立连接
 ```
+
+https://www.cnblogs.com/edisonfish/p/17304057.html
