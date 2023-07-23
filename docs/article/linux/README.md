@@ -94,6 +94,9 @@ systemctl --failed
 # 服务的路径
 /etc/systemd/system/xxx.service
 /usr/lib/systemd/system/xxx.service
+
+# 软件源列表
+/etc/apt/sources.list.d
 ```
 
 ## Linux:ln: 无法创建符号链接‘/usr/local/bin/node‘: 文件已存在
