@@ -87,9 +87,9 @@ apt-get update
 
 apt-get upgrade
 
-apt-get install vim
+apt-get install sudo
 
-apt-get install openssh-server
+apt-get install vim openssh-server
 
 # 3、设置 root 密码，用于ssh连接时输入
 passwd
