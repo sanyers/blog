@@ -60,4 +60,7 @@ pm2 startup
 
 # 设置开机自动启动
 systemctl enable pm2-root
+
+# 非root用户
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u sanyer --hp /home/sanyer
 ```
