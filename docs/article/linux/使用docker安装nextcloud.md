@@ -152,6 +152,46 @@ sudo docker commit nextcloud new_nextcloud:001
 sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud2 --restart always new_nextcloud:001
 ```
 
+## 5.5 配置自定义应用
+
+修改配置文件 `/html/config/config.php`
+
+```conf
+  'apps_paths' => 
+  array (
+    0 => 
+    array (
+      'path' => '/var/www/html/apps',
+      'url' => '/apps',
+      'writable' => false,
+    ),
+    1 => 
+    array (
+      'path' => '/var/www/html/custom_apps',
+      'url' => '/custom_apps',
+      'writable' => true,
+    ),
+  ),
+```
+
+## 5.6 配置https访问
+
+修改配置文件 `/html/config/config.php`
+
+```conf
+  'overwrite.cli.url' => 'https://175.176.0.65',
+  'overwriteprotocol' => 'https',
+```
+
+## 5.7 应用列表打不开或者缺少
+
+修改配置文件 `/html/config/config.php`，改为国内镜像
+
+```conf
+  'appstoreenabled' => true,
+  'appstoreurl' => 'https://www.orcy.net/ncapps/v2/',
+```
+
 ## 6、参考
 
 https://zhuanlan.zhihu.com/p/435516648
