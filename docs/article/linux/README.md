@@ -56,6 +56,8 @@ $ top -Hp 4807 # 查看pid进程的cpu占用
 $ sudo reboot # 重启
 
 $ cat /proc/version # 查看cpu型号
+
+$ whereis xxx # 查看软件安装目录
 ```
 
 ## 服务命令

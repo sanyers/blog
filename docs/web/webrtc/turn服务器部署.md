@@ -77,6 +77,18 @@ cert=/etc/turn_server_cert.pem
 pkey=/etc/turn_server_pkey.pem
 ```
 
+必需配置的项：
+
+```conf
+external-ip=xxx.xx.xx.xxx
+user=用户名:密码
+cli-password=密码
+#证书
+cert=/etc/turn_server_cert.pem
+pkey=/etc/turn_server_pkey.pem
+```
+
+
 ### 4.2 开放 tcp 和 udp 端口
 
 在防火墙开启 3478 端口
