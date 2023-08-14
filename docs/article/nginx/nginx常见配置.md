@@ -164,3 +164,64 @@ http {
     include /usr/local/nginx/conf/sites/*; # 导入多个配置文件
 }
 ```
+
+## 9、反向代理重写 URL
+
+```conf
+server {
+    listen              80;
+    server_name         default;
+    
+    location /api/ {
+        proxy_set_header Host $host;
+        proxy_set_header  X-Real-IP        $remote_addr;
+        proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+        proxy_set_header X-NginX-Proxy true;
+
+        proxy_pass http://example.com;
+    }
+}
+```
+
+请求到 /api/exampleapi 时，会转发到 http://example.com/api/exampleapi
+
+方案一：
+
+在 proxy_pass 后增加 / 则 nginx 会将 /api 之后的内容拼接到 proxy_pass 之后
+
+```conf
+server {
+  listen              80;
+  server_name         default;
+    
+  location /api/ {
+      proxy_set_header Host $host;
+      proxy_set_header  X-Real-IP        $remote_addr;
+      proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+      proxy_set_header X-NginX-Proxy true;
+
+      proxy_pass http://example.com/;
+  }
+}
+```
+
+方案二：
+
+使用 rewrite，注意到 proxy_pas s结尾没有 /， rewrite 重写了 url
+
+```conf
+server {
+  listen              80;
+  server_name         default;
+    
+  location /api/ {
+      proxy_set_header Host $host;
+      proxy_set_header  X-Real-IP        $remote_addr;
+      proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+      proxy_set_header X-NginX-Proxy true;
+
+      rewrite ^/api/(.*)$ /$1 break;
+      proxy_pass http://example.com;
+  }
+}
+```
