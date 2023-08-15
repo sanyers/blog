@@ -9,7 +9,9 @@ $ sudo -i  # 将输入当前管理员用户密码可以进入root用户
 
 $ sudo su # 输入当前用户密码，获取 root 权限
 
-$ sudo passwd root # 设置 root 用户密码
+$ sudo passwd root # 启用并设置 root 用户密码
+
+$ sudo passwd -l root # 禁用 root 用户
 
 $ su # 输入 root 密码，进入 root 权限，输入 exit 返回用户权限
 
