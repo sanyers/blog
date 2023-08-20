@@ -46,21 +46,39 @@ pm2 save                       #保存 pm2 list 列表
 pm2 resurrect                  #恢复 pm2 lsit 列表
 ```
 
-设置开机自动启动
+root用户：
+
+```sh
+# 启动项目
+sudo pm2 start ./dist/app.js --name custom_server_name
+
+# 保存启动项目列表，保存在 /root/.pm2
+sudo pm2 save
+
+# 生成开机自启动服务，自动生成服务名为 pm2-root.service
+sudo pm2 startup
+
+# 设置开机自动启动
+sudo systemctl enable pm2-root
+
+# 删除自动启动服务
+sudo pm2 unstartup systemd
+```
+
+普通用户：
 
 ```sh
 # 启动项目
 pm2 start ./dist/app.js --name custom_server_name
 
-# 保存启动项目列表（该命令会把当前项目列表保存在root目录，非root用户将导致开机自启动失败）
+# 保存启动项目列表，保存在 /home/sanyer/.pm2
 pm2 save
 
 # 生成开机自启动服务
 pm2 startup
 
-# 设置开机自动启动
-systemctl enable pm2-root
-
-# 非root用户
 sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u sanyer --hp /home/sanyer
+
+# 设置开机自动启动
+sudo systemctl enable pm2-sanyer
 ```

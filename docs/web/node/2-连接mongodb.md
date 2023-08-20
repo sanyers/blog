@@ -200,7 +200,7 @@ sudo systemctl enable mongod # 开机自动启动
 打开配置：
 
 - windows `C:\Program Files\MongoDB\Server\6.0\bin\mongod.cfg`
-- ubuntu `/etc/mongodb.conf`
+- ubuntu `/etc/mongod.conf`
 
 ```
 # bind_ip = 127.0.0.1
@@ -208,6 +208,22 @@ bind_ip = 0.0.0.0
 port = 27017
 auth = true # 设置用户名和密码访问
 ```
+
+6.0 配置
+
+```
+storage:
+  dbPath: /var/lib/mongodb
+
+net:
+  port: 27017
+  bindIp: 0.0.0.0 # 设置外部访问
+
+security:
+  authorization: enabled # enabled 启用，disabled 不启用
+```
+
+[官方配置](https://www.mongodb.com/docs/manual/reference/configuration-options)
 
 ## 6、启动错误
 

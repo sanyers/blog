@@ -43,6 +43,7 @@ module.exports = [
       { text: "ffmpeg", link: "/article/ffmpeg/", firstName: "开始" },
       { text: "linux", link: "/article/linux/", firstName: "开始" },
       { text: "python", link: "/article/python/", firstName: "开始" },
+      { text: "php", link: "/article/php/", firstName: "开始" },
       { text: "study", link: "/article/study/", firstName: "开始" },
       { text: "数据库", link: "/article/database/", firstName: "开始" },
       // { text: '历史', link: '/article/history/', firstName: '开始' },
