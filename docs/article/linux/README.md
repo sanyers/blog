@@ -60,6 +60,8 @@ $ sudo reboot # 重启
 $ cat /proc/version # 查看cpu型号
 
 $ whereis xxx # 查看软件安装目录
+
+& ./xxxx & # 在可执行程序后面加入 & 符号，可以让程序在后台运行
 ```
 
 ## 服务命令
