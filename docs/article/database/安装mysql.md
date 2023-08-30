@@ -7,13 +7,13 @@ sudo apt update
 sudo apt install mariadb-server
 sudo systemctl status mariadb
 
-mysql_secure_installation # 初始化数据库
+sudo mysql_secure_installation # 初始化数据库
 ```
 
 创建数据库
 
 ```
-mysql -uroot -p
+sudo mysql -uroot -p
 
 MariaDB [(none)]> CREATE DATABASE test;
 
@@ -65,3 +65,16 @@ flush privileges;
 use mysql;
 select user,host from user;
 ```
+
+## 3、卸载
+
+卸载所有 mariadb/mysql 相关的软件
+
+```
+sudo apt-get remove mysql-\*
+dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P
+```
+
+提示窗口：`Remove all MariaDB databases?`，选择“是”
+
+再执行一次 `dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P`，即可。

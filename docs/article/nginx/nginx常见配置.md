@@ -207,7 +207,7 @@ server {
 
 方案二：
 
-使用 rewrite，注意到 proxy_pas s结尾没有 /， rewrite 重写了 url
+使用 rewrite，注意到 proxy_pass 结尾没有 /， rewrite 重写了 url
 
 ```conf
 server {
@@ -215,7 +215,7 @@ server {
   server_name         default;
     
   location /api/ {
-      proxy_set_header Host $host;
+      proxy_set_header Host $host; # Host不填写可能会出现 403 跨域检测无效
       proxy_set_header  X-Real-IP        $remote_addr;
       proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
       proxy_set_header X-NginX-Proxy true;
