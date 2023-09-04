@@ -30,18 +30,26 @@ env[TEMP] = /tmp
 
 ```
 server {
-        listen       8033;
-        server_name  0.0.0.0;
-        root html/php;
+    listen       8033;
+    server_name  0.0.0.0;
+    root /var/www/html;
+    index index.php;
 
-        location ~ \.php$ {
-            include /etc/nginx/snippets/fastcgi-php.conf;
-            fastcgi_pass unix:/run/php/php8.0-fpm.sock;
-        }
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        # fastcgi_pass php-handler
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}
+
+upstream php-handler {
+    # server 127.0.0.1:9000;
+    # server unix:/var/run/php/php8.1-fpm.sock;
 }
 ```
 
-在 `html/php` 目录下创建 `index.php` 文件：
+在 `/var/www/html` 目录下创建 `index.php` 文件：
 
 ```php
 <?php

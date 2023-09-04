@@ -44,6 +44,10 @@
 
 [nodejs](https://nodejs.cn/)
 
+[js摇杆](https://yoannmoi.net/nipplejs/#demo)
+
+[mqtt](https://docs.emqx.com/zh/cloud/latest/)
+
 ## web 测试
 
 [vitest](https://cn.vitest.dev/guide/)
