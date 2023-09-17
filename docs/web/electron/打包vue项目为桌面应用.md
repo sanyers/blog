@@ -155,6 +155,23 @@ contextBridge.exposeInMainWorld('myAPI', {
 }
 ```
 
+平台分发：
+
+```json
+{
+  "scripts": {
+    "build:win": "electron-packager ./src test-app --platform=win32 --arch=x64 --icon=./src/favicon.ico --out=./dist --asar --electron-version 25.3.1 --overwrite --ignore=node_modules",
+    "build:linux-x64": "electron-packager ./src test-app --platform=linux --arch=x64 --icon=./src/favicon.ico --out=./dist --asar --electron-version 25.3.1 --overwrite --ignore=node_modules",
+    "build:linux-arm64": "electron-packager ./src test-app --platform=linux --arch=arm64 --icon=./src/favicon.ico --out=./dist --asar --electron-version 25.3.1 --overwrite --ignore=node_modules",
+    "build:macos": "electron-packager ./src test-app --platform=darwin --arch=x64 --icon=./src/favicon.ico --out=./dist --asar --electron-version 25.3.1 --overwrite --ignore=node_modules",
+  }
+}
+```
+
+设置打包地址：`--download.mirrorOptions.mirror=https://sanyer.top/pub/`
+
+加载额外目录：`--extra-resource=test`
+
 ## 6、启动项目
 
 ```
@@ -196,3 +213,37 @@ npm config set ca=""
 在【用户变量】中新增值为 0 的变量 NODE_TLS_REJECT_UNAUTHORIZED
 
 本人使用第5种方法可成功
+
+## 7、打包到 linux ubuntu 运行
+
+`npm run build:linux-x64`
+
+将生成的文件复制到 ubuntu 系统的目录下，例如 `/home/sanyer/soft/test-app-linux-x64`
+
+设置可执行文件 `sudo chmod +x ./test-app`
+
+在命令行运行 `./test-app`
+
+创建桌面快捷图标：
+
+`/home/sanyer/Desktop/test-app.desktop`
+
+```
+[Desktop Entry]
+Type=Application
+Name=aaa
+Exec=/home/vvt/soft/test-app-linux-arm64/test-app
+```
+
+```ini
+[Desktop Entry]
+Version=1.0                   # 启动的程序版本号（非必须）
+Type=Application              # 类型需要指明是Application（必须）
+Name=XXX                      # 快捷方式的名字（非必须，但没有的话会是为命名）           
+Comment=XXX XXXXXX            # 描述（不必须）
+Exec=/XXX/XXXX/XXX            # 可执行文件的路径（必须）
+Icon=/XXX/XXXX/XXX.png        # 图标名称（非必须，但不设置的话是默认图标）
+Terminal=false                # 是否打开终端（非必须）
+```
+
+选中文件右键，选择允许启动
