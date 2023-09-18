@@ -8,6 +8,12 @@ sudo yum install -y make gcc cc gcc-c++ wget
 sudo yum install -y openssl-devel libevent libevent-devel
 ```
 
+unbutn 20.04 安装依赖：
+
+```sh
+sudo apt-get install libssl-dev libpq-dev pkg-config
+```
+
 生成签名
 
 ```
@@ -157,7 +163,6 @@ WantedBy=multi-user.target
 - systemctl disable turnserver.service 关闭开机自启
 - systemctl enable turnserver.service 开启开机自启
 - systemctl status turnserver.service 查看状态
-- systemctl restart turnserver.service 重启服务
 
 ## 7、测试访问
 

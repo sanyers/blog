@@ -70,6 +70,19 @@ sudo systemctl enable v2raya.service
 
 打开 `http://localhost:2017` 网站，点击 `导入`，输入 vmess 地址后，列表出现该服务器选项，选择该服务器，然后点击左上角启动，当提示 `正在运行` 则表示代理服务器已启动，使用 `lsof -i:1080` 查看端口是否已启动。
 
+（6）docker 安装
+
+```
+docker run -d \
+  -p 2017:2017 \
+  -p 20170-20172:20170-20172 \
+  --restart=always \
+  --name v2raya \
+  -e V2RAYA_LOG_FILE=/tmp/v2raya.log \
+  -v /etc/v2raya:/etc/v2raya \
+  mzz2017/v2ray
+```
+
 ### 2.3 Android 上使用
 
 [v2rayNG](https://github.com/2dust/v2rayNG/releases)
