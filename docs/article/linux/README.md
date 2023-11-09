@@ -1,6 +1,6 @@
 # Linux 指令
 
-## 常用命令
+## 1、常用命令
 
 ```sh
 $ sudo   # 输入当前管理员用户密码，可以获得超级用户的权限，默认5分钟失效
@@ -41,6 +41,8 @@ $ sudo chmod 777 文件路径 # 设置文件权限
 
 $ sudo chmod +x xxx # 设置文件为可执行文件
 
+$ sudo chown -R sanyer: /home/xxx # 设置目录的访问权限
+
 $ ln 源文件 目标文件 # 创建软连接
 
 $ ls # 查看目录文件列表
@@ -55,6 +57,10 @@ $ top # 查看cpu占用
 
 $ top -Hp 4807 # 查看pid进程的cpu占用
 
+$ free -h # 查看内存占用
+
+$ watch -n 10 nvidia-smi # 10秒刷新一次，查看 nvidia 显卡显存占用
+
 $ sudo reboot # 重启
 
 $ cat /proc/version # 查看cpu型号
@@ -62,9 +68,15 @@ $ cat /proc/version # 查看cpu型号
 $ whereis xxx # 查看软件安装目录
 
 $ ./xxxx & # 在可执行程序后面加入 & 符号，可以让程序在后台运行
+
+$ vim ~/.bashrc # 编辑当前用户配置文件
+
+$ source ~/.bashrc # 保存环境配置
+
+$ sudo chown -R vvt: test(目录或目录路径) # 修改目录用户权限
 ```
 
-## 服务命令
+## 2、服务命令
 
 ```sh
 # 启动服务
@@ -105,7 +117,152 @@ systemctl --failed
 /etc/apt/sources.list.d
 ```
 
-## Linux:ln: 无法创建符号链接‘/usr/local/bin/node‘: 文件已存在
+## 3、官方默认镜像
+
+默认官方源 source.list
+
+```
+deb http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
+
+deb http://archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb http://archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse
+
+## Not recommended
+# deb http://archive.ubuntu.com/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src http://archive.ubuntu.com/ubuntu/ focal-proposed main restricted universe multiverse
+```
+
+github上面的答案
+
+```
+deb http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse
+
+deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb http://archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb http://archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse
+
+deb http://archive.canonical.com/ubuntu focal partner
+deb-src http://archive.canonical.com/ubuntu focal partner
+```
+
+腾讯云内网source.list
+
+```
+deb http://mirrors.tencentyun.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://mirrors.tencentyun.com/ubuntu/ focal main restricted universe multiverse
+
+deb http://mirrors.tencentyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.tencentyun.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb http://mirrors.tencentyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.tencentyun.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb http://mirrors.tencentyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.tencentyun.com/ubuntu/ focal-backports main restricted universe multiverse
+
+## Not recommended
+# deb http://mirrors.tencentyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src http://mirrors.tencentyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+```
+
+阿里云内网source.list
+
+```
+deb http://mirrors.cloud.aliyuncs.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ focal main restricted universe multiverse
+
+deb http://mirrors.cloud.aliyuncs.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb http://mirrors.cloud.aliyuncs.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb http://mirrors.cloud.aliyuncs.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ focal-backports main restricted universe multiverse
+
+## Not recommended
+# deb http://mirrors.cloud.aliyuncs.com/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src http://mirrors.cloud.aliyuncs.com/ubuntu/ focal-proposed main restricted universe multiverse
+```
+
+中科大源source.list
+
+```
+deb https://mirrors.ustc.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal main restricted universe multiverse
+
+deb https://mirrors.ustc.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+deb https://mirrors.ustc.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+
+deb https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+
+## Not recommended
+# deb https://mirrors.ustc.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+```
+
+清华源source.list
+
+```
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+
+## Not recommended
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+```
+
+腾讯云source.list
+
+```
+deb https://mirrors.cloud.tencent.com/ubuntu/ focal main restricted universe multiverse
+deb-src https://mirrors.cloud.tencent.com/ubuntu/ focal main restricted universe multiverse
+
+deb https://mirrors.cloud.tencent.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src https://mirrors.cloud.tencent.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb https://mirrors.cloud.tencent.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src https://mirrors.cloud.tencent.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb https://mirrors.cloud.tencent.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src https://mirrors.cloud.tencent.com/ubuntu/ focal-backports main restricted universe multiverse
+
+## Not recommended
+# deb https://mirrors.cloud.tencent.com/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.cloud.tencent.com/ubuntu/ focal-proposed main restricted universe multiverse
+```
+
+参考：https://www.louishe.com/2021/12/08/doc-11364.html
+
+## 4、常见问题
+
+### 4.1 Linux:ln: 无法创建符号链接‘/usr/local/bin/node‘: 文件已存在
 
 ```
 cd /usr/local/bin/

@@ -75,21 +75,6 @@ gitlab_rails['gitlab_shell_ssh_port'] = 222
 
 改完配置后需要重载配置
 
-```sh
-# 重载配置
-gitlab-ctl reconfigure
-# 重启容器
-gitlab-ctl restart
-# 停止
-gitlab-ctl stop
-# 启动
-gitlab-ctl start
-# 状态
-gitlab-ctl status
-# 退出
-exit
-```
-
 ### 2.2 修改密码
 
 查看初始密码：
@@ -143,24 +128,7 @@ gitlab_rails['gitlab_email_from'] = 'xxx@qq.com'
 gitlab_rails['smtp_domain'] = "qq.com"
 ```
 
-## 4、其他命令
-
-```sh
-# 查看已运行docker
-docker ps
-
-# 查看所有已安装docker
-docker ps -a -q
-docker ps -a
-
-# 重启
-sudo docker restart gitlab
-
-# 删除
-docker rm -f gitlab
-```
-
-## 5、轻量化运行
+## 4、轻量化运行
 
 ```
 # 关闭容器仓库功能
@@ -224,21 +192,113 @@ gitlab_ci['gitlab_ci_all_broken_builds'] = false
 gitlab_ci['gitlab_ci_add_pusher'] = false
 ```
 
-```
-gitlab-ctl start #启动全部服务
-gitlab-ctl restart#重启全部服务
+## 5、容器命令
+
+```sh
+sudo docker restart gitlab # 重启容器
+docker rm -f gitlab # 删除容器
+exit # 退出容器
+
+gitlab-ctl start # 启动全部服务
+gitlab-ctl restart # 重启全部服务
 gitlab-ctl stop #停止全部服务
 gitlab-ctl restart nginx #重启单个服务，如重启nginx
-gitlab-ctl status #查看服务状态
+gitlab-ctl status # 查看服务状态
 gitlab-ctl reconfigure #使配置文件生效
 gitlab-ctl show-config #验证配置文件
+
 gitlab-ctl uninstall #删除gitlab（保留数据）
 gitlab-ctl cleanse #删除所有数据，从新开始
 gitlab-ctl tail <service name>查看服务的日志
 gitlab-ctl tail nginx  #如查看gitlab下nginx日志
 gitlab-rails console  #进入控制台
+
+# gitlab 数据目录
+/var/opt/gitlab
+
+# 命令目录
+/opt/gitlab/bin
+gitlab-backup  gitlab-healthcheck  gitlab-rails  gitlab-redis-cli
+gitlab-ctl     gitlab-psql         gitlab-rake   gitlab-ruby
 ```
 
 ## 6、参考
 
 https://zhuanlan.zhihu.com/p/413217715
+
+## 7、常见错误
+
+### 7.1 postgresql 数据库启动失败引起的 502 页面异常
+
+（1）查看服务状态
+
+进入容器 `sudo docker exec -it gitlabs /bin/bash` 后查看服务状态 `gitlab-ctl status`
+
+```
+run: gitaly: (pid 278) 90s; run: log: (pid 276) 90s
+run: gitlab-workhorse: (pid 338) 88s; run: log: (pid 336) 88s
+run: logrotate: (pid 277) 90s; run: log: (pid 275) 90s
+run: nginx: (pid 339) 88s; run: log: (pid 337) 88s
+down: postgresql: 1s, normally up, want up; run: log: (pid 334) 88s
+run: puma: (pid 551) 13s; run: log: (pid 331) 88s
+run: redis: (pid 280) 90s; run: log: (pid 279) 90s
+run: sidekiq: (pid 560) 10s; run: log: (pid 330) 88s
+run: sshd: (pid 38) 101s; run: log: (pid 33) 101s
+```
+
+可以看到 `postgresql` 服务是 `down` 的状态
+
+（2）查看服务日志
+
+输入命令 `gitlab-ctl tail postgresql`，提示：
+
+```
+database system is shut down
+2023-10-25_10:22:35.73532 LOG:  starting PostgreSQL 13.11 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04.1) 11.3.0, 64-bit
+2023-10-25_10:22:35.73535 FATAL:  lock file "/var/opt/gitlab/postgresql/.s.PGSQL.5432.lock" is empty
+2023-10-25_10:22:35.73535 HINT:  Either another server is starting, or the lock file is the remnant of a previous server startup crash.
+```
+
+（3）删除遗留的 lock 和 pid 文件
+
+进入容器找到 `/var/opt/gitlab/postgresql/.s.PGSQL.5432.lock` 文件并删除
+
+重启服务，然后出现提示：
+
+```
+lock file "postmaster.pid" is empty
+2023-10-25_09:17:25.83247 HINT:  Either another server is starting, or the lock file is the remnant of a previous server startup crash.
+```
+
+在 `/var/opt/gitlab/postgresql/data` 目录下找到 `postmaster.pid` 文件并删除
+
+重启服务，然后出现提示：
+
+```
+database system was shut down at 2023-09-27 14:22:07 GMT
+2023-10-25_10:31:52.16432 LOG:  invalid record length at 0/6B355F0: wanted 24, got 0
+2023-10-25_10:31:52.16440 LOG:  invalid primary checkpoint record
+2023-10-25_10:31:52.16447 PANIC:  could not locate a valid checkpoint record
+2023-10-25_10:31:52.49977 LOG:  startup process (PID 394) was terminated by signal 6: Aborted
+2023-10-25_10:31:52.49979 LOG:  aborting startup due to startup process failure
+2023-10-25_10:31:52.49980 LOG:  database system is shut down
+2023-10-25_10:31:53.63088 LOG:  starting PostgreSQL 13.11 on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.3.0-1ubuntu1~22.04.1) 11.3.0, 64-bit
+```
+
+使用命令修复：
+
+```sh
+# Postgres >= 10
+pg_resetwal /var/opt/gitlab/postgresql/data
+
+# Postgres < 10
+pg_resetxlog /var/opt/gitlab/postgresql/data
+
+# 可能会提示需要使用 Postgres 超级管理员的权限来使用该命令，进入 Postgres 超级管理员用户权限
+su - gitlab-psql # 用户名可以通过进入 /var/opt/gitlab/postgresql/data 目录，使用 ll 命令查看
+
+# 然后输入命令
+pg_resetwal /var/opt/gitlab/postgresql/data
+# 强制更新
+pg_resetwal -f /var/opt/gitlab/postgresql/data
+```

@@ -106,6 +106,16 @@
 
 [webrtc.org](https://webrtc.org/?hl=zh-cn)
 
+`chrome://webrtc-internals/`
+
+[webrtc示例](https://github.com/webrtc/samples)
+
+[mediasoup webrtc SFU框架](https://github.com/versatica/mediasoup)
+
+[Mediasoup](https://mediasoup.org/)
+
+[ion-sdk](https://github.com/ionorg/ion-sdk-js/tree/master) [ion-sfu](https://github.com/ionorg/ion-sfu)
+
 ## Linux
 
 [linux kill 关闭进程命令](http://www.zzvips.com/article/1929.html)
@@ -128,6 +138,12 @@
 
 [python下载](https://www.python.org/downloads/windows/)
 
+[huggingface](https://huggingface.co/)
+
+[FastChat](https://github.com/lm-sys/FastChat)
+
+[minigpt4.cpp](https://github.com/Maknee/minigpt4.cpp/)
+
 ## 书库
 
 [无名图书](https://www.book123.info/)
@@ -135,6 +151,8 @@
 ## jetson
 
 [jetson](https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/index.html)
+
+[jetson-ai-lab](https://www.jetson-ai-lab.com/)
 
 [jetson-inference](https://github.com/dusty-nv/jetson-inference)
 

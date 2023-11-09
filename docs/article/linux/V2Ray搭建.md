@@ -73,15 +73,12 @@ sudo systemctl enable v2raya.service
 （6）docker 安装
 
 ```
-docker run -d \
-  -p 2017:2017 \
-  -p 20170-20172:20170-20172 \
-  --restart=always \
-  --name v2raya \
-  -e V2RAYA_LOG_FILE=/tmp/v2raya.log \
-  -v /etc/v2raya:/etc/v2raya \
-  mzz2017/v2ray
+docker run -d -p 2017:2017 -p 20170-20172:20170-20172 --restart always --name v2raya -e V2RAYA_LOG_FILE=/tmp/v2raya.log -v /etc/v2raya:/etc/v2raya  mzz2017/v2raya
 ```
+
+（7）使用代理打不开页面
+
+可能是页面资源是国内的，不需要代理，可以使用匹配规则去代理（只代理已配置的url）,也可以配置过滤规则去代理（过滤已配置的url）,或者使用 socks5 协议
 
 ### 2.3 Android 上使用
 

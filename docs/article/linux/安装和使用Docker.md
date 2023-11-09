@@ -104,12 +104,16 @@ docker ps
 
 # 查看所有容器
 docker ps -a
+docker ps -a -q
 
 # 启动、重启、停止docker服务
 sudo systemctl docker start|restart|stop
 
-# 启动、重启、停止镜像
+# 启动、重启、停止容器
 docker start|restart|stop [name]
+
+# 重命名容器
+docker rename 原容器名称 新容器名称
 
 # 删除镜像
 docker rm -f [name]
@@ -123,6 +127,9 @@ docker stats
 
 # 进入容器内部
 docker exec -it xxx /bin/bash
+
+# 进入未启动的容器或镜像
+sudo docker run -it --entrypoint /bin/bash imagename:1.0
 
 # 在 docker 内使用 sudo 命令，提示 bash: sudo: command not found，安装 sudo
 apt-get update
@@ -140,7 +147,9 @@ sudo docker commit nextcloud new_nextcloud:001
 sudo docker save 镜像id>./xxx.tar
 
 # 从本地文件加载镜像
-sudo docker load > xxx.tar
+sudo docker load < xxx.tar
+# 或
+sudo docker load -i xxx.tar
 
 # 查看已安装镜像
 sudo docker images
@@ -149,6 +158,60 @@ sudo docker images
 docker tag 镜像id xxx:1.0
 ```
 
-## 6、参考
+## 6、docker 的运行模式与 --rm 选项的作用
+
+## 6.1 docker 容器进程的两种运行模式
+
+1、前台模式（默认）
+
+```sh
+docker run ...
+# 或
+docker run -d=false ...
+```
+
+注意，只有在前台模式下，才有必要设置 `-it` 命令选项
+
+2、后台模式（也称detached模式）
+
+```sh
+docker run -d ...
+# 或
+docker run -d=true ...
+# 注意，只要有-d命令选项，就没有 `-it` 命令选项
+```
+
+## 6.2 --rm 选项的作用
+
+在 docker 容器退出时，默认容器内部的文件系统仍然被保留，以方便调试并保留用户数据。
+
+在容器启动时设置 `--rm` 选项，退出容器时会自动清理容器内部的文件系统。
+
+```sh
+docker run --rm xxx
+# 或
+docker run --rm=true xxx
+# --rm 选项不能与 -d 同时使用
+```
+
+docker 的 --rm 与 docker rm 的区别
+
+- 使用 docker rm 删除容器  ——  删除容器，挂载点的文件还存在
+- 使用 --rm 参数   ——  删除容器，并还会删掉挂载点的数据
+
+## 7、常见问题
+
+### 7.1 关于启动Docker容器时”无法执行二进制文件”的问题
+
+`docker run -it [容器名称] /bin/bash`
+然后，在极少数情况下
+
+/bin/bash：/bin/bash：无法执行二进制文件
+
+删除 /bin/bash 即可
+
+``docker run -it [容器名称]`
+
+## 8、参考
 
 https://zhuanlan.zhihu.com/p/143156163

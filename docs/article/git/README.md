@@ -1,6 +1,6 @@
-# Git 命令大全
+# Git 操作
 
-## 常用命令
+## 1、常用命令
 
 ```sh
 $ git init   # 初始化一个Git仓库
@@ -42,9 +42,9 @@ $ git checkout [file]  # 恢复暂存区的指定文件到工作区
 $ git reset [file]  # 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变
 ```
 
-## 其他命令
+## 2、其他命令
 
-### 配置
+### 2.1 配置
 
 Git的设置文件为```.gitconfig```，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
@@ -64,7 +64,7 @@ $ git config user.email "xxx"
 $ git config --global core.autocrlf false # 取消行尾序列自动转换（CRLF或者LF）
 ```
 
-### 增加/删除文件
+### 2.2 增加/删除文件
 
 ```sh
 $ git add *  # Ant风格添加修改(忽略 .gitignore 把任何文件都加入)
@@ -84,7 +84,7 @@ $ git rm --cached [file]  # 停止追踪指定文件，但该文件会保留在�
 $ git mv [file-original] [file-renamed]  # 改名文件，并且将这个改名放入暂存区
 ```
 
-### 代码提交
+### 2.3 代码提交
 
 ```sh
 $ git commit -a  # 提交工作区自上次 commit 之后的变化，直接到仓库区
@@ -98,7 +98,7 @@ $ git commit --amend [file1] [file2] ...  # 重做上一次 commit，并包括�
 $ git commit --amend --author "name <邮箱@163.com>" # 修改提交的作者邮箱
 ```
 
-### 分支
+### 2.4 分支
 
 ```sh
 $ git branch -a  # 列出所有本地分支和远程分支
@@ -116,7 +116,7 @@ $ git cherry-pick [commit]  # 选择一个commit，合并进当前分支
 $ git branch -d [branch] # 删除本地分支
 ```
 
-### 标签
+### 2.5 标签
 
 ```sh
 $ git tag  # 列出所有tag
@@ -138,7 +138,7 @@ $ git push [remote] --tags  # 提交所有 tag
 $ git checkout -b [branch] [tag]  # 新建一个分支，指向某个 tag
 ```
 
-### 查看信息
+### 2.6 查看信息
 
 ```sh
 $ git log --stat  # 显示 commit 历史，以及每次 commit 发生变更的文件
@@ -174,7 +174,7 @@ $ git show --name-only [commit]  # 显示某次提交发生变化的文件
 $ git reflog  # 显示当前分支的最近几次提交
 ```
 
-### 远程同步
+### 2.7 远程同步
 
 ```sh
 $ git remote -v  # 显示所有远程仓库
@@ -185,7 +185,7 @@ $ git push [remote] --all  # 推送所有分支到远程仓库
 ```
 
 
-### 撤销
+### 2.8 撤销
 
 ```sh
 $ git checkout [commit] [file]  # 恢复某个 commit 的指定文件到暂存区和工作区
@@ -209,7 +209,7 @@ $ git stash  # 暂时将未提交的变化移除，稍后再移入
 $ git archive  # 生成一个可供发布的压缩包
 ```
 
-### 跳过代码检查
+### 2.9 跳过代码检查
 
 使用 ``` --no-verify ``` 命令可以跳过 ```pre-commit``` 钩子检查
 
@@ -218,7 +218,7 @@ $ git commit -m 'xxx' --no-verify
 $ git push origin 'xxx' --no-verify
 ```
 
-## 配置公钥
+## 3、配置公钥
 
 ```sh
 ssh-keygen -t ed25519 -C "xxx@xxx.com"
@@ -238,4 +238,24 @@ Host *
     IdentityFile ~/.ssh/id_rsa
     IdentityFile ~/.ssh/id_ed25519
     IdentityFile ~/.ssh/mygit
+```
+
+## 4、ubuntu 安装 git
+
+```sh
+sudo apt update
+sudo apt install git
+
+git --version
+```
+
+## 5、安装 git-lfs
+
+```sh
+# 加仓库源 
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh sudo bash
+# 安装lfs 
+apt-get install git-lfs
+# Install Git LFS configuration.
+git lfs install
 ```

@@ -1,3 +1,5 @@
-# ChatAI
+# python
 
-博主正在努力构建中，敬请期待~~~
+[python下载](https://www.python.org/downloads/windows/)
+
+[gradio](https://www.gradio.app/docs/interface)
