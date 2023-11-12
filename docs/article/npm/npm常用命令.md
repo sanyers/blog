@@ -2,7 +2,7 @@
 
 查看npm当前设置的源
 
-`npm comfig set registry`
+`npm config set registry`
 
 查看当前所有源列表
 

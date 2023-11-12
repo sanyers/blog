@@ -226,7 +226,7 @@ gitlab-ctl     gitlab-psql         gitlab-rake   gitlab-ruby
 
 https://zhuanlan.zhihu.com/p/413217715
 
-## 7、常见错误
+## 7、常见错误及操作
 
 ### 7.1 postgresql 数据库启动失败引起的 502 页面异常
 
@@ -301,4 +301,17 @@ su - gitlab-psql # 用户名可以通过进入 /var/opt/gitlab/postgresql/data �
 pg_resetwal /var/opt/gitlab/postgresql/data
 # 强制更新
 pg_resetwal -f /var/opt/gitlab/postgresql/data
+```
+
+### 7.2 使用命令行修改普通用户为管理员
+
+```sh
+cat /var/opt/gitlab/gitlab-rails/etc/database.yml
+su - gitlab-psql
+
+psql -h /var/opt/gitlab/postgresql -d gitlabhq_production
+$ select id,username,email,admin from users;
+$ select id,username,email,admin from users where username='sanyer';
+$ update users set admin='t' where username='sanyer';
+# 出现 UPDATE 1 则修改成功
 ```
