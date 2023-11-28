@@ -43,6 +43,23 @@ flush privileges;
 sudo systemctl start mysql
 ```
 
+关闭安全模式：
+
+```sh
+set sql_safe_updates = 0;
+# authentication_string 设置为空才不会报 ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%' 错误
+update user set authentication_string="" where user="root";
+
+# 刷新权限表使其生效
+flush privileges;
+# 修改密码格式
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'xxx';
+# 修改密码
+ALTER USER 'root'@'%' IDENTIFIED BY 'xxx';
+# 或
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'xxx';
+```
+
 ## 2、设置外网访问
 
 修改配置文件 `sudo vim /etc/mysql/mariadb.conf.d/50-server.cnf`
