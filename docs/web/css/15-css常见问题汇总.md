@@ -70,6 +70,16 @@
 </style>
 ```
 
+单行省略
+
+```css
+.test {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+```
+
 ## 3、css 隐藏滚动条
 
 ```less

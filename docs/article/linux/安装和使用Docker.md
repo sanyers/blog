@@ -212,6 +212,39 @@ docker 的 --rm 与 docker rm 的区别
 
 ``docker run -it [容器名称]`
 
+### 7.2 docker修改容器内部文件的方法
+
+1、进入容器内部修改
+
+```sh
+docker exec -it 容器ID /bin/bash
+
+# 如果里面没有 vim 需要自行安装，容器删除后配置会失效
+apt-get update
+apt-get install vim
+vim /etc/my.cnf
+```
+
+2、通过 docker cp 拷贝进行修改
+
+```sh
+# 将容器中的文件拷贝出来
+sudo docker cp 容器ID:/etc/my.cnf /home/sanyer/
+# 将容器中的文件拷贝回去
+sudo docker cp /home/sanyer/my.cnf  容器ID:/etc/
+
+# 容器删除后配置会失效，修改后需要重启容器才能生效
+```
+
+3、使用 -v 挂载文件夹(推荐)
+
+使用 -v 将容器内部的文件夹挂载（映射）到本地的某个路径下，以后以后可以直接在本地修改，不需要进入容器内部
+
+```sh
+# 冒号前是本地路径（需要绝对路径），冒号后是容器中的路径，可以挂载文件和文件夹
+$ docker run -d --name test -p 8080:80 -v /home/sanyer/my.cnf:/etc/my.cnf sanyer/test
+```
+
 ## 8、参考
 
 https://zhuanlan.zhihu.com/p/143156163

@@ -16,13 +16,19 @@ sudo mysql_secure_installation # 初始化数据库
 sudo mysql -uroot -p
 
 MariaDB [(none)]> CREATE DATABASE test;
-
 MariaDB [(none)]> GRANT ALL PRIVILEGES ON test.* TO 'test'@'localhost' IDENTIFIED BY '123456';
-
 MariaDB [(none)]> GRANT ALL ON test2.* TO 'test'@'%'; # 授权其他数据库权限，如无则省略
-
 MariaDB [(none)]> FLUSH PRIVILEGES;
+MariaDB [(none)]> \q
+```
 
+修改 root 密码：
+
+```
+sudo mysql -uroot -p
+
+MariaDB [(none)]> alter user 'root'@'localhost' identified by 'new pass';
+MariaDB [(none)]> FLUSH PRIVILEGES;
 MariaDB [(none)]> \q
 ```
 
