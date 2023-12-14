@@ -69,7 +69,7 @@ $g_crypto_master_salt     = 'xxx';
 /**
  * 开启邮箱验证
  */ 
-$g_enable_email_notification = OFF;
+$g_enable_email_notification = ON;
 $g_phpMailer_method = PHPMAILER_METHOD_SMTP;
 
 /**
@@ -92,7 +92,15 @@ $g_from_email           = 'xxx@qq.com';
  * 创建用户时可以设置密码,默认是通过邮件邀请，公司内部用可以启用
  */
 $g_send_reset_password = OFF;
+
+// 日志
+$g_log_level = LOG_EMAIL |LOG_EMAIL_RECIPIENT;
+$g_log_destination = 'file:/var/www/html/mantisbt.log';
 ```
+
+调试邮件总是不通，可访问 `/admin/email_queue.php` 地址调试
+
+本人经过测试：配置个人qq邮箱可以成功，企业qq邮箱未成功，有时候qq邮箱也会提示失败，需要配置一个错误的配置然后测试，然后配置一个正确的配置然后测试可以通过（莫名的成功了）
 
 修改后重置 docker
 
@@ -100,6 +108,8 @@ $g_send_reset_password = OFF;
 sudo docker stop [id]
 sudo docker rm [id]
 sudo docker run -d --name mantisbt -p 8557:80 -v /home/sanyer/config/mantisbt/config_inc.php:/var/www/html/config/config_inc.php vimagick/mantisbt
+or
+sudo docker run -d --name mantisbt -p 8557:80 -v /home/sanyer/mantisbt:/var/www/html vimagick/mantisbt
 ```
 
 ## 部署 jira
