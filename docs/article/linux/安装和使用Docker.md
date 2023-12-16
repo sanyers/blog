@@ -156,6 +156,12 @@ sudo docker images
 
 # 镜像重命名
 docker tag 镜像id xxx:1.0
+
+# 查看完整信息
+sudo docker ps -a --no-trunc
+
+# 查看映射
+docker inspect container_name | grep Mounts -A 20
 ```
 
 ## 6、docker 的运行模式与 --rm 选项的作用

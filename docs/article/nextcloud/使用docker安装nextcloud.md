@@ -41,6 +41,7 @@ sudo docker run -d -p 3306:3306 -e PUID=1000 -e PGID=100 -e MYSQL_ROOT_PASSWORD=
 ## 3、安装nextcloud
 
 ```sh
+sudo docker pull nextcloud:latest
 sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud --restart always -v /home/vvt/node/nextcloud/html:/var/www/html -v /home/vvt/node/nextcloud/data:/var/www/html/data nextcloud
 ```
 

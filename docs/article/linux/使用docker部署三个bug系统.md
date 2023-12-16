@@ -112,6 +112,8 @@ or
 sudo docker run -d --name mantisbt -p 8557:80 -v /home/sanyer/mantisbt:/var/www/html vimagick/mantisbt
 ```
 
+默认管理员账号 `administrator` 密码 `root`
+
 ## 部署 jira
 
 ```sh

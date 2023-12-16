@@ -1,5 +1,7 @@
 # Linux 指令
 
+ubuntu下载地址 `https://www.releases.ubuntu.com/focal/`
+
 ## 1、常用命令
 
 ```sh
