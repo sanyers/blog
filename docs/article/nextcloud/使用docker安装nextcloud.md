@@ -193,6 +193,37 @@ sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud2 --restart always new_n
   'appstoreurl' => 'https://www.orcy.net/ncapps/v2/',
 ```
 
+## 5.8 配置 redis
+
+```conf
+  'memcache.distributed' => '\\OC\\Memcache\\Redis',
+  'filelocking.enabled' => 'true',
+  'memcache.locking' => '\\OC\\Memcache\\Redis',
+  'redis' =>
+  array (
+    'host' => '127.0.0.1',
+    'timeout' => 0,
+    'dbindex' => 16, // 数据库序号
+    'port' => 6379,
+    'password' => '123456',
+  ),
+```
+
+## 5.9 去除url带 index.php
+
+修改配置 config.php
+
+```conf
+'htaccess.RewriteBase' => '/',
+```
+
+```sh
+# 进入容器内部
+sudo docker exec -it nextcloud /bin/bash
+# 执行命令
+sudo -u www-data php occ maintenance:update:htaccess
+```
+
 ## 6、参考
 
 https://zhuanlan.zhihu.com/p/435516648

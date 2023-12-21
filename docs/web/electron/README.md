@@ -1,3 +1,14 @@
 # electron基础知识
 
-博主正在努力构建中，敬请期待~~~
+## 1、electron 快捷按钮
+
+- 刷新 `Ctrl+R`
+- 强制刷新 `Ctrl+Shift+R`
+- 开发者工具 `Ctrl+Shift+I`
+- 重置缩放 `Ctrl+0`
+- 缩放-放大 `Ctrl++`
+- 缩放-缩小 `Ctrl+-`
+- 全屏 `F11`
+- 最小化 `Ctrl+M`
+- 关闭 `Ctrl+R`
+- 刷新 `Ctrl+W`

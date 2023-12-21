@@ -61,6 +61,7 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
 function createWindow() {
   // Create the browser window.
+  // const newSession = session.fromPartition('persist:xxx', { cache: true }) 设置缓存，persist:表示程序重启后依然存在
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,

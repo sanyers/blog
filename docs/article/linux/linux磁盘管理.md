@@ -1,6 +1,8 @@
 # linux 磁盘管理
 
-## 1、df 命令
+## 1、磁盘命令
+
+### 1.1 df 命令
 
 disk free 列出文件系统的整体磁盘使用量
 
@@ -26,7 +28,7 @@ $ df -h
 $ df -h -T
 ```
 
-## 2、du 命令
+### 1.2 du 命令
 
 disk used 检查磁盘空间使用量，包括隐藏文件夹
 
@@ -50,7 +52,7 @@ du -sh /home/*
 du -sh /usr/*
 ```
 
-## 3、fdisk 命令
+### 1.3 fdisk 命令
 
 用于磁盘分区
 
@@ -60,7 +62,7 @@ du -sh /usr/*
 
 - `-l` ：输出后面接的装置所有的分区内容。若仅有 fdisk -l 时， 则系统将会把整个系统内能够搜寻到的装置的分区均列出来。
 
-## 4、其他指令
+### 1.4 其他指令
 
 ```
 # mount | column -t      # 查看挂接的分区状态
@@ -71,3 +73,22 @@ du -sh /usr/*
 ```
 
 https://zhuanlan.zhihu.com/p/234986013
+
+## 2、磁盘挂载
+
+```sh
+# 临时挂载
+mount -t ext4 /dev/sda /raid_backup/
+
+# 开机自动挂载，在最后一行加上挂载的相关信息
+sudo vim /etc/fstab
+
+/dev/sdc       /raid_backup  ext4 defaults 0 0
+# 挂载设备      挂载位置        文件系统 默认
+
+# 挂载 swap 虚拟内存
+/swap/swapfile swap swap defaults 0 0
+
+# 验证挂载，也可以重启后查看挂载情况
+mount -a
+```

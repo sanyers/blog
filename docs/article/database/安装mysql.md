@@ -101,3 +101,30 @@ dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P
 提示窗口：`Remove all MariaDB databases?`，选择“是”
 
 再执行一次 `dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P`，即可。
+
+## 4、docker 安装
+
+```sh
+docker search mariadb
+docker pull mariadb
+
+sudo docker run -d -p 3306:3306 -e PUID=1000 -e PGID=100 -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=testdb -e MYSQL_USER=testdb -e MYSQL_PASSWORD=123456 --name mariadb --restart always -v /home/sanyer/db:/var/lib/mysql mariadb
+```
+
+-d: 后台运行容器​，并返回容器ID
+
+-name: 为容器指定一个名称
+
+-p 3306:3306: 容器服务开放的端口,前者是宿主机的端口，后者是容器内服务的端口
+
+-e PUID、-e PGID： 运行容器的用户的权限集id
+
+-e MYSQL_ROOT_PASSWORD： 数据库root用户的密码
+
+-e MYSQL_DATABASE=testdb ：创建一个名称为testdb的数据库
+
+-e MYSQL_USER：创建一个名称为testdb的用户
+
+-e MYSQL_PASSWORD：名称为testdb的用户的密码
+
+-v：数据卷绑定 前者是宿主机的地址,后者是容器机器的位置
