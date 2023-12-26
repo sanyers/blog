@@ -248,3 +248,9 @@ Terminal=false                # 是否打开终端（非必须）
 ```
 
 选中文件右键，选择允许启动
+
+发布到应用列表
+
+```sh
+sudo cp test-app.desktop /usr/share/applications/test-app.desktop
+```
