@@ -4,11 +4,39 @@
 
 系统支持：Ubuntu，Debian，CentOS，推荐使用 Ubuntu 22，谨慎使用 CentOS，脚本可能无法正常运行！
 
-```
+```sh
+# v2ray
 bash <(wget -qO- -o- https://git.io/v2ray.sh)
+
+# xray
+bash <(wget -qO- -o- https://github.com/233boy/Xray/raw/main/install.sh)
 ```
 
 输入命令 `v2ray` 管理面板
+
+本地安装：
+
+```sh
+#（1）安装依赖
+apt install -y wget unzip jq qrencode
+
+#（2）下载 v2ray
+wget https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip
+
+#（3）设置服务器ip
+export ip=你的服务器ip
+
+#（4）下载 v2ray 脚本并解压配置可执行
+wget https://codeload.github.com/233boy/v2ray/tar.gz/refs/tags/v4.17
+tar -zxvf v2ray-4.17.tar.gz
+cd v2ray-4.17.tar
+chmod +x install.sh
+
+# 查看脚本帮助
+./install.sh -h
+# 安装
+./install.sh -l -f ./v2ray-linux-64.zip
+```
 
 ## 2、客户端使用
 
