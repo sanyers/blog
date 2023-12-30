@@ -25,11 +25,11 @@ openssl req -x509 -newkey rsa:2048 -keyout ./turn_server_pkey.pem -out ./turn_se
 turn github 地址： [https://github.com/coturn/coturn](https://github.com/coturn/coturn)
 
 ```
-wget http://turnserver.open-sys.org/downloads/v4.5.1.2/turnserver-4.5.1.2.tar.gz
+wget https://github.com/coturn/coturn/archive/refs/tags/4.6.2.tar.gz
 
-tar -xvzf turnserver-4.5.1.2.tar.gz
+tar -xvzf 4.6.2.tar.gz
 
-cd turnserver-4.5.1.2 && ./configure
+cd coturn-4.6.2 && ./configure
 
 make
 
@@ -118,8 +118,8 @@ firewall-cmd --zone=public --query-port=3478/udp
 
 ## 5、后台启动程序
 
-```
-turnserver -v -z -o -c /usr/local/etc/turnserver.conf
+```sh
+turnserver -o -a -f -r xxx.com -c /usr/local/etc/turnserver.conf
 ```
 
 查看是否在运行
@@ -134,6 +134,48 @@ ps -ef|grep turnserver
 killall turnserver
 ```
 
+参数说明：
+
+- -L 监听的IP地址
+- -p 监听端口
+- -E 中继IP
+- -X 公网/内网 映射配置
+- --no-loopback-peers  不使用127.x.x.x，::1回路IP地址
+- -m `<numbeer>`　　当前连接上的线程数，默认CPU个数
+- --min-port   起始用的最小端口
+- --max-port   最大端口号
+- -o 以守护进程模式运行（后台运行）
+- -f 使用指纹
+- -a 长期验证机制
+- -z 不进行验证，所有客户端均可访问
+- -u 用户名：密码
+- -r realm组别
+- --check-origin-consistency 连续检测会话的属性值
+- -q, --user-quota `<number>`  allocation配额
+- -Q, --total-quota `<number>` 总配额值
+- -s, --max-bps 带宽
+- -B, --bps-capacity 总带宽容量
+- -c 配置文件名称
+- -b, --db, --userdb `<filename>`  数据库名
+- -M, --mysql-userdb `<con-string>` mysql连接字符串
+- --server-name　　服务名，默认同realm
+- -n 不使用配置，全部使用命令行参数
+- --cert PEM格式的证书
+- --pkey PEM格式的私钥文件
+- --pky-pwd 私钥的密码
+- --no-udp 不提供UDP协议的服务
+- --no-tcp 不提供TCP协议的服务
+- --no-tls 不使用TLS服务
+- --no-udp-relay　不使用UDP中继
+- --no-tcp-relay　不使用TCP中继
+- -l, --log-file,`<filename>` 指定日志文件
+- --no-stdout-log 控制台不输出std-out格式的日志
+- --syslog 使用系统日志
+- --simple-log 使用建议日志记录，所有日志会覆盖之前对应日志文件的内容（日志文件同名）
+- -S, --stun-only 只使用STUN服务
+- --no-stun  不使用STUN服务
+- --mobility 支持Mobility ICE（MICE specs）协议
+
 ## 6、启动服务
 
 新建 turnserver.service
@@ -147,7 +189,7 @@ After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/local/bin/turnserver -v -z -o -c /usr/local/etc/turnserver.conf
+ExecStart=/usr/local/bin/turnserver -o -a -f -r sanyer.top -c /usr/local/etc/turnserver.conf
 Restart=always
 RestartSec=5
 

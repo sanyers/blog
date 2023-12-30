@@ -40,8 +40,13 @@ sudo docker run -d -p 3306:3306 -e PUID=1000 -e PGID=100 -e MYSQL_ROOT_PASSWORD=
 
 ## 3、安装nextcloud
 
+[nextcloud docker](https://hub.docker.com/_/nextcloud)
+
 ```sh
+# 拉取最新版
 sudo docker pull nextcloud:latest
+# 拉取指定版本
+sudo docker pull nextcloud:27.1.5
 sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud --restart always -v /home/vvt/node/nextcloud/html:/var/www/html -v /home/vvt/node/nextcloud/data:/var/www/html/data nextcloud
 ```
 
@@ -122,7 +127,42 @@ Error while trying to create admin user: Failed to connect to the database: An e
 ### 5.2 调整上传文件大小限制
 
 ```sh
+docker exec -it nextcloud /bin/bash
 sudo -u www-data php occ config:app:set files max_chunk_size --value 20971520
+
+vim .user.ini
+upload_max_filesize=1000G
+post_max_size=1000G
+
+vim .htaccess
+<IfModule mod_php.c>
+  php_value mbstring.func_overload 0
+  php_value default_charset 'UTF-8'
+  php_value output_buffering 0
+#新增部分
+  php_value upload_max_filesize 1000G
+  php_value post_max_size 1000G
+  <IfModule mod_env.c>
+    SetEnv htaccessWorking true
+  </IfModule>
+</IfModule>
+
+vim /var/www/html/3rdparty/aws/aws-crt-php/php.ini
+#新增
+post_max_size = 1000G
+upload_max_filesize = 1000G
+```
+
+如果配置了nginx 代理访问，还需要配置 nginx
+
+```conf
+server {
+  ...
+  location / {
+    client_max_body_size 10000M;
+    client_body_buffer_size 10000M;
+  }
+}
 ```
 
 ### 5.3 用二级域名访问，如果出现域名不被信任
@@ -173,6 +213,45 @@ sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud2 --restart always new_n
       'writable' => true,
     ),
   ),
+```
+
+使用 occ 安装应用
+
+```
+app
+ app:install      install selected app
+ app:disable      disable an app
+ app:enable       enable an app
+ app:getpath      get an absolute path to the app directory
+ app:list         list all available apps
+ app:update       update an app or all apps
+ app:remove       disable and remove an app
+```
+
+```sh
+# 下载并安装应用程序
+sudo -u www-data php occ app:install twofactor_totp
+
+# 安装但不启用
+sudo -u www-data php occ app:install --keep-disabled twofactor_totp
+
+# 列出所有已安装的应用，并显示它们是否 启用或禁用
+sudo -u www-data php occ app:list
+
+# 启用应用
+sudo -u www-data php occ app:enable files_external
+
+# 禁用应用
+sudo -u www-data php occ app:disable files_external
+
+# 可以获取应用的完整文件路径
+sudo -u www-data php occ app:getpath notifications
+
+# 更新应用程序
+sudo -u www-data php occ app:update contacts
+
+# 更新所有应用
+sudo -u www-data php occ app:update --all
 ```
 
 ## 5.6 配置https访问

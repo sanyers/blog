@@ -138,3 +138,32 @@
   background: transparent;
 }
 ```
+
+## 5、img 和 div 高度不同的问题
+
+img 在 div 中会在底部产生额外的空隙
+
+（1）将图片设为块级元素
+
+```css
+img {
+  display: block;
+}
+```
+
+（2）将 div 字体大小设置为 0
+
+```css
+div {
+  font-size: 0;
+}
+/* 缺点:div内部无法显示文字 */
+```
+
+（3）将图片的对齐方式设为 bottom（推荐）
+
+```css
+img {
+  vertical-align: bottom;
+}
+```
