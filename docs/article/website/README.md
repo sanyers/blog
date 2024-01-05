@@ -116,6 +116,8 @@
 
 [ion-sdk](https://github.com/ionorg/ion-sdk-js/tree/master) [ion-sfu](https://github.com/ionorg/ion-sfu)
 
+[webcodec](https://an.rustfisher.com/webrtc/peerconnection/change-codec-res/)
+
 ## Linux
 
 [linux kill 关闭进程命令](http://www.zzvips.com/article/1929.html)

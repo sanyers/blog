@@ -132,3 +132,17 @@ sudo systemctl start mongod
 ```
 
 mongodb [下载地址](https://www.mongodb.com/try/download/community)
+
+## 7、docker 安装 mongodb
+
+[mongodb tags](https://hub.docker.com/_/mongo/tags)
+
+```sh
+sudo docker pull mongo:6.0.12
+sudo docker run -d -p 27017:27017 --name=mongodb --restart=always -v /home/sanyer/mongo/db:/data/db -v /home/sanyer/backup:/data/backup -v /home/sanyer/mongo/conf:/data/configdb mongo:6.0.12 --auth
+
+# 进入 mongodb 命令行
+sudo docker exec -it mongodb mongosh
+db.createUser( { user: "root", pwd: "123456", roles: [{ role: "root", db: "admin" }] } );
+db.auth('root', '123456')
+```
