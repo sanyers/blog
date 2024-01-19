@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <div class="video-info">
+        <video id="myVideo" autoplay playsinline webkit-playsinline></video>
+      </div>
+      <button onclick="openMedia()">开始</button>
+      <button onclick="stopMedia()">结束</button>
+    </div>
+    <script src="./adapter.js"></script>
+    <script>
+      let localStream = null;
+      async function openMedia() {
+        localStream = await getMediaStream();
+        localStream.getVideoTracks()[0].getSettings().height = 100;
+        console.log(localStream.getVideoTracks()[0].getSettings().cursor);
+        const myVideo = document.getElementById('myVideo');
+        myVideo.srcObject = localStream;
+      }
+
+      function getMediaStream() {
+        const setConstraints = {
+          // video: {
+          //   width: 640,
+          //   height: 480,
+          //   cursor: 'never',
+          // },
+          cursor: false,
+          video: {
+            cursor: false,
+            width: 1920,
+            height: 1080,
+            displaySurface: 'monitor',
+            logicalSurface: true,
+          },
+          audio: false,
+        };
+        const mediaStream = navigator.mediaDevices.getDisplayMedia({
+          video: { cursor: 'nerver' },
+        });
+        return mediaStream;
+      }
+
+      function stopMedia() {
+        localStream.getTracks().forEach(i => i.stop());
+      }
+    </script>
+  </body>
+</html>

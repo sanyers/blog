@@ -53,7 +53,7 @@
 
 > test.h
 
-```h
+```cpp
 #pragma once
 #ifndef TEST_H
 #define TEST_H
@@ -66,6 +66,7 @@ using namespace std;
 const string fun_a(const string name) {
     string str = " hello!";
     string strs = name + str;
+    return strs;
 }
 
 #endif
@@ -113,3 +114,11 @@ console.log(str)
 
 - binding.gyp 编译使用 python
 - c++ 编译使用 vs2015+
+
+## 5、缺点
+
+NAPI编译的库不具备跨平台运行，如果在winows平台下编译，只能在winows平台运行，不能在linux下运行。
+
+linux下编译的库，也不能在winows下运行。
+
+推荐使用 wasm 方式

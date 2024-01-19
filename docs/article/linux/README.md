@@ -17,6 +17,8 @@ $ sudo passwd -l root # 禁用 root 用户
 
 $ su # 输入 root 密码，进入 root 权限，输入 exit 返回用户权限
 
+$ ps aux # 查看进程详情
+
 $ ps aux | less # 查看所有运行中的进程
 
 $ ps aux|grep xxx # 搜索相关进程

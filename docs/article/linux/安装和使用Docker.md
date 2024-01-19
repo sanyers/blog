@@ -237,7 +237,7 @@ vim /etc/my.cnf
 # 将容器中的文件拷贝出来
 sudo docker cp 容器ID:/etc/my.cnf /home/sanyer/
 # 将容器中的文件拷贝回去
-sudo docker cp /home/sanyer/my.cnf  容器ID:/etc/
+sudo docker cp /home/sanyer/my.cnf 容器ID:/etc/
 
 # 容器删除后配置会失效，修改后需要重启容器才能生效
 ```

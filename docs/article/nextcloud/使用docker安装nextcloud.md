@@ -303,7 +303,36 @@ sudo docker exec -it nextcloud /bin/bash
 sudo -u www-data php occ maintenance:update:htaccess
 ```
 
-## 6、参考
+## 7、nextcloud 镜像迁移
+
+```bash
+# 保存镜像
+sudo docker save nextcloud>./nextcloud.tar
+# 加载镜像
+sudo docker load < nextcloud.tar
+# 设置镜像名称
+docker tag 镜像id nextcloud:27.1.5
+# 运行
+sudo docker run -d -p 8080:80 --name nextcloud --restart always -v /home/sanyer/nextcloud:/var/www/html nextcloud:27.1.5
+```
+
+注意：**nextcloud 从新部署之后，访问首页进入安装界面，需要在同一个网段内，若跨越多个网段将无法访问，无法安装成功**
+
+## 8、您的数据目录无效。 请确定在根目录下有一个名为".ocdata"的文件
+
+该错误可能是由于迁移目录和账号引起的
+
+（1）可以在 data 目录下创建 .ocdata 文件，设置根文件夹 `sudo chown -R www-data:www-data nextcloud`，进入根目录设置 `sudo chown -R www-data:www-data data`
+
+（2）管理设置 => 基本设置 => 后台任务 => 选择 cron 任务，然后再切换回去即可
+
+## 9、多个 nextcloud 部署之后，登录导致上一个 nextcloud 账号失效
+
+由于 nextcloud 依据 cookies 来判断登录，如果一台服务器部署多个 nextcloud，不同端口，则会出现登录问题
+
+修改 config.php 配置文件 `instanceid` 值即可
+
+## 9、参考
 
 https://zhuanlan.zhihu.com/p/435516648
 
