@@ -259,3 +259,37 @@ apt-get install git-lfs
 # Install Git LFS configuration.
 git lfs install
 ```
+
+## 6、设置代理
+
+### 6.1 设置 git 代理
+
+设置代理 http/https 协议(git clone 命令)
+
+```bash
+git config http.proxy http://127.0.0.1:1080
+git config https.proxy http://127.0.0.1:1080
+```
+
+设置命令后，会在项目 `./.git/config` 下加上对应代理
+
+### 6.2 设置 ssh 代理
+
+配置 `~/.ssh/config` 若没有 config 则创建一个
+
+```
+Host github.com
+  ProxyCommand connect -H 127.0.0.1:1080 %h %p
+  HostName %h
+  Port 22
+  User git
+  IdentityFile  ~/.ssh/id_rsa 
+  IdentitiesOnly yes
+```
+
+### 6.3 设置 cmd 代理
+
+```bash
+set http_proxy=http://127.0.0.1:1080
+set https_proxy=http://127.0.0.1:1080
+```
