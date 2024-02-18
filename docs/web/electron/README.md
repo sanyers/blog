@@ -1,4 +1,4 @@
-# electron基础知识
+# electron 基础知识
 
 ## 1、electron 快捷按钮
 
@@ -10,5 +10,6 @@
 - 缩放-缩小 `Ctrl+-`
 - 全屏 `F11`
 - 最小化 `Ctrl+M`
-- 关闭 `Ctrl+R`
-- 刷新 `Ctrl+W`
+- 关闭窗口 `Ctrl+W`
+- 前进 `Ctrl+→`
+- 后退 `Ctrl+←`

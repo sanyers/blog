@@ -10,9 +10,9 @@
 
 设置为淘宝镜像或私有源
 
-`npm config set registry https://registry.npm.taobao.org`
-
 `npm config set registry http://registry.npmmirror.com`
+
+`npm config set registry https://npmmirror.com`
 
 设置回官方源
 
