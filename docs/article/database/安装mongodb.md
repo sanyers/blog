@@ -143,6 +143,7 @@ sudo docker run -d -p 27017:27017 --name=mongodb --restart=always -v /home/sanye
 
 # 进入 mongodb 命令行
 sudo docker exec -it mongodb mongosh
+use admin
 db.createUser( { user: "root", pwd: "123456", roles: [{ role: "root", db: "admin" }] } );
 db.auth('root', '123456')
 ```

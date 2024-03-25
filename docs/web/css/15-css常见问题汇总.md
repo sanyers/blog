@@ -47,7 +47,9 @@
 
 参考：https://blog.csdn.net/neabea2016/article/details/82732538
 
-## 2、css 多行出现省略
+## 2、css 文字省略
+
+（1）多行出现省略
 
 ```html
 <div class="test">
@@ -70,7 +72,28 @@
 </style>
 ```
 
-单行省略
+（2）两行文字超出省略
+
+```html
+<style>
+  .test {
+    width: 200px;
+  }
+  .test span {
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: pre-wrap;
+    height: 72px;
+  }
+</style>
+<div class="test">
+  <span> 水电费第三方温热无若无水电费水电费沃尔沃二高度高度尔特瑞特 </span>
+</div>
+```
+
+（3）单行省略
 
 ```css
 .test {
@@ -165,5 +188,40 @@ div {
 ```css
 img {
   vertical-align: bottom;
+}
+```
+
+## 6、css 鼠标穿透点击
+
+```css
+.test {
+  pointer-events: none; /* 元素不再是鼠标事件的目标，鼠标不再监听当前层，而去监听下一层中的元素 */
+  pointer-events: auto; /* 默认值 */
+}
+```
+
+## 7、颜色渐变
+
+```css
+/* 边框线性渐变 */
+.test {
+  /* 边框的颜色为什么不重要，会被下面覆盖的 */
+  border: 10px solid black;
+	/* 最后面跟的 10 表示内向偏移量，写成和边框设置的宽度一样即可 */
+  border-image: linear-gradient(to bottom right,yellow, green) 10;
+}
+
+/* 边框径向渐变 */
+.test2 {
+  border: 1px solid black;
+  border-image: radial-gradient(yellow 70%, green 130%) 1;
+}
+
+/* 文字渐变 */
+.test3 {
+　background: linear-gradient(to right, red, blue);
+　-webkit-background-clip: text;
+　background-clip: text;
+　color: transparent;
 }
 ```

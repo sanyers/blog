@@ -82,3 +82,14 @@ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -
 # 设置开机自动启动
 sudo systemctl enable pm2-sanyer
 ```
+
+## 日志备份与自动删除
+
+```bash
+sudo pm2 flush # 手动删除日志
+
+sudo pm2 install pm2-logrotate   # 安装自动删除日志服务
+ 
+pm2 set pm2-logrotate-ext:retain 7   # 保存7个文件
+pm2 set pm2-logrotate-ext:max_size 100M    # 每个备份文件大小为100M
+```

@@ -70,6 +70,8 @@
 
 [animate.css](https://animate.style/)
 
+[box-shadow-examples](https://getcssscan.com/css-box-shadow-examples?ref=producthunt)
+
 ## golang
 
 [go官网](https://go.dev/)
@@ -145,6 +147,8 @@
 [FastChat](https://github.com/lm-sys/FastChat)
 
 [minigpt4.cpp](https://github.com/Maknee/minigpt4.cpp/)
+
+[Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca)
 
 ## 书库
 

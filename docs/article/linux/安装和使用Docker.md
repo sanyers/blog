@@ -1,5 +1,7 @@
 # 安装和使用 Docker
 
+[https://hub.docker.com/](https://hub.docker.com/)
+
 ## 1、在 Ubuntu 20.04 上安装 Docker
 
 更新软件包索引，并且安装必要的依赖软件，来添加一个新的 HTTPS 软件源：
@@ -86,7 +88,7 @@ docker container stop $(docker container ls -aq)
 docker system prune -a --volumes
 ```
 
-现在你可以使用apt像卸载其他软件包一样来卸载 Docker：
+现在你可以使用 apt 像卸载其他软件包一样来卸载 Docker：
 
 ```
 sudo apt purge docker-ce
@@ -162,6 +164,9 @@ sudo docker ps -a --no-trunc
 
 # 查看映射
 docker inspect container_name | grep Mounts -A 20
+
+# 更新容器为自动重启
+sudo docker update --restart=always 容器ID
 ```
 
 ## 6、docker 的运行模式与 --rm 选项的作用
@@ -178,7 +183,7 @@ docker run -d=false ...
 
 注意，只有在前台模式下，才有必要设置 `-it` 命令选项
 
-2、后台模式（也称detached模式）
+2、后台模式（也称 detached 模式）
 
 ```sh
 docker run -d ...
@@ -202,12 +207,12 @@ docker run --rm=true xxx
 
 docker 的 --rm 与 docker rm 的区别
 
-- 使用 docker rm 删除容器  ——  删除容器，挂载点的文件还存在
-- 使用 --rm 参数   ——  删除容器，并还会删掉挂载点的数据
+- 使用 docker rm 删除容器 —— 删除容器，挂载点的文件还存在
+- 使用 --rm 参数 —— 删除容器，并还会删掉挂载点的数据
 
 ## 7、常见问题
 
-### 7.1 关于启动Docker容器时”无法执行二进制文件”的问题
+### 7.1 关于启动 Docker 容器时”无法执行二进制文件”的问题
 
 `docker run -it [容器名称] /bin/bash`
 然后，在极少数情况下
@@ -218,7 +223,7 @@ docker 的 --rm 与 docker rm 的区别
 
 ``docker run -it [容器名称]`
 
-### 7.2 docker修改容器内部文件的方法
+### 7.2 docker 修改容器内部文件的方法
 
 1、进入容器内部修改
 
@@ -250,6 +255,26 @@ sudo docker cp /home/sanyer/my.cnf 容器ID:/etc/
 # 冒号前是本地路径（需要绝对路径），冒号后是容器中的路径，可以挂载文件和文件夹
 $ docker run -d --name test -p 8080:80 -v /home/sanyer/my.cnf:/etc/my.cnf sanyer/test
 ```
+
+### 7.3 从容器中如何访问到宿主机
+
+(1) 第一种方式
+
+```bash
+# --add-host 标志向容器的 /etc/hosts 文件添加一个条目。上面显示的值将 host.docker.internal 映射到容器的主机网关
+docker run -d --add-host host.docker.internal:host-gateway my-container:latest
+```
+
+(2) 第二种方式
+
+```bash
+# 通过添加 --network=host 标志与主机网络一起启动容器
+docker run -d --network=host my-container:latest
+```
+
+（3）第三种方式
+
+直接通过ip访问
 
 ## 8、参考
 
