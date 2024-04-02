@@ -118,9 +118,38 @@ windows 导入：
 <a data-fancybox title="3" href="/blog/img/web/webrtc/3/3.png"><img :src="$withBase('/img/web/webrtc/3/3.png')" alt="3"></a>
 </div>
 
-MacOS 的做法也一样，同样选择将 CA 证书导入到受信任的根证书办法机构。
+Windows 命令行执行
+
+```bash
+certutil -addstore -f "ROOT" selfsigned.crt
+```
+
+Mac OS X
+
+```
+sudo security add-trusted-cert -d -r trustRoot -k ~/Library/Keychains/login.keychain "selfsigned.crt"
+```
+
+如果想将自签名证书在全系统级别受信任，需要将上面的证书目标路径从 ~/Library/Keychains/login.keychain 替换成 /Library/Keychains/login.keychain。
+
+注意：在Mac下，浏览器和 curl 会自动信任新增的自签名证书，但许多编程语言并没有默认集成 keychain，因此不能自动通过自签名证书。
 
 Ubuntu 的做法可以将证书文件(必须是 crt 后缀)放入 `/usr/local/share/ca-certificates/`，然后执行 `sudo update-ca-certificates`
+
+```bash
+$ sudo apt install ca-certificates -y
+$ cp selfsigned.crt /usr/local/share/ca-certificates/
+$ sudo update-ca-certificates --verbose
+```
+
+CentOS
+
+```bash
+$ sudo yum install -y ca-certificates
+$ sudo cp selfsigned.crt /usr/share/pki/ca-trust-source/anchors/
+$ sudo update-ca-trust force-enable
+$ sudo update-ca-trust extract
+```
 
 在 iOS 上，您可以使用 AirDrop、通过电子邮件将 CA 发送给自己，或者从 HTTP 服务器提供它。打开它后，您需要在“配置文件[下载>设置”中安装配置文件](https://github.com/FiloSottile/mkcert/issues/233#issuecomment-690110809)，然后[在其中启用完全信任](https://support.apple.com/en-nz/HT204477)。
 
