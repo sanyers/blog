@@ -14,19 +14,19 @@
 （1）下载
 
 <div class="img-page">
-<a data-fancybox title="1" href="/blog/img/article/jetson/1.png"><img :src="$withBase('/img/article/database/1.png')" alt="1"></a>
+<a data-fancybox title="1" href="/blog/img/article/jetson/1.png"><img :src="$withBase('/img/article/jetson/1.png')" alt="1"></a>
 </div>
 
 （2）注册一个开发者账号(有账号直接登录)
 
 <div class="img-page">
-<a data-fancybox title="2" href="/blog/img/article/jetson/2.png"><img :src="$withBase('/img/article/database/2.png')" alt="2"></a>
+<a data-fancybox title="2" href="/blog/img/article/jetson/2.png"><img :src="$withBase('/img/article/jetson/2.png')" alt="2"></a>
 </div>
 
 （3）等待下载完成（可在windows下载好之后，将安装包拷贝到Ubuntu系统下进行安装）
 
 <div class="img-page">
-<a data-fancybox title="3" href="/blog/img/article/jetson/3.png"><img :src="$withBase('/img/article/database/3.png')" alt="3"></a>
+<a data-fancybox title="3" href="/blog/img/article/jetson/3.png"><img :src="$withBase('/img/article/jetson/3.png')" alt="3"></a>
 </div>
 
 （4）执行安装命令
@@ -42,11 +42,11 @@ sudo apt install ./SDK包的文件名
 将Jetson Xavier NX的FC REC引脚和GND引脚用杜邦线短接（第二个和第三个引脚）让Jetson Xavier NX进入recovery模式，连接USB到自己的电脑，如下图所示。给Jetson Xavier NX接通电源，开始系统的烧录。
 
 <div class="img-page">
-<a data-fancybox title="4" href="/blog/img/article/jetson/4.png"><img :src="$withBase('/img/article/database/4.png')" alt="4"></a>
+<a data-fancybox title="4" href="/blog/img/article/jetson/4.png"><img :src="$withBase('/img/article/jetson/4.png')" alt="4"></a>
 </div>
 
 <div class="img-page">
-<a data-fancybox title="5" href="/blog/img/article/jetson/5.png"><img :src="$withBase('/img/article/database/5.png')" alt="5"></a>
+<a data-fancybox title="5" href="/blog/img/article/jetson/5.png"><img :src="$withBase('/img/article/jetson/5.png')" alt="5"></a>
 </div>
 
 （2）打开SDKmanager，选择LOGIN（一定要确保网络畅通）
@@ -56,7 +56,7 @@ sudo apt install ./SDK包的文件名
 （3）点击LOGIN之后会跳转到网页登录，检查网络状态，输入在下载SDK时用来注册会员的邮箱，点击Sign in。
 
 <div class="img-page">
-<a data-fancybox title="6" href="/blog/img/article/jetson/6.png"><img :src="$withBase('/img/article/database/6.png')" alt="6"></a>
+<a data-fancybox title="6" href="/blog/img/article/jetson/6.png"><img :src="$withBase('/img/article/jetson/6.png')" alt="6"></a>
 </div>
 
 输入密码，进行登录，新设备第一次登录时，会进行安全验证，注册邮箱会有验证邮件。
@@ -64,7 +64,7 @@ sudo apt install ./SDK包的文件名
 （4）登录之后选择自己的边缘设备型号（Jetson Xavier NX），选择Linux版本进行安装。
 
 <div class="img-page">
-<a data-fancybox title="7" href="/blog/img/article/jetson/7.png"><img :src="$withBase('/img/article/database/7.png')" alt="7"></a>
+<a data-fancybox title="7" href="/blog/img/article/jetson/7.png"><img :src="$withBase('/img/article/jetson/7.png')" alt="7"></a>
 </div>
 
 不选Host Machine（将Host Machine勾掉，不需要为主机下载NVIDIA资源）
@@ -72,28 +72,28 @@ sudo apt install ./SDK包的文件名
 如果不能识别硬件（如下）：
 
 <div class="img-page">
-<a data-fancybox title="8" href="/blog/img/article/jetson/8.png"><img :src="$withBase('/img/article/database/8.png')" alt="8"></a>
+<a data-fancybox title="8" href="/blog/img/article/jetson/8.png"><img :src="$withBase('/img/article/jetson/8.png')" alt="8"></a>
 </div>
 
 
 需点击虚拟机→可移动设备→找到硬件设备点击与主机连接
 
 <div class="img-page">
-<a data-fancybox title="9" href="/blog/img/article/jetson/9.png"><img :src="$withBase('/img/article/database/9.png')" alt="9"></a>
+<a data-fancybox title="9" href="/blog/img/article/jetson/9.png"><img :src="$withBase('/img/article/jetson/9.png')" alt="9"></a>
 </div>
 
 <div class="img-page">
-<a data-fancybox title="10" href="/blog/img/article/jetson/10.png"><img :src="$withBase('/img/article/database/10.png')" alt="10"></a>
+<a data-fancybox title="10" href="/blog/img/article/jetson/10.png"><img :src="$withBase('/img/article/jetson/10.png')" alt="10"></a>
 </div>
 
 <div class="img-page">
-<a data-fancybox title="11" href="/blog/img/article/jetson/11.png"><img :src="$withBase('/img/article/database/11.png')" alt="11"></a>
+<a data-fancybox title="11" href="/blog/img/article/jetson/11.png"><img :src="$withBase('/img/article/jetson/11.png')" alt="11"></a>
 </div>
 
 正确的界面是：
 
 <div class="img-page">
-<a data-fancybox title="12" href="/blog/img/article/jetson/12.png"><img :src="$withBase('/img/article/database/12.png')" alt="12"></a>
+<a data-fancybox title="12" href="/blog/img/article/jetson/12.png"><img :src="$withBase('/img/article/jetson/12.png')" alt="12"></a>
 </div>
 
 （5）选择好之后进入STEP 02，只安装裸系统，不安装其它包，选择Jetson OS，进行下载和安装。（建议安装所有包，将Jetson OS与Jetson SDK Components都选择，省的以后安装cuda等）
@@ -101,43 +101,43 @@ sudo apt install ./SDK包的文件名
 > 可选修改下载文件的存放地址
 
 <div class="img-page">
-<a data-fancybox title="13" href="/blog/img/article/jetson/13.png"><img :src="$withBase('/img/article/database/13.png')" alt="13"></a>
+<a data-fancybox title="13" href="/blog/img/article/jetson/13.png"><img :src="$withBase('/img/article/jetson/13.png')" alt="13"></a>
 </div>
 
 可能会弹出目录不存在，点击create即可
 
 <div class="img-page">
-<a data-fancybox title="14" href="/blog/img/article/jetson/14.png"><img :src="$withBase('/img/article/database/14.png')" alt="14"></a>
+<a data-fancybox title="14" href="/blog/img/article/jetson/14.png"><img :src="$withBase('/img/article/jetson/14.png')" alt="14"></a>
 </div>
 
 需要输入主机密码：
 
 <div class="img-page">
-<a data-fancybox title="15" href="/blog/img/article/jetson/15.png"><img :src="$withBase('/img/article/database/15.png')" alt="15"></a>
+<a data-fancybox title="15" href="/blog/img/article/jetson/15.png"><img :src="$withBase('/img/article/jetson/15.png')" alt="15"></a>
 </div>
 
 （6）在下载完系统镜像和组件后，进行刷机那一步，**storage Device一定选择NVMe**。选完后刷机会直接把系统刷到nvme固态盘上。
 
 <div class="img-page">
-<a data-fancybox title="16" href="/blog/img/article/jetson/16.png"><img :src="$withBase('/img/article/database/16.png')" alt="16"></a>
+<a data-fancybox title="16" href="/blog/img/article/jetson/16.png"><img :src="$withBase('/img/article/jetson/16.png')" alt="16"></a>
 </div>
 
 选择Automatic Setup-Jetson Xavirt NX会提示错误，所以将其改为Manual Setup-Jetson Xavirt NX：
 
 <div class="img-page">
-<a data-fancybox title="17" href="/blog/img/article/jetson/17.png"><img :src="$withBase('/img/article/database/17.png')" alt="17"></a>
+<a data-fancybox title="17" href="/blog/img/article/jetson/17.png"><img :src="$withBase('/img/article/jetson/17.png')" alt="17"></a>
 </div>
 
 填写用户名密码
 
 <div class="img-page">
-<a data-fancybox title="18" href="/blog/img/article/jetson/18.png"><img :src="$withBase('/img/article/database/18.png')" alt="18"></a>
+<a data-fancybox title="18" href="/blog/img/article/jetson/18.png"><img :src="$withBase('/img/article/jetson/18.png')" alt="18"></a>
 </div>
 
 （7）等待下载和安装结束。
 
 <div class="img-page">
-<a data-fancybox title="19" href="/blog/img/article/jetson/19.png"><img :src="$withBase('/img/article/database/19.png')" alt="19"></a>
+<a data-fancybox title="19" href="/blog/img/article/jetson/19.png"><img :src="$withBase('/img/article/jetson/19.png')" alt="19"></a>
 </div>
 
 （8）烧录完成，点击FINISH，然后关闭软件，给Jetson Xavier NX外接一个屏幕，拔开电源重启，然后进行新系统的设置（用户名，密码等等）。
