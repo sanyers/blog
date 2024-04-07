@@ -276,6 +276,100 @@ docker run -d --network=host my-container:latest
 
 直接通过ip访问
 
+### 7.4 修改Docker默认镜像和容器存储位置
+
+（1）查看 docker 信息
+
+```bash
+sudo docker info
+
+# docker存储驱动程序和默认存位：
+Storage Driver: overlay
+Docker Root Dir: /var/lib/docker
+
+#
+# 查看文件夹大小
+sudo du -hd 1
+
+```
+（2）停止docker服务
+
+```bash
+sudo systemctl stop docker.service
+```
+
+（3）目录迁移
+
+```bash
+# 3.1 创建新的docker目录
+
+# 查看文件夹大小
+sudo du -hd 1
+
+sudo mkdir -p /home/sanyer/docker
+
+# 3.2 迁移目录
+sudo cp -r /var/lib/docker/* /home/sanyer/docker/
+```
+
+（4）修改配置文件
+
+#### 4.1 编辑 /etc/docker/daemon.json 文件
+
+```bash
+sudo vim /etc/docker/daemon.json # 默认情况下这个配置文件是没有的，这里实际也就是新建一个，然后写入以下内容：
+
+{
+  "data-root": "/home/sanyer/docker"
+}
+```
+
+> 取决于具体的 ubuntu 版本或者 kernel 版本决定要用 data-root 还是 graph /home/sanyer/docker --> docker的存储路径
+
+此文件还涉及默认源的设定，如果设定了国内源，那么实际就是在源地址下方加一行，写成：
+
+```json
+{
+  "registry-mirrors": ["http://hub-mirror.c.163.com"],
+  "data-root": "/home/sanyer/docker"
+}
+```
+
+#### 4.2 编辑 docker 服务配置文件
+
+```bash
+sudo vim /etc/systemd/system/multi-user.target.wants/docker.service
+
+# 将ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock修改以下内容：
+ExecStart=/usr/bin/dockerd --graph=/home/sanyer/docker --storage-driver=overlay
+
+```
+
+（5）保存退出，然后重启 docker 服务
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo systemctl status docker
+```
+
+（6）检查docker存储路径是否配置成功
+
+`sudo docker info`
+
+（7）启动成功后，再确认之前的镜像还在
+
+```bash
+docker ps -a
+docker images
+```
+
+（8）确定容器、镜像没问题后删除/var/lib/docker/目录中的文件。
+
+```bash
+sudo rm -rf /var/lib/docker/*
+```
+
 ## 8、参考
 
 https://zhuanlan.zhihu.com/p/143156163

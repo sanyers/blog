@@ -65,8 +65,6 @@ $ free -h # 查看内存占用
 
 $ watch -n 10 nvidia-smi # 10秒刷新一次，查看 nvidia 显卡显存占用
 
-$ sudo reboot # 重启
-
 $ cat /proc/version # 查看cpu型号
 
 $ whereis xxx # 查看软件安装目录
@@ -78,6 +76,9 @@ $ vim ~/.bashrc # 编辑当前用户配置文件
 $ source ~/.bashrc # 保存环境配置
 
 $ sudo chown -R vvt: test(目录或目录路径) # 修改目录用户权限
+
+$ sudo reboot # 重启
+$ sudo poweroff # 关机
 ```
 
 ## 2、服务命令

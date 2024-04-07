@@ -133,7 +133,18 @@ sudo systemctl start mongod
 
 mongodb [下载地址](https://www.mongodb.com/try/download/community)
 
-## 7、docker 安装 mongodb
+## 7、卸载
+
+```bash
+sudo apt-get purge mongodb-org*
+sudo apt-get remove --auto-remove mongodb
+
+# 删除数据库和日志文件
+sudo rm -r /var/log/mongodb
+sudo rm -r /var/lib/mongodb
+```
+
+## 8、docker 安装 mongodb
 
 [mongodb tags](https://hub.docker.com/_/mongo/tags)
 
