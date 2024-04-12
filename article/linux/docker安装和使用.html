@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>安装和使用 Docker | sanyer</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/blog/favicon.ico">
+    <link rel="stylesheet" href="/blog/css/index.css">
+    <script src="/blog/js/index.js"></script>
+    <meta name="description" content="This is sanyer&#39;s blog.">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.1894d7db.css" as="style"><link rel="preload" href="/blog/assets/js/app.7bd07815.js" as="script"><link rel="preload" href="/blog/assets/js/2.ce51b73f.js" as="script"><link rel="preload" href="/blog/assets/js/53.7f903c19.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.1beb9fb6.js"><link rel="prefetch" href="/blog/assets/js/100.cd3f6fed.js"><link rel="prefetch" href="/blog/assets/js/101.f4fd99eb.js"><link rel="prefetch" href="/blog/assets/js/102.40c3fefe.js"><link rel="prefetch" href="/blog/assets/js/103.a8882924.js"><link rel="prefetch" href="/blog/assets/js/104.7f8e8fc9.js"><link rel="prefetch" href="/blog/assets/js/105.24977653.js"><link rel="prefetch" href="/blog/assets/js/106.a380000d.js"><link rel="prefetch" href="/blog/assets/js/107.6b5bfef1.js"><link rel="prefetch" href="/blog/assets/js/108.e707baf7.js"><link rel="prefetch" href="/blog/assets/js/109.946fab5f.js"><link rel="prefetch" href="/blog/assets/js/11.fd10d48d.js"><link rel="prefetch" href="/blog/assets/js/110.bad2186d.js"><link rel="prefetch" href="/blog/assets/js/111.b37992b4.js"><link rel="prefetch" href="/blog/assets/js/112.9843d8b7.js"><link rel="prefetch" href="/blog/assets/js/113.fcb5c008.js"><link rel="prefetch" href="/blog/assets/js/114.3c00421b.js"><link rel="prefetch" href="/blog/assets/js/115.29849dbe.js"><link rel="prefetch" href="/blog/assets/js/116.48274738.js"><link rel="prefetch" href="/blog/assets/js/117.e7731a5a.js"><link rel="prefetch" href="/blog/assets/js/118.694fcd90.js"><link rel="prefetch" href="/blog/assets/js/119.1205a7ee.js"><link rel="prefetch" href="/blog/assets/js/12.d2ec0e54.js"><link rel="prefetch" href="/blog/assets/js/120.641cbb74.js"><link rel="prefetch" href="/blog/assets/js/121.d772dcaf.js"><link rel="prefetch" href="/blog/assets/js/122.3abdec5a.js"><link rel="prefetch" href="/blog/assets/js/123.999ffb62.js"><link rel="prefetch" href="/blog/assets/js/124.4951061b.js"><link rel="prefetch" href="/blog/assets/js/125.9c6cecc2.js"><link rel="prefetch" href="/blog/assets/js/126.933f22b4.js"><link rel="prefetch" href="/blog/assets/js/127.c0dec779.js"><link rel="prefetch" href="/blog/assets/js/128.b8435a4c.js"><link rel="prefetch" href="/blog/assets/js/129.120eae98.js"><link rel="prefetch" href="/blog/assets/js/13.8ca067d3.js"><link rel="prefetch" href="/blog/assets/js/130.41e7a370.js"><link rel="prefetch" href="/blog/assets/js/131.3008ae6a.js"><link rel="prefetch" href="/blog/assets/js/132.ee4e8510.js"><link rel="prefetch" href="/blog/assets/js/133.4436f414.js"><link rel="prefetch" href="/blog/assets/js/134.c9fa20d8.js"><link rel="prefetch" href="/blog/assets/js/135.259a3a71.js"><link rel="prefetch" href="/blog/assets/js/136.1431b3b8.js"><link rel="prefetch" href="/blog/assets/js/137.f9f4e7b6.js"><link rel="prefetch" href="/blog/assets/js/138.3277d96f.js"><link rel="prefetch" href="/blog/assets/js/139.3fbab4ab.js"><link rel="prefetch" href="/blog/assets/js/14.50ab583a.js"><link rel="prefetch" href="/blog/assets/js/140.8f06b195.js"><link rel="prefetch" href="/blog/assets/js/141.c83a8e32.js"><link rel="prefetch" href="/blog/assets/js/142.09a57fb3.js"><link rel="prefetch" href="/blog/assets/js/143.49ff90ee.js"><link rel="prefetch" href="/blog/assets/js/144.50c4f951.js"><link rel="prefetch" href="/blog/assets/js/145.7d3c66db.js"><link rel="prefetch" href="/blog/assets/js/146.fbc497b2.js"><link rel="prefetch" href="/blog/assets/js/147.5159f0f9.js"><link rel="prefetch" href="/blog/assets/js/148.fc594fd4.js"><link rel="prefetch" href="/blog/assets/js/149.10c669f6.js"><link rel="prefetch" href="/blog/assets/js/15.c739d419.js"><link rel="prefetch" href="/blog/assets/js/150.2996a896.js"><link rel="prefetch" href="/blog/assets/js/151.8117fdc9.js"><link rel="prefetch" href="/blog/assets/js/152.644cb66e.js"><link rel="prefetch" href="/blog/assets/js/153.1c1f08f6.js"><link rel="prefetch" href="/blog/assets/js/154.351a0a16.js"><link rel="prefetch" href="/blog/assets/js/155.3577c79f.js"><link rel="prefetch" href="/blog/assets/js/156.60485cb4.js"><link rel="prefetch" href="/blog/assets/js/157.3275ff8b.js"><link rel="prefetch" href="/blog/assets/js/158.19dfb1b0.js"><link rel="prefetch" href="/blog/assets/js/159.bf4b3713.js"><link rel="prefetch" href="/blog/assets/js/16.16e7445a.js"><link rel="prefetch" href="/blog/assets/js/160.5cd1a255.js"><link rel="prefetch" href="/blog/assets/js/161.457841e1.js"><link rel="prefetch" href="/blog/assets/js/162.3279f83c.js"><link rel="prefetch" href="/blog/assets/js/163.8b9d34ed.js"><link rel="prefetch" href="/blog/assets/js/164.d11f7af2.js"><link rel="prefetch" href="/blog/assets/js/165.f078241b.js"><link rel="prefetch" href="/blog/assets/js/166.17e850ec.js"><link rel="prefetch" href="/blog/assets/js/167.6537af6c.js"><link rel="prefetch" href="/blog/assets/js/168.07fc96a3.js"><link rel="prefetch" href="/blog/assets/js/169.fe11d654.js"><link rel="prefetch" href="/blog/assets/js/17.d4a1ad41.js"><link rel="prefetch" href="/blog/assets/js/170.5624aec5.js"><link rel="prefetch" href="/blog/assets/js/171.6a86cb8b.js"><link rel="prefetch" href="/blog/assets/js/172.a227b8f8.js"><link rel="prefetch" href="/blog/assets/js/173.ca142a7f.js"><link rel="prefetch" href="/blog/assets/js/174.e1c98879.js"><link rel="prefetch" href="/blog/assets/js/175.62590c16.js"><link rel="prefetch" href="/blog/assets/js/176.9fbf1114.js"><link rel="prefetch" href="/blog/assets/js/177.3bf8422d.js"><link rel="prefetch" href="/blog/assets/js/178.2c04cf35.js"><link rel="prefetch" href="/blog/assets/js/179.af9bef70.js"><link rel="prefetch" href="/blog/assets/js/18.0a2ce6d3.js"><link rel="prefetch" href="/blog/assets/js/180.ecb6b5ca.js"><link rel="prefetch" href="/blog/assets/js/181.6cb67af1.js"><link rel="prefetch" href="/blog/assets/js/182.47231253.js"><link rel="prefetch" href="/blog/assets/js/183.b7b2886b.js"><link rel="prefetch" href="/blog/assets/js/184.338cdebd.js"><link rel="prefetch" href="/blog/assets/js/185.381e56d2.js"><link rel="prefetch" href="/blog/assets/js/186.ffd3a4b2.js"><link rel="prefetch" href="/blog/assets/js/187.6ab27833.js"><link rel="prefetch" href="/blog/assets/js/188.2b114092.js"><link rel="prefetch" href="/blog/assets/js/189.811e91c2.js"><link rel="prefetch" href="/blog/assets/js/19.462dc53a.js"><link rel="prefetch" href="/blog/assets/js/190.d00a9537.js"><link rel="prefetch" href="/blog/assets/js/191.87ec2705.js"><link rel="prefetch" href="/blog/assets/js/192.c759bc50.js"><link rel="prefetch" href="/blog/assets/js/193.5a8a0c88.js"><link rel="prefetch" href="/blog/assets/js/194.67a4f024.js"><link rel="prefetch" href="/blog/assets/js/195.33b6b568.js"><link rel="prefetch" href="/blog/assets/js/196.0d388b80.js"><link rel="prefetch" href="/blog/assets/js/197.d8437936.js"><link rel="prefetch" href="/blog/assets/js/198.072c9b2c.js"><link rel="prefetch" href="/blog/assets/js/199.96437f87.js"><link rel="prefetch" href="/blog/assets/js/20.02d46077.js"><link rel="prefetch" href="/blog/assets/js/200.3503dfc8.js"><link rel="prefetch" href="/blog/assets/js/201.77948a03.js"><link rel="prefetch" href="/blog/assets/js/202.15840f51.js"><link rel="prefetch" href="/blog/assets/js/203.30648830.js"><link rel="prefetch" href="/blog/assets/js/204.7ac2b4e6.js"><link rel="prefetch" href="/blog/assets/js/205.7a5270cc.js"><link rel="prefetch" href="/blog/assets/js/206.9c64b953.js"><link rel="prefetch" href="/blog/assets/js/207.2b54c125.js"><link rel="prefetch" href="/blog/assets/js/208.89ba00a1.js"><link rel="prefetch" href="/blog/assets/js/209.f07a367a.js"><link rel="prefetch" href="/blog/assets/js/21.02721281.js"><link rel="prefetch" href="/blog/assets/js/210.766cabda.js"><link rel="prefetch" href="/blog/assets/js/211.d29b9d55.js"><link rel="prefetch" href="/blog/assets/js/212.601cc141.js"><link rel="prefetch" href="/blog/assets/js/213.f41f3e56.js"><link rel="prefetch" href="/blog/assets/js/214.da9e0bda.js"><link rel="prefetch" href="/blog/assets/js/215.b8c4ac3f.js"><link rel="prefetch" href="/blog/assets/js/216.9f905acc.js"><link rel="prefetch" href="/blog/assets/js/217.86f13800.js"><link rel="prefetch" href="/blog/assets/js/218.7901582c.js"><link rel="prefetch" href="/blog/assets/js/219.cd981c58.js"><link rel="prefetch" href="/blog/assets/js/22.2fded3ea.js"><link rel="prefetch" href="/blog/assets/js/220.135971ca.js"><link rel="prefetch" href="/blog/assets/js/221.8def5f9a.js"><link rel="prefetch" href="/blog/assets/js/222.e4cdfd5d.js"><link rel="prefetch" href="/blog/assets/js/223.e803d19b.js"><link rel="prefetch" href="/blog/assets/js/224.34f5053a.js"><link rel="prefetch" href="/blog/assets/js/225.f6833527.js"><link rel="prefetch" href="/blog/assets/js/226.be773523.js"><link rel="prefetch" href="/blog/assets/js/227.6679eb7a.js"><link rel="prefetch" href="/blog/assets/js/228.0d74e288.js"><link rel="prefetch" href="/blog/assets/js/229.c61862b5.js"><link rel="prefetch" href="/blog/assets/js/23.2e266fc0.js"><link rel="prefetch" href="/blog/assets/js/230.169bb540.js"><link rel="prefetch" href="/blog/assets/js/231.276a3c97.js"><link rel="prefetch" href="/blog/assets/js/232.e7458946.js"><link rel="prefetch" href="/blog/assets/js/233.28a6fd3d.js"><link rel="prefetch" href="/blog/assets/js/234.49aa9c1f.js"><link rel="prefetch" href="/blog/assets/js/235.cc6d0061.js"><link rel="prefetch" href="/blog/assets/js/236.8ace8e75.js"><link rel="prefetch" href="/blog/assets/js/237.6950fb8e.js"><link rel="prefetch" href="/blog/assets/js/238.e42cce1b.js"><link rel="prefetch" href="/blog/assets/js/239.f1e20b0d.js"><link rel="prefetch" href="/blog/assets/js/24.daf0ef6b.js"><link rel="prefetch" href="/blog/assets/js/240.b19c9a02.js"><link rel="prefetch" href="/blog/assets/js/241.86dee54a.js"><link rel="prefetch" href="/blog/assets/js/242.9c6c713e.js"><link rel="prefetch" href="/blog/assets/js/243.ff18baf4.js"><link rel="prefetch" href="/blog/assets/js/244.c4868a40.js"><link rel="prefetch" href="/blog/assets/js/245.2e84cd33.js"><link rel="prefetch" href="/blog/assets/js/246.b32cf34a.js"><link rel="prefetch" href="/blog/assets/js/247.0ec98023.js"><link rel="prefetch" href="/blog/assets/js/248.3cdfbb05.js"><link rel="prefetch" href="/blog/assets/js/249.b0cc0e7e.js"><link rel="prefetch" href="/blog/assets/js/25.abbde213.js"><link rel="prefetch" href="/blog/assets/js/250.da08848a.js"><link rel="prefetch" href="/blog/assets/js/251.c06e9540.js"><link rel="prefetch" href="/blog/assets/js/252.9ddc4970.js"><link rel="prefetch" href="/blog/assets/js/253.8132eb87.js"><link rel="prefetch" href="/blog/assets/js/254.7e553a20.js"><link rel="prefetch" href="/blog/assets/js/255.80de2493.js"><link rel="prefetch" href="/blog/assets/js/256.da96cdcd.js"><link rel="prefetch" href="/blog/assets/js/257.1d2d93a1.js"><link rel="prefetch" href="/blog/assets/js/258.c45ea989.js"><link rel="prefetch" href="/blog/assets/js/259.febf4e6c.js"><link rel="prefetch" href="/blog/assets/js/26.cd7594ef.js"><link rel="prefetch" href="/blog/assets/js/260.80f3dec1.js"><link rel="prefetch" href="/blog/assets/js/261.2a81b8f5.js"><link rel="prefetch" href="/blog/assets/js/262.12128e4c.js"><link rel="prefetch" href="/blog/assets/js/263.d36c3904.js"><link rel="prefetch" href="/blog/assets/js/264.4bd2867e.js"><link rel="prefetch" href="/blog/assets/js/265.59948c6f.js"><link rel="prefetch" href="/blog/assets/js/266.413041e8.js"><link rel="prefetch" href="/blog/assets/js/267.83ca8ab5.js"><link rel="prefetch" href="/blog/assets/js/268.2af646b2.js"><link rel="prefetch" href="/blog/assets/js/269.b940eddd.js"><link rel="prefetch" href="/blog/assets/js/27.ce347f2d.js"><link rel="prefetch" href="/blog/assets/js/270.8ba140ad.js"><link rel="prefetch" href="/blog/assets/js/271.c90dca15.js"><link rel="prefetch" href="/blog/assets/js/272.09f8f140.js"><link rel="prefetch" href="/blog/assets/js/273.07752dcb.js"><link rel="prefetch" href="/blog/assets/js/274.af1508da.js"><link rel="prefetch" href="/blog/assets/js/275.ecbc706d.js"><link rel="prefetch" href="/blog/assets/js/276.71be8737.js"><link rel="prefetch" href="/blog/assets/js/277.06e2258a.js"><link rel="prefetch" href="/blog/assets/js/278.c4b1847c.js"><link rel="prefetch" href="/blog/assets/js/279.68f8995d.js"><link rel="prefetch" href="/blog/assets/js/28.26f8f3de.js"><link rel="prefetch" href="/blog/assets/js/280.0f7350c9.js"><link rel="prefetch" href="/blog/assets/js/281.7c06bac3.js"><link rel="prefetch" href="/blog/assets/js/282.000f4ded.js"><link rel="prefetch" href="/blog/assets/js/283.ccbb8064.js"><link rel="prefetch" href="/blog/assets/js/284.44d33fd1.js"><link rel="prefetch" href="/blog/assets/js/285.1bf2db27.js"><link rel="prefetch" href="/blog/assets/js/286.4e74ecdc.js"><link rel="prefetch" href="/blog/assets/js/287.c6233f97.js"><link rel="prefetch" href="/blog/assets/js/288.c556ef02.js"><link rel="prefetch" href="/blog/assets/js/289.cd531427.js"><link rel="prefetch" href="/blog/assets/js/29.1c1842b0.js"><link rel="prefetch" href="/blog/assets/js/290.dbb3234f.js"><link rel="prefetch" href="/blog/assets/js/291.668b7c81.js"><link rel="prefetch" href="/blog/assets/js/292.214a9fc5.js"><link rel="prefetch" href="/blog/assets/js/293.51c4b06c.js"><link rel="prefetch" href="/blog/assets/js/294.9b4e22b3.js"><link rel="prefetch" href="/blog/assets/js/295.d7139776.js"><link rel="prefetch" href="/blog/assets/js/296.7d0b4ccc.js"><link rel="prefetch" href="/blog/assets/js/297.5174738b.js"><link rel="prefetch" href="/blog/assets/js/298.eb301015.js"><link rel="prefetch" href="/blog/assets/js/299.0af45060.js"><link rel="prefetch" href="/blog/assets/js/3.a8922ab5.js"><link rel="prefetch" href="/blog/assets/js/30.dac027f7.js"><link rel="prefetch" href="/blog/assets/js/300.995ce646.js"><link rel="prefetch" href="/blog/assets/js/301.adb8aa67.js"><link rel="prefetch" href="/blog/assets/js/302.10b467f2.js"><link rel="prefetch" href="/blog/assets/js/303.9220a26a.js"><link rel="prefetch" href="/blog/assets/js/304.05a4f159.js"><link rel="prefetch" href="/blog/assets/js/305.8cd91da0.js"><link rel="prefetch" href="/blog/assets/js/306.8519cdff.js"><link rel="prefetch" href="/blog/assets/js/307.651f11a0.js"><link rel="prefetch" href="/blog/assets/js/308.8ed707dd.js"><link rel="prefetch" href="/blog/assets/js/309.a1e020e7.js"><link rel="prefetch" href="/blog/assets/js/31.6b0b3986.js"><link rel="prefetch" href="/blog/assets/js/310.1aca89e5.js"><link rel="prefetch" href="/blog/assets/js/311.048717b1.js"><link rel="prefetch" href="/blog/assets/js/312.5850a5a4.js"><link rel="prefetch" href="/blog/assets/js/313.1182be3f.js"><link rel="prefetch" href="/blog/assets/js/314.0bf66c8f.js"><link rel="prefetch" href="/blog/assets/js/315.24f23395.js"><link rel="prefetch" href="/blog/assets/js/316.ad84a776.js"><link rel="prefetch" href="/blog/assets/js/317.2cc9ff30.js"><link rel="prefetch" href="/blog/assets/js/318.8d34cf6f.js"><link rel="prefetch" href="/blog/assets/js/319.ff463416.js"><link rel="prefetch" href="/blog/assets/js/32.b6154ed1.js"><link rel="prefetch" href="/blog/assets/js/320.d23d5e5a.js"><link rel="prefetch" href="/blog/assets/js/321.828c85a6.js"><link rel="prefetch" href="/blog/assets/js/322.18ad3018.js"><link rel="prefetch" href="/blog/assets/js/323.e5a4a3af.js"><link rel="prefetch" href="/blog/assets/js/324.f3762aa5.js"><link rel="prefetch" href="/blog/assets/js/325.fffd1526.js"><link rel="prefetch" href="/blog/assets/js/326.9d738d74.js"><link rel="prefetch" href="/blog/assets/js/327.531a3001.js"><link rel="prefetch" href="/blog/assets/js/328.b4f41b06.js"><link rel="prefetch" href="/blog/assets/js/329.98cdae24.js"><link rel="prefetch" href="/blog/assets/js/33.04c279e4.js"><link rel="prefetch" href="/blog/assets/js/34.c1f8f1cf.js"><link rel="prefetch" href="/blog/assets/js/35.38e6fcf8.js"><link rel="prefetch" href="/blog/assets/js/36.888324d6.js"><link rel="prefetch" href="/blog/assets/js/37.ef9786cd.js"><link rel="prefetch" href="/blog/assets/js/38.dca1f97d.js"><link rel="prefetch" href="/blog/assets/js/39.00020d96.js"><link rel="prefetch" href="/blog/assets/js/4.ee45cdfc.js"><link rel="prefetch" href="/blog/assets/js/40.14704cee.js"><link rel="prefetch" href="/blog/assets/js/41.4e6750e3.js"><link rel="prefetch" href="/blog/assets/js/42.717c2e51.js"><link rel="prefetch" href="/blog/assets/js/43.51f641b7.js"><link rel="prefetch" href="/blog/assets/js/44.bc971cea.js"><link rel="prefetch" href="/blog/assets/js/45.7bfd860a.js"><link rel="prefetch" href="/blog/assets/js/46.33813c26.js"><link rel="prefetch" href="/blog/assets/js/47.52889821.js"><link rel="prefetch" href="/blog/assets/js/48.072522d0.js"><link rel="prefetch" href="/blog/assets/js/49.42b25b88.js"><link rel="prefetch" href="/blog/assets/js/5.6658dbd1.js"><link rel="prefetch" href="/blog/assets/js/50.84bf5c55.js"><link rel="prefetch" href="/blog/assets/js/51.cfbbac25.js"><link rel="prefetch" href="/blog/assets/js/52.b2db688e.js"><link rel="prefetch" href="/blog/assets/js/54.243e3361.js"><link rel="prefetch" href="/blog/assets/js/55.1413d8cc.js"><link rel="prefetch" href="/blog/assets/js/56.3b2813ff.js"><link rel="prefetch" href="/blog/assets/js/57.3deac156.js"><link rel="prefetch" href="/blog/assets/js/58.332da1e0.js"><link rel="prefetch" href="/blog/assets/js/59.2f2c4337.js"><link rel="prefetch" href="/blog/assets/js/6.2da0b1b8.js"><link rel="prefetch" href="/blog/assets/js/60.ba935b34.js"><link rel="prefetch" href="/blog/assets/js/61.1ec9abfa.js"><link rel="prefetch" href="/blog/assets/js/62.e0f555c9.js"><link rel="prefetch" href="/blog/assets/js/63.970bf50a.js"><link rel="prefetch" href="/blog/assets/js/64.68fec971.js"><link rel="prefetch" href="/blog/assets/js/65.046e8156.js"><link rel="prefetch" href="/blog/assets/js/66.7bd78efc.js"><link rel="prefetch" href="/blog/assets/js/67.c2cbd471.js"><link rel="prefetch" href="/blog/assets/js/68.ab7d465d.js"><link rel="prefetch" href="/blog/assets/js/69.38b5dd8c.js"><link rel="prefetch" href="/blog/assets/js/7.9d7d0342.js"><link rel="prefetch" href="/blog/assets/js/70.6a91274d.js"><link rel="prefetch" href="/blog/assets/js/71.dd83e5cc.js"><link rel="prefetch" href="/blog/assets/js/72.0dfa7707.js"><link rel="prefetch" href="/blog/assets/js/73.753a42e6.js"><link rel="prefetch" href="/blog/assets/js/74.2d7f0f4c.js"><link rel="prefetch" href="/blog/assets/js/75.bdc71925.js"><link rel="prefetch" href="/blog/assets/js/76.ec80acdb.js"><link rel="prefetch" href="/blog/assets/js/77.a92c5641.js"><link rel="prefetch" href="/blog/assets/js/78.80442c48.js"><link rel="prefetch" href="/blog/assets/js/79.7de5084c.js"><link rel="prefetch" href="/blog/assets/js/8.e3844e1c.js"><link rel="prefetch" href="/blog/assets/js/80.295a545f.js"><link rel="prefetch" href="/blog/assets/js/81.02f9b9f5.js"><link rel="prefetch" href="/blog/assets/js/82.e959b73b.js"><link rel="prefetch" href="/blog/assets/js/83.ced58c1e.js"><link rel="prefetch" href="/blog/assets/js/84.e01d752f.js"><link rel="prefetch" href="/blog/assets/js/85.9e635cca.js"><link rel="prefetch" href="/blog/assets/js/86.501a29e1.js"><link rel="prefetch" href="/blog/assets/js/87.36a269b0.js"><link rel="prefetch" href="/blog/assets/js/88.77c9e93d.js"><link rel="prefetch" href="/blog/assets/js/89.c818af4e.js"><link rel="prefetch" href="/blog/assets/js/9.1f78bada.js"><link rel="prefetch" href="/blog/assets/js/90.95422e01.js"><link rel="prefetch" href="/blog/assets/js/91.77548c3d.js"><link rel="prefetch" href="/blog/assets/js/92.876517ad.js"><link rel="prefetch" href="/blog/assets/js/93.7b2693a2.js"><link rel="prefetch" href="/blog/assets/js/94.49eb8469.js"><link rel="prefetch" href="/blog/assets/js/95.a54f6f93.js"><link rel="prefetch" href="/blog/assets/js/96.fe278b23.js"><link rel="prefetch" href="/blog/assets/js/97.37b5d97e.js"><link rel="prefetch" href="/blog/assets/js/98.1016cf5f.js"><link rel="prefetch" href="/blog/assets/js/99.5257a728.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.1894d7db.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/img/logo.png" alt="sanyer" class="logo"> <span class="site-name can-hide">sanyer</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端笔记" class="dropdown-title"><span class="title">前端笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端笔记" class="mobile-dropdown-title"><span class="title">前端笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue3/" class="nav-link">
+  vue3
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vite/" class="nav-link">
+  vite
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/babel/" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/weex/" class="nav-link">
+  weex
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/electron/" class="nav-link">
+  electron
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webrtc/" class="nav-link">
+  WebRTC
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/websocket/" class="nav-link">
+  WebSocket
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/" class="nav-link">
+  网络知识
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/design/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/algorithm/" class="nav-link">
+  数据结构/算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/security/" class="nav-link">
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/interview/" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/booklist/" class="nav-link">
+  书单
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/article/website/" class="nav-link">
+  站点分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/configure/" class="nav-link">
+  配置说明
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/android/" class="nav-link">
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/nginx/" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/pm2/" class="nav-link">
+  pm2
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/npm/" class="nav-link">
+  npm
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/windows/" class="nav-link">
+  windows
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/ffmpeg/" class="nav-link">
+  ffmpeg
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/linux/" class="nav-link router-link-active">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/python/" class="nav-link">
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/php/" class="nav-link">
+  php
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/golang/" class="nav-link">
+  golang
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/c++/" class="nav-link">
+  c++
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/wasm/" class="nav-link">
+  wasm
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/study/" class="nav-link">
+  study
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/nextcloud/" class="nav-link">
+  nextcloud
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/jetson/" class="nav-link">
+  jetson
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/database/" class="nav-link">
+  数据库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="书籍系列" class="dropdown-title"><span class="title">书籍系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="书籍系列" class="mobile-dropdown-title"><span class="title">书籍系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/original/webdesign/" class="nav-link">
+  《从零开始网页设计》
+</a></li><li class="dropdown-item"><!----> <a href="/blog/original/js-definitive/" class="nav-link">
+  《JavaScript权威指南 第七版》 笔记
+</a></li></ul></div></div><div class="nav-item"><a href="https://sanyers.github.io/resume/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人简历
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="导航" class="dropdown-title"><span class="title">导航</span> <span class="arrow down"></span></button> <button type="button" aria-label="导航" class="mobile-dropdown-title"><span class="title">导航</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/u/126bb2363acb" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  简书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://sanyers.github.io/qa-system/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  面试题
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端笔记" class="dropdown-title"><span class="title">前端笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端笔记" class="mobile-dropdown-title"><span class="title">前端笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue3/" class="nav-link">
+  vue3
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vite/" class="nav-link">
+  vite
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/babel/" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/weex/" class="nav-link">
+  weex
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/electron/" class="nav-link">
+  electron
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webrtc/" class="nav-link">
+  WebRTC
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/websocket/" class="nav-link">
+  WebSocket
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/" class="nav-link">
+  网络知识
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/design/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/algorithm/" class="nav-link">
+  数据结构/算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/security/" class="nav-link">
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/interview/" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/booklist/" class="nav-link">
+  书单
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/article/website/" class="nav-link">
+  站点分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/configure/" class="nav-link">
+  配置说明
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/android/" class="nav-link">
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/nginx/" class="nav-link">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/pm2/" class="nav-link">
+  pm2
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/npm/" class="nav-link">
+  npm
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/windows/" class="nav-link">
+  windows
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/ffmpeg/" class="nav-link">
+  ffmpeg
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/linux/" class="nav-link router-link-active">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/python/" class="nav-link">
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/php/" class="nav-link">
+  php
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/golang/" class="nav-link">
+  golang
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/c++/" class="nav-link">
+  c++
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/wasm/" class="nav-link">
+  wasm
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/study/" class="nav-link">
+  study
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/nextcloud/" class="nav-link">
+  nextcloud
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/jetson/" class="nav-link">
+  jetson
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/database/" class="nav-link">
+  数据库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="书籍系列" class="dropdown-title"><span class="title">书籍系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="书籍系列" class="mobile-dropdown-title"><span class="title">书籍系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/original/webdesign/" class="nav-link">
+  《从零开始网页设计》
+</a></li><li class="dropdown-item"><!----> <a href="/blog/original/js-definitive/" class="nav-link">
+  《JavaScript权威指南 第七版》 笔记
+</a></li></ul></div></div><div class="nav-item"><a href="https://sanyers.github.io/resume/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人简历
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="导航" class="dropdown-title"><span class="title">导航</span> <span class="arrow down"></span></button> <button type="button" aria-label="导航" class="mobile-dropdown-title"><span class="title">导航</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/u/126bb2363acb" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  简书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://sanyers.github.io/qa-system/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  面试题
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/blog/article/linux/" aria-current="page" class="sidebar-link">开始</a></li><li><a href="/blog/article/linux/curl命令详解.html" class="sidebar-link">curl命令详解</a></li><li><a href="/blog/article/linux/docker安装和使用.html" class="active sidebar-link">docker安装和使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_1、在-ubuntu-20-04-上安装-docker" class="sidebar-link">1、在 Ubuntu 20.04 上安装 Docker</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_1-1-安装-docker-最新版本" class="sidebar-link">1.1 安装 Docker 最新版本</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_1-2-安装指定版本" class="sidebar-link">1.2 安装指定版本</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_1-3-更新-docker" class="sidebar-link">1.3 更新 Docker</a></li></ul></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_2、以非-root-用户身份执行-docker" class="sidebar-link">2、以非 Root 用户身份执行 Docker</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_3、验证-docker" class="sidebar-link">3、验证 Docker</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_4、卸载-docker" class="sidebar-link">4、卸载 Docker</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_5、其他命令" class="sidebar-link">5、其他命令</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_6、docker-的运行模式与-rm-选项的作用" class="sidebar-link">6、docker 的运行模式与 --rm 选项的作用</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_6-1-docker-容器进程的两种运行模式" class="sidebar-link">6.1 docker 容器进程的两种运行模式</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_6-2-rm-选项的作用" class="sidebar-link">6.2 --rm 选项的作用</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_7、常见问题" class="sidebar-link">7、常见问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_7-1-关于启动-docker-容器时-无法执行二进制文件-的问题" class="sidebar-link">7.1 关于启动 Docker 容器时”无法执行二进制文件”的问题</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_7-2-docker-修改容器内部文件的方法" class="sidebar-link">7.2 docker 修改容器内部文件的方法</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_7-3-从容器中如何访问到宿主机" class="sidebar-link">7.3 从容器中如何访问到宿主机</a></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_7-4-修改docker默认镜像和容器存储位置" class="sidebar-link">7.4 修改Docker默认镜像和容器存储位置</a></li></ul></li><li class="sidebar-sub-header"><a href="/blog/article/linux/docker安装和使用.html#_8、参考" class="sidebar-link">8、参考</a></li></ul></li><li><a href="/blog/article/linux/docker部署discuz.html" class="sidebar-link">docker部署discuz</a></li><li><a href="/blog/article/linux/docker部署gitlab.html" class="sidebar-link">docker部署gitlab</a></li><li><a href="/blog/article/linux/docker部署whisper.html" class="sidebar-link">docker部署whisper</a></li><li><a href="/blog/article/linux/docker部署三个bug系统.html" class="sidebar-link">docker部署三个bug系统</a></li><li><a href="/blog/article/linux/linux内存管理.html" class="sidebar-link">linux内存管理</a></li><li><a href="/blog/article/linux/linux常见问题.html" class="sidebar-link">linux常见问题</a></li><li><a href="/blog/article/linux/linux文件管理.html" class="sidebar-link">linux文件管理</a></li><li><a href="/blog/article/linux/linux查看时间.html" class="sidebar-link">linux查看时间</a></li><li><a href="/blog/article/linux/linux磁盘管理.html" class="sidebar-link">linux磁盘管理</a></li><li><a href="/blog/article/linux/linux获取系统架构.html" class="sidebar-link">linux获取系统架构</a></li><li><a href="/blog/article/linux/linux计算cpu使用率.html" class="sidebar-link">linux计算cpu使用率</a></li><li><a href="/blog/article/linux/linux设备管理.html" class="sidebar-link">linux设备管理</a></li><li><a href="/blog/article/linux/linux负载.html" class="sidebar-link">linux负载</a></li><li><a href="/blog/article/linux/shell脚本详解.html" class="sidebar-link">shell脚本详解</a></li><li><a href="/blog/article/linux/ubuntu下iptables的用法.html" class="sidebar-link">ubuntu下iptables的用法</a></li><li><a href="/blog/article/linux/ubuntu关闭图像界面.html" class="sidebar-link">ubuntu关闭图像界面</a></li><li><a href="/blog/article/linux/ubuntu包apt镜像管理.html" class="sidebar-link">ubuntu包apt镜像管理</a></li><li><a href="/blog/article/linux/ubuntu安装conda.html" class="sidebar-link">ubuntu安装conda</a></li><li><a href="/blog/article/linux/ubuntu安装google浏览器.html" class="sidebar-link">ubuntu安装google浏览器</a></li><li><a href="/blog/article/linux/ubuntu安装搜狗输入法.html" class="sidebar-link">ubuntu安装搜狗输入法</a></li><li><a href="/blog/article/linux/ubuntu环境变量.html" class="sidebar-link">ubuntu环境变量</a></li><li><a href="/blog/article/linux/ubuntu笔记本设置合盖不休眠.html" class="sidebar-link">ubuntu笔记本设置合盖不休眠</a></li><li><a href="/blog/article/linux/ubuntu设置代理.html" class="sidebar-link">ubuntu设置代理</a></li><li><a href="/blog/article/linux/V2Ray搭建.html" class="sidebar-link">V2Ray搭建</a></li><li><a href="/blog/article/linux/vim操作指南.html" class="sidebar-link">vim操作指南</a></li><li><a href="/blog/article/linux/内网穿透frp.html" class="sidebar-link">内网穿透frp</a></li><li><a href="/blog/article/linux/内网穿透zerotier.html" class="sidebar-link">内网穿透zerotier</a></li><li><a href="/blog/article/linux/安装和使用apache2.html" class="sidebar-link">安装和使用apache2</a></li><li><a href="/blog/article/linux/服务器RAID配置.html" class="sidebar-link">服务器RAID配置</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="安装和使用-docker"><a href="#安装和使用-docker" class="header-anchor">#</a> 安装和使用 Docker</h1> <p><a href="https://hub.docker.com/" target="_blank" rel="noopener noreferrer">https://hub.docker.com/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="_1、在-ubuntu-20-04-上安装-docker"><a href="#_1、在-ubuntu-20-04-上安装-docker" class="header-anchor">#</a> 1、在 Ubuntu 20.04 上安装 Docker</h2> <p>更新软件包索引，并且安装必要的依赖软件，来添加一个新的 HTTPS 软件源：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo apt update
+sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>使用下面的 curl 导入源仓库的 GPG key：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>将 Docker APT 软件源添加到你的系统：</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token function">sudo</span> add-apt-repository <span class="token string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="token variable"><span class="token variable">$(</span>lsb_release <span class="token parameter variable">-cs</span><span class="token variable">)</span></span> stable&quot;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="_1-1-安装-docker-最新版本"><a href="#_1-1-安装-docker-最新版本" class="header-anchor">#</a> 1.1 安装 Docker 最新版本</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_1-2-安装指定版本"><a href="#_1-2-安装指定版本" class="header-anchor">#</a> 1.2 安装指定版本</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo apt update
+apt list -a docker-ce
+
+sudo apt install docker-ce=&lt;VERSION&gt; docker-ce-cli=&lt;VERSION&gt; containerd.io
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>一旦安装完成，Docker 服务将会自动启动。你可以输入下面的命令，验证它：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo systemctl status docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="_1-3-更新-docker"><a href="#_1-3-更新-docker" class="header-anchor">#</a> 1.3 更新 Docker</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo apt update &amp;&amp; sudo apt upgrade
+# 阻止 Docker 自动更新
+sudo apt-mark hold docker-ce
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="_2、以非-root-用户身份执行-docker"><a href="#_2、以非-root-用户身份执行-docker" class="header-anchor">#</a> 2、以非 Root 用户身份执行 Docker</h2> <p>默认情况下，只有 root 或者 有 sudo 权限的用户可以执行 Docker 命令。</p> <p>想要以非 root 用户执行 Docker 命令，你需要将你的用户添加到 Docker 用户组，该用户组在 Docker CE 软件包安装过程中被创建。想要这么做，输入：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo usermod -aG docker $USER
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><code>$USER</code>是一个环境变量，代表当前用户名。</p> <p>登出，并且重新登录，以便用户组会员信息刷新。</p> <h2 id="_3、验证-docker"><a href="#_3、验证-docker" class="header-anchor">#</a> 3、验证 Docker</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker container run hello-world
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>如果本地没有该镜像，这个命令将会下载测试镜像，在容器中运行它，打印出 “Hello from Docker”，并且退出。</p> <p>这个容器将会在打印消息后停止运行，因为它没有任何长期运行的进程。</p> <h2 id="_4、卸载-docker"><a href="#_4、卸载-docker" class="header-anchor">#</a> 4、卸载 Docker</h2> <p>在卸载 Docker 之前，你最好 移除所有的容器，镜像，卷和网络。</p> <p>运行下面的命令停止所有正在运行的容器，并且移除所有的 docker 对象：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker container stop $(docker container ls -aq)
+docker system prune -a --volumes
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>现在你可以使用 apt 像卸载其他软件包一样来卸载 Docker：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sudo apt purge docker-ce
+sudo apt autoremove
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="_5、其他命令"><a href="#_5、其他命令" class="header-anchor">#</a> 5、其他命令</h2> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 查看版本</span>
+<span class="token function">docker</span> <span class="token parameter variable">--version</span>
+
+<span class="token comment"># 查看运行中的容器</span>
+<span class="token function">docker</span> <span class="token function">ps</span>
+
+<span class="token comment"># 查看所有容器</span>
+<span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span>
+<span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span> <span class="token parameter variable">-q</span>
+
+<span class="token comment"># 启动、重启、停止docker服务</span>
+<span class="token function">sudo</span> systemctl <span class="token function">docker</span> start<span class="token operator">|</span>restart<span class="token operator">|</span>stop
+
+<span class="token comment"># 启动、重启、停止容器</span>
+<span class="token function">docker</span> start<span class="token operator">|</span>restart<span class="token operator">|</span>stop <span class="token punctuation">[</span>name<span class="token punctuation">]</span>
+
+<span class="token comment"># 重命名容器</span>
+<span class="token function">docker</span> <span class="token function">rename</span> 原容器名称 新容器名称
+
+<span class="token comment"># 删除镜像</span>
+<span class="token function">docker</span> <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token punctuation">[</span>name<span class="token punctuation">]</span>
+<span class="token comment"># 强制删除</span>
+<span class="token function">docker</span> rmi <span class="token parameter variable">-f</span> <span class="token punctuation">[</span>name<span class="token punctuation">]</span>:<span class="token punctuation">[</span>tag<span class="token punctuation">]</span>
+<span class="token comment"># 删除容器</span>
+<span class="token function">docker</span> <span class="token function">rm</span> <span class="token punctuation">[</span>name<span class="token punctuation">]</span>
+
+<span class="token comment"># 查看docker运行状态</span>
+<span class="token function">docker</span> stats
+
+<span class="token comment"># 进入容器内部</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> xxx /bin/bash
+
+<span class="token comment"># 进入未启动的容器或镜像</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> run <span class="token parameter variable">-it</span> <span class="token parameter variable">--entrypoint</span> /bin/bash imagename:1.0
+
+<span class="token comment"># 在 docker 内使用 sudo 命令，提示 bash: sudo: command not found，安装 sudo</span>
+<span class="token function">apt-get</span> update
+<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">sudo</span>
+
+<span class="token comment"># 启动容器</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8888</span>:80 <span class="token parameter variable">-p</span> <span class="token number">222</span>:22 <span class="token parameter variable">--name</span> nextcloud2 <span class="token parameter variable">--restart</span> always new_nextcloud:001
+
+<span class="token comment"># 基于已有容器创建镜像</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> commit <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> 容器id/名称 仓库名称:<span class="token punctuation">[</span>标签<span class="token punctuation">]</span>
+<span class="token comment"># 例如：</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> commit nextcloud new_nextcloud:001
+
+<span class="token comment"># 将镜像打包成本地文件(注意本地文件挂载的需要手动复制 -v 或 --volume)</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> save 镜像id<span class="token operator">&gt;</span>./xxx.tar
+
+<span class="token comment"># 从本地文件加载镜像</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> load <span class="token operator">&lt;</span> xxx.tar
+<span class="token comment"># 或</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> load <span class="token parameter variable">-i</span> xxx.tar
+
+<span class="token comment"># 查看已安装镜像</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> images
+
+<span class="token comment"># 镜像重命名</span>
+<span class="token function">docker</span> tag 镜像id xxx:1.0
+
+<span class="token comment"># 查看完整信息</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span> --no-trunc
+
+<span class="token comment"># 查看映射</span>
+<span class="token function">docker</span> inspect container_name <span class="token operator">|</span> <span class="token function">grep</span> Mounts <span class="token parameter variable">-A</span> <span class="token number">20</span>
+
+<span class="token comment"># 更新容器为自动重启</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> update <span class="token parameter variable">--restart</span><span class="token operator">=</span>always 容器ID
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br></div></div><h2 id="_6、docker-的运行模式与-rm-选项的作用"><a href="#_6、docker-的运行模式与-rm-选项的作用" class="header-anchor">#</a> 6、docker 的运行模式与 --rm 选项的作用</h2> <h2 id="_6-1-docker-容器进程的两种运行模式"><a href="#_6-1-docker-容器进程的两种运行模式" class="header-anchor">#</a> 6.1 docker 容器进程的两种运行模式</h2> <p>1、前台模式（默认）</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token function">docker</span> run <span class="token punctuation">..</span>.
+<span class="token comment"># 或</span>
+<span class="token function">docker</span> run <span class="token parameter variable">-d</span><span class="token operator">=</span>false <span class="token punctuation">..</span>.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>注意，只有在前台模式下，才有必要设置 <code>-it</code> 命令选项</p> <p>2、后台模式（也称 detached 模式）</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token punctuation">..</span>.
+<span class="token comment"># 或</span>
+<span class="token function">docker</span> run <span class="token parameter variable">-d</span><span class="token operator">=</span>true <span class="token punctuation">..</span>.
+<span class="token comment"># 注意，只要有-d命令选项，就没有 `-it` 命令选项</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="_6-2-rm-选项的作用"><a href="#_6-2-rm-选项的作用" class="header-anchor">#</a> 6.2 --rm 选项的作用</h2> <p>在 docker 容器退出时，默认容器内部的文件系统仍然被保留，以方便调试并保留用户数据。</p> <p>在容器启动时设置 <code>--rm</code> 选项，退出容器时会自动清理容器内部的文件系统。</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token function">docker</span> run <span class="token parameter variable">--rm</span> xxx
+<span class="token comment"># 或</span>
+<span class="token function">docker</span> run <span class="token parameter variable">--rm</span><span class="token operator">=</span>true xxx
+<span class="token comment"># --rm 选项不能与 -d 同时使用</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>docker 的 --rm 与 docker rm 的区别</p> <ul><li>使用 docker rm 删除容器 —— 删除容器，挂载点的文件还存在</li> <li>使用 --rm 参数 —— 删除容器，并还会删掉挂载点的数据</li></ul> <h2 id="_7、常见问题"><a href="#_7、常见问题" class="header-anchor">#</a> 7、常见问题</h2> <h3 id="_7-1-关于启动-docker-容器时-无法执行二进制文件-的问题"><a href="#_7-1-关于启动-docker-容器时-无法执行二进制文件-的问题" class="header-anchor">#</a> 7.1 关于启动 Docker 容器时”无法执行二进制文件”的问题</h3> <p><code>docker run -it [容器名称] /bin/bash</code>
+然后，在极少数情况下</p> <p>/bin/bash：/bin/bash：无法执行二进制文件</p> <p>删除 /bin/bash 即可</p> <p>``docker run -it [容器名称]`</p> <h3 id="_7-2-docker-修改容器内部文件的方法"><a href="#_7-2-docker-修改容器内部文件的方法" class="header-anchor">#</a> 7.2 docker 修改容器内部文件的方法</h3> <p>1、进入容器内部修改</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> 容器ID /bin/bash
+
+<span class="token comment"># 如果里面没有 vim 需要自行安装，容器删除后配置会失效</span>
+<span class="token function">apt-get</span> update
+<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">vim</span>
+<span class="token function">vim</span> /etc/my.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>2、通过 docker cp 拷贝进行修改</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 将容器中的文件拷贝出来</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> <span class="token function">cp</span> 容器ID:/etc/my.cnf /home/sanyer/
+<span class="token comment"># 将容器中的文件拷贝回去</span>
+<span class="token function">sudo</span> <span class="token function">docker</span> <span class="token function">cp</span> /home/sanyer/my.cnf 容器ID:/etc/
+
+<span class="token comment"># 容器删除后配置会失效，修改后需要重启容器才能生效</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>3、使用 -v 挂载文件夹(推荐)</p> <p>使用 -v 将容器内部的文件夹挂载（映射）到本地的某个路径下，以后以后可以直接在本地修改，不需要进入容器内部</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 冒号前是本地路径（需要绝对路径），冒号后是容器中的路径，可以挂载文件和文件夹</span>
+$ <span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> <span class="token builtin class-name">test</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token parameter variable">-v</span> /home/sanyer/my.cnf:/etc/my.cnf sanyer/test
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_7-3-从容器中如何访问到宿主机"><a href="#_7-3-从容器中如何访问到宿主机" class="header-anchor">#</a> 7.3 从容器中如何访问到宿主机</h3> <p>(1) 第一种方式</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># --add-host 标志向容器的 /etc/hosts 文件添加一个条目。上面显示的值将 host.docker.internal 映射到容器的主机网关</span>
+<span class="token function">docker</span> run <span class="token parameter variable">-d</span> --add-host host.docker.internal:host-gateway my-container:latest
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>(2) 第二种方式</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 通过添加 --network=host 标志与主机网络一起启动容器</span>
+<span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--network</span><span class="token operator">=</span>host my-container:latest
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>（3）第三种方式</p> <p>直接通过ip访问</p> <h3 id="_7-4-修改docker默认镜像和容器存储位置"><a href="#_7-4-修改docker默认镜像和容器存储位置" class="header-anchor">#</a> 7.4 修改Docker默认镜像和容器存储位置</h3> <p>（1）查看 docker 信息</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">docker</span> info
+
+<span class="token comment"># docker存储驱动程序和默认存位：</span>
+Storage Driver: overlay
+Docker Root Dir: /var/lib/docker
+
+<span class="token comment">#</span>
+<span class="token comment"># 查看文件夹大小</span>
+<span class="token function">sudo</span> <span class="token function">du</span> <span class="token parameter variable">-hd</span> <span class="token number">1</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>（2）停止docker服务</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">sudo</span> systemctl stop docker.service
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>（3）目录迁移</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 3.1 创建新的docker目录</span>
+
+<span class="token comment"># 查看文件夹大小</span>
+<span class="token function">sudo</span> <span class="token function">du</span> <span class="token parameter variable">-hd</span> <span class="token number">1</span>
+
+<span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /home/sanyer/docker
+
+<span class="token comment"># 3.2 迁移目录</span>
+<span class="token function">sudo</span> <span class="token function">cp</span> <span class="token parameter variable">-r</span> /var/lib/docker/* /home/sanyer/docker/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>（4）修改配置文件</p> <h4 id="_4-1-编辑-etc-docker-daemon-json-文件"><a href="#_4-1-编辑-etc-docker-daemon-json-文件" class="header-anchor">#</a> 4.1 编辑 /etc/docker/daemon.json 文件</h4> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">vim</span> /etc/docker/daemon.json <span class="token comment"># 默认情况下这个配置文件是没有的，这里实际也就是新建一个，然后写入以下内容：</span>
+
+<span class="token punctuation">{</span>
+  <span class="token string">&quot;data-root&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/home/sanyer/docker&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><blockquote><p>取决于具体的 ubuntu 版本或者 kernel 版本决定要用 data-root 还是 graph /home/sanyer/docker --&gt; docker的存储路径</p></blockquote> <p>此文件还涉及默认源的设定，如果设定了国内源，那么实际就是在源地址下方加一行，写成：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;registry-mirrors&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;http://hub-mirror.c.163.com&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;data-root&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/home/sanyer/docker&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="_4-2-编辑-docker-服务配置文件"><a href="#_4-2-编辑-docker-服务配置文件" class="header-anchor">#</a> 4.2 编辑 docker 服务配置文件</h4> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">vim</span> /etc/systemd/system/multi-user.target.wants/docker.service
+
+<span class="token comment"># 将ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock修改以下内容：</span>
+<span class="token assign-left variable">ExecStart</span><span class="token operator">=</span>/usr/bin/dockerd <span class="token parameter variable">--graph</span><span class="token operator">=</span>/home/sanyer/docker --storage-driver<span class="token operator">=</span>overlay
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>（5）保存退出，然后重启 docker 服务</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">sudo</span> systemctl daemon-reload
+<span class="token function">sudo</span> systemctl restart <span class="token function">docker</span>
+<span class="token function">sudo</span> systemctl status <span class="token function">docker</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>（6）检查docker存储路径是否配置成功</p> <p><code>sudo docker info</code></p> <p>（7）启动成功后，再确认之前的镜像还在</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span>
+<span class="token function">docker</span> images
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>（8）确定容器、镜像没问题后删除/var/lib/docker/目录中的文件。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> /var/lib/docker/*
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="_8、参考"><a href="#_8、参考" class="header-anchor">#</a> 8、参考</h2> <p>https://zhuanlan.zhihu.com/p/143156163</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">4/7/2024, 10:35:48 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/article/linux/curl命令详解.html" class="prev">
+        curl命令详解
+      </a></span> <span class="next"><a href="/blog/article/linux/docker部署discuz.html">
+        docker部署discuz
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div></div></div></div>
+    <script src="/blog/assets/js/app.7bd07815.js" defer></script><script src="/blog/assets/js/2.ce51b73f.js" defer></script><script src="/blog/assets/js/53.7f903c19.js" defer></script>
+  </body>
+</html>
