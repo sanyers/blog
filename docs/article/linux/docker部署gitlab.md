@@ -18,14 +18,21 @@ docker search gitlab
 
 ### 1.3 拉取gitlab
 
-```
+```bash
+# amd
 docker pull gitlab/gitlab-ce
+# arm
+docker pull yrzr/gitlab-ce-arm64v8:16.0.4-ce.0
 ```
 
 ### 1.4 启动gitlab
 
-```
+```bash
+# 最新版
 docker run -d -p 8099:80 -p 222:22 --name gitlabs --restart always -v /data/gitlab/etc:/etc/gitlab -v /data/gitlab/log:/var/log/gitlab -v /data/gitlab/data:/var/opt/gitlab gitlab/gitlab-ce
+
+# 指定版本
+sudo docker run -d -p 8099:80 -p 222:22 --name gitlab --restart always -v /data/gitlab/etc:/etc/gitlab -v /data/gitlab/log:/var/log/gitlab -v /data/gitlab/data:/var/opt/gitlab yrzr/gitlab-ce-arm64v8:16.3.3-ce.0
 ```
 
 参数说明：
@@ -315,3 +322,57 @@ $ select id,username,email,admin from users where username='sanyer';
 $ update users set admin='t' where username='sanyer';
 # 出现 UPDATE 1 则修改成功
 ```
+
+## 8、备份
+
+```bash
+# 进入容器内部
+sudo docker exec -it gitlab /bin/bash
+
+# 开始备份
+gitlab-backup create
+
+# 查看备份文件
+cd /data/gitlab/data/backups
+1712848104_2024_04_11_16.3.3_gitlab_backup.tar
+
+# 本机还原
+gitlab-backup restore
+```
+
+## 9、迁移新服务器
+
+### 9.1 先决条件
+
+- 目标 GitLab 实例必须已在工作
+- 目标 GitLab 实例必须具有完全相同的版本，备份还原到与创建备份时完全相同的 GitLab 版本和类型（CE 或 EE）。例如，CE 16.3.3
+- 必须还原 GitLab 秘钥，即 `/data/gitlab/etc` 配置中的文件
+- 清空挂载点目录 `/data/gitlab/data` 和 `/data/gitlab/log`
+
+### 9.2 开始还原
+
+```bash
+sudo docker run -d -p 8099:80 -p 222:22 --name gitlab --restart always -v /data/gitlab/etc:/etc/gitlab -v /data/gitlab/log:/var/log/gitlab -v /data/gitlab/data:/var/opt/gitlab yrzr/gitlab-ce-arm64v8:16.3.3-ce.0
+
+# 容器创建成功后，复制备份文件到 /data/gitlab/data/backups 目录
+sudo cp 1712848104_2024_04_11_16.3.3_gitlab_backup.tar /data/gitlab/data/backups
+
+# 进入容器内部
+sudo docker exec -it gitlab /bin/bash
+# 设置备份文件权限
+chown git:git /var/opt/gitlab/backups/1712848104_2024_04_11_16.3.3_gitlab_backup.tar
+
+# 停止连接到数据库的进程
+gitlab-ctl stop puma
+gitlab-ctl stop sidekiq
+
+# 指定要备份的 ID 恢复
+gitlab-backup restore BACKUP=1712848104_2024_04_11_16.3.3
+
+# 中间会弹出几次确认事件，输入 yes 即可
+
+# 重启后，页面502，需等待系统重启5分钟左右
+gitlab-ctl restart
+```
+
+参考：https://docs.gitlab.com/ee/administration/backup_restore/restore_gitlab.html
