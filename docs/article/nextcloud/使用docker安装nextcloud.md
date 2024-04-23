@@ -151,6 +151,16 @@ vim /var/www/html/3rdparty/aws/aws-crt-php/php.ini
 #新增
 post_max_size = 1000G
 upload_max_filesize = 1000G
+
+vim /etc/apache2/sites-available/000-default.conf
+#新增
+LimitRequestBody 1048576 # 1M
+#或
+LimitRequestBody 104857600 # 100M
+#或
+LimitRequestBody 1073741824 # 1G
+#或
+LimitRequestBody 107374182400 # 100G
 ```
 
 如果配置了nginx 代理访问，还需要配置 nginx

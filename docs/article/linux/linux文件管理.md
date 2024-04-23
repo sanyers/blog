@@ -9,6 +9,8 @@
 tar -zcvf test.tar.gz file1 dir2
 # 解压 test.tar.gz（将 c 换成 x 即可）
 tar -zxvf test.tar.gz
+# 解压到指定目录
+tar -zxvf test.tar.gz -C /home/sanyer
 # 列出压缩文件的内容
 tar -ztvf test.tar.gz 
 ```

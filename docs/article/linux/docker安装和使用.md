@@ -147,6 +147,8 @@ sudo docker commit nextcloud new_nextcloud:001
 
 # 将镜像打包成本地文件(注意本地文件挂载的需要手动复制 -v 或 --volume)
 sudo docker save 镜像id>./xxx.tar
+# 或
+docker save -o xxx.tar xxx:latest # 在使用 load 导入时，可以自动带入 name:tag
 
 # 从本地文件加载镜像
 sudo docker load < xxx.tar
@@ -274,9 +276,9 @@ docker run -d --network=host my-container:latest
 
 （3）第三种方式
 
-直接通过ip访问
+直接通过 ip 访问
 
-### 7.4 修改Docker默认镜像和容器存储位置
+### 7.4 修改 Docker 默认镜像和容器存储位置
 
 （1）查看 docker 信息
 
@@ -292,7 +294,8 @@ Docker Root Dir: /var/lib/docker
 sudo du -hd 1
 
 ```
-（2）停止docker服务
+
+（2）停止 docker 服务
 
 ```bash
 sudo systemctl stop docker.service
@@ -314,7 +317,7 @@ sudo cp -r /var/lib/docker/* /home/sanyer/docker/
 
 （4）修改配置文件
 
-#### 4.1 编辑 /etc/docker/daemon.json 文件
+#### 1. 编辑 /etc/docker/daemon.json 文件
 
 ```bash
 sudo vim /etc/docker/daemon.json # 默认情况下这个配置文件是没有的，这里实际也就是新建一个，然后写入以下内容：
@@ -324,7 +327,7 @@ sudo vim /etc/docker/daemon.json # 默认情况下这个配置文件是没有的
 }
 ```
 
-> 取决于具体的 ubuntu 版本或者 kernel 版本决定要用 data-root 还是 graph /home/sanyer/docker --> docker的存储路径
+> 取决于具体的 ubuntu 版本或者 kernel 版本决定要用 data-root 还是 graph /home/sanyer/docker --> docker 的存储路径
 
 此文件还涉及默认源的设定，如果设定了国内源，那么实际就是在源地址下方加一行，写成：
 
@@ -335,7 +338,7 @@ sudo vim /etc/docker/daemon.json # 默认情况下这个配置文件是没有的
 }
 ```
 
-#### 4.2 编辑 docker 服务配置文件
+#### 2. 编辑 docker 服务配置文件
 
 ```bash
 sudo vim /etc/systemd/system/multi-user.target.wants/docker.service
@@ -353,7 +356,7 @@ sudo systemctl restart docker
 sudo systemctl status docker
 ```
 
-（6）检查docker存储路径是否配置成功
+（6）检查 docker 存储路径是否配置成功
 
 `sudo docker info`
 
@@ -370,6 +373,40 @@ docker images
 sudo rm -rf /var/lib/docker/*
 ```
 
-## 8、参考
+## 8、docker save 和 docker export 的区别
 
-https://zhuanlan.zhihu.com/p/143156163
+- 对于 Docker Save 方法，会保存该镜像的所有历史记录
+- 对于 Docker Export 方法，不会保留历史记录，即没有 commit 历史
+- docker save 保存的是镜像（image），docker export 保存的是容器（container）；
+- docker load 用来载入镜像包，docker import 用来载入容器包，但两者都会恢复为镜像；
+- docker load 不能对载入的镜像重命名，而 docker import 可以为镜像指定新名称。
+
+### 8.1 save 命令
+
+```bash
+sudo docker save -o xxx.tar xxx:latest
+# 或
+sudo docker save > xxx.tar xxx:latest
+```
+
+### 8.2 load 命令
+
+```bash
+sudo docker load -i xxx.tar
+# 或
+sudo docker load < xxx.tar
+```
+
+### 8.3 export 命令
+
+```bash
+sudo docker export -o xxx.tar xxx
+# 或
+sudo docker export [ID] or [Name] > /home/xxx.tar
+```
+
+### 8.3 import 命令
+
+```bash
+sudo docker import xxx.tar xxx:latest
+```

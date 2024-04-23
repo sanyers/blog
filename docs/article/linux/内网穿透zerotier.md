@@ -38,6 +38,8 @@ git clone https://gitee.com/Jonnyan404/zerotier-planet
 cd zerotier-planet
 # 修改 docker-compose.yml 文件的 MYADDR 改为服务器公网ip
 vim docker-compose.yml
+MYADDR=0.0.0.0
+network_mode: host # 从外部访问API
 
 ## 生成并启动docker
 docker-compose up -d
@@ -46,6 +48,11 @@ docker cp mkmoonworld-x86_64 ztncui:/tmp
 docker cp patch.sh ztncui:/tmp
 docker exec -it ztncui bash /tmp/patch.sh
 docker restart ztncui
+
+# 重新启动
+docker run -d -p 4000:4000 -p 9993:9993 -p 9993:9993/udp --name ztncui --restart always -v /var/lib/zerotier-one:/var/lib/zerotier-one -v /home/sanyer/zerotier-planet/ztncui/etc:/opt/key-networks/ztncui/etc keynetworks/ztncui
+# 或
+docker run -d --network host --name ztncuis --restart always -v /var/lib/zerotier-one:/var/lib/zerotier-one -v /home/sanyer/zerotier-planet/ztncui/etc:/opt/key-networks/ztncui/etc keynetworks/ztncui
 ```
 
 然后浏览器访问 `http://ip:4000` 打开 web 控制台界面。
@@ -111,6 +118,13 @@ sudo chown -R zerotier-one: /var/lib/zerotier-one/planet
 sudo systemctl restart zerotier-one
 # 加入网络
 sudo zerotier-cli join f789667a224b2d15
+
+# docker 部署
+# 拉取镜像
+sudo docker pull bltavares/zerotier:1.12.1
+sudo docker run --device=/dev/net/tun --name zerotier-one --net=host --restart=always --cap-add=NET_ADMIN --cap-add=SYS_ADMIN -v /var/lib/zerotier-one:/var/lib/zerotier-one bltavares/zerotier:1.12.1
+# 加入网络
+sudo docker exec zerotier-one zerotier-cli join [网络ID]
 ```
 
 ### 3.3 安卓客户端
