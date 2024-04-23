@@ -137,6 +137,9 @@ sudo docker run -it --entrypoint /bin/bash imagename:1.0
 apt-get update
 apt-get install sudo
 
+# 创建容器
+sudo docker create -d -p 8888:80 -p 222:22 --name nextcloud2 --restart always new_nextcloud:001
+
 # 启动容器
 sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud2 --restart always new_nextcloud:001
 

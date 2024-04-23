@@ -79,6 +79,9 @@ $ sudo chown -R vvt: test(目录或目录路径) # 修改目录用户权限
 
 $ sudo reboot # 重启
 $ sudo poweroff # 关机
+
+$ md5sum file_name # 根据文件生成MD5值
+$ md5sum -c xxx.md5 # 校验MD5值
 ```
 
 ## 2、服务命令

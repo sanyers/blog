@@ -87,8 +87,8 @@ PS C:\Windows\system32>
 点击 `Easy setup` 设置虚拟网段
 
 - 10.0.12.0/24（网络地址，Network address in CIDR notation）
-- 10.0.12.1（起始IP，Start of IP assignment pool）
-- 10.0.12.254（结束IP，End of IP assignment pool）
+- 10.0.12.1（起始 IP，Start of IP assignment pool）
+- 10.0.12.254（结束 IP，End of IP assignment pool）
 
 （5）查看连接状态
 
@@ -136,10 +136,10 @@ sudo docker exec zerotier-one zerotier-cli join [网络ID]
 
 假设有场景 `公司总部 192.168.1.0` `公司分部A 192.168.12.0` `公司分部B 192.168.13.0`
 
-访问场景1：`公司分部A` 需要访问 `公司总部`
+访问场景 1：`公司分部A` 需要访问 `公司总部`
 
-- `公司总部` Z001 服务器安装 zerotier client，虚拟IP为 10.0.12.1
-- `公司分部A` A001 服务器安装 zerotier client，虚拟IP为 10.0.12.2
+- `公司总部` Z001 服务器安装 zerotier client，虚拟 IP 为 10.0.12.1
+- `公司分部A` A001 服务器安装 zerotier client，虚拟 IP 为 10.0.12.2
 
 ### 4.1 设置路由转发
 
@@ -179,3 +179,11 @@ sudo zerotier-cli set 网络id allowDefault=1
 ```
 
 [ZeroTierOne](https://github.com/zerotier/ZeroTierOne)
+
+[ZeroTier Docs](https://docs.zerotier.com/)
+
+[ztncui](https://github.com/key-networks/ztncui)
+
+[zerotier-plane](https://github.com/Jonnyan404/zerotier-planet)
+
+[ZerotierFix](https://github.com/kaaass/ZerotierFix)
