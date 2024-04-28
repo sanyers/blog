@@ -181,3 +181,13 @@
 [系统之家](https://www.xitongzhijia.net/)
 
 [win10微软官方](https://www.microsoft.com/zh-cn/software-download/windows10)
+
+## 播放器
+
+[西瓜播放器](https://github.com/bytedance/xgplayer)
+
+[mediaelement](https://github.com/mediaelement/mediaelement)
+
+[DPlayer](https://github.com/DIYgod/DPlayer)
+
+[编写自定义播放器](https://juejin.cn/post/7139801590743072776)
