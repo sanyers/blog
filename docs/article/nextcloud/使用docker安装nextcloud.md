@@ -192,7 +192,7 @@ $CONFIG = array (
   ),
 ```
 
-## 5.4 已创建 nextcloud 容器，如何再开放容器22端口或其他端口
+### 5.4 已创建 nextcloud 容器，如何再开放容器22端口或其他端口
 
 ```sh
 # 停止容器
@@ -203,7 +203,7 @@ sudo docker commit nextcloud new_nextcloud:001
 sudo docker run -d -p 8888:80 -p 222:22 --name nextcloud2 --restart always new_nextcloud:001
 ```
 
-## 5.5 配置自定义应用
+### 5.5 配置自定义应用
 
 修改配置文件 `/html/config/config.php`
 
@@ -264,7 +264,7 @@ sudo -u www-data php occ app:update contacts
 sudo -u www-data php occ app:update --all
 ```
 
-## 5.6 配置https访问
+### 5.6 配置https访问
 
 修改配置文件 `/html/config/config.php`
 
@@ -273,7 +273,7 @@ sudo -u www-data php occ app:update --all
   'overwriteprotocol' => 'https',
 ```
 
-## 5.7 应用列表打不开或者缺少
+### 5.7 应用列表打不开或者缺少
 
 修改配置文件 `/html/config/config.php`，改为国内镜像
 
@@ -282,7 +282,7 @@ sudo -u www-data php occ app:update --all
   'appstoreurl' => 'https://www.orcy.net/ncapps/v2/',
 ```
 
-## 5.8 配置 redis
+### 5.8 配置 redis
 
 ```conf
   'memcache.distributed' => '\\OC\\Memcache\\Redis',
@@ -298,7 +298,7 @@ sudo -u www-data php occ app:update --all
   ),
 ```
 
-## 5.9 去除url带 index.php
+### 5.9 去除url带 index.php
 
 修改配置 config.php
 
@@ -311,6 +311,66 @@ sudo -u www-data php occ app:update --all
 sudo docker exec -it nextcloud /bin/bash
 # 执行命令
 sudo -u www-data php occ maintenance:update:htaccess
+```
+
+### 5.10 您的数据目录无效。 请确定在根目录下有一个名为".ocdata"的文件
+
+该错误可能是由于迁移目录和账号引起的
+
+（1）可以在 data 目录下创建 .ocdata 文件，设置根文件夹 `sudo chown -R www-data:www-data nextcloud`，进入根目录设置 `sudo chown -R www-data:www-data data`
+
+（2）管理设置 => 基本设置 => 后台任务 => 选择 cron 任务，然后再切换回去即可
+
+### 5.11 多个 nextcloud 部署之后，登录导致上一个 nextcloud 账号失效
+
+由于 nextcloud 依据 cookies 来判断登录，如果一台服务器部署多个 nextcloud，不同端口，则会出现登录问题
+
+修改 config.php 配置文件 `instanceid` 值即可
+
+### 5.12 生成图片和视频缩略图
+
+修改 `config.php` 配置文件
+
+```conf
+  'enable_previews' => true,
+  'enabledPreviewProviders' =>
+  array (
+    0 => 'OC\\Preview\\PNG',
+    1 => 'OC\\Preview\\JPEG',
+    2 => 'OC\\Preview\\GIF',
+    3 => 'OC\\Preview\\HEIC',
+    4 => 'OC\\Preview\\BMP',
+    5 => 'OC\\Preview\\XBitmap',
+    6 => 'OC\\Preview\\MP3',
+    7 => 'OC\\Preview\\TXT',
+    8 => 'OC\\Preview\\MarkDown',
+    9 => 'OC\\Preview\\Movie',
+    10 => 'OC\\Preview\\MP4',
+    11 => 'OC\\Preview\\AVI',
+    12 => 'OC\\Preview\\MKV',
+    13 => 'OC\\Preview\\Font',
+    14 => 'OC\\Preview\\Illustrator',
+    15 => 'OC\\Preview\\MSOffice2003',
+    16 => 'OC\\Preview\\MSOffice2007',
+    17 => 'OC\\Preview\\MSOfficeDoc',
+    18 => 'OC\\Preview\\PDF',
+    19 => 'OC\\Preview\\Photoshop',
+    20 => 'OC\\Preview\\Postscript',
+    21 => 'OC\\Preview\\StarOffice',
+  ),
+```
+
+视频缩略图还需要在容器里安装 ffmpeg
+
+```bash
+sudo docker exec -it --user root nextcloud apt update
+sudo docker exec -it --user root nextcloud apt install ffmpeg
+
+# 检测是否安装成功
+sudo docker exec -it nextcloud ffmpeg
+
+# 重启容器即可生效
+sudo docker restart nextcloud
 ```
 
 ## 7、nextcloud 镜像迁移
@@ -327,20 +387,6 @@ sudo docker run -d -p 8080:80 --name nextcloud --restart always -v /home/sanyer/
 ```
 
 注意：**nextcloud 从新部署之后，访问首页进入安装界面，需要在同一个网段内，若跨越多个网段将无法访问，无法安装成功**
-
-## 8、您的数据目录无效。 请确定在根目录下有一个名为".ocdata"的文件
-
-该错误可能是由于迁移目录和账号引起的
-
-（1）可以在 data 目录下创建 .ocdata 文件，设置根文件夹 `sudo chown -R www-data:www-data nextcloud`，进入根目录设置 `sudo chown -R www-data:www-data data`
-
-（2）管理设置 => 基本设置 => 后台任务 => 选择 cron 任务，然后再切换回去即可
-
-## 9、多个 nextcloud 部署之后，登录导致上一个 nextcloud 账号失效
-
-由于 nextcloud 依据 cookies 来判断登录，如果一台服务器部署多个 nextcloud，不同端口，则会出现登录问题
-
-修改 config.php 配置文件 `instanceid` 值即可
 
 ## 9、参考
 

@@ -47,9 +47,9 @@
 
 参考：https://blog.csdn.net/neabea2016/article/details/82732538
 
-## 2、css 文字省略
+## 2、css 文字省略与换行
 
-（1）多行出现省略
+### 2.1 多行出现省略
 
 ```html
 <div class="test">
@@ -72,7 +72,7 @@
 </style>
 ```
 
-（2）两行文字超出省略
+### 2.2 两行文字超出省略
 
 ```html
 <style>
@@ -93,13 +93,33 @@
 </div>
 ```
 
-（3）单行省略
+### 2.3 单行省略
 
 ```css
 .test {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+```
+
+### 2.4 文字换行
+
+```css
+/* 自动换行 */
+.text {
+  white-space: pre-wrap;
+  word-break: break-all; /* 单词截断自动换行 */
+}
+
+/* 强制换行 */
+.text {
+  white-space: normal;
+}
+
+/* 不换行 */
+.text {
+  white-space: nowrap;
 }
 ```
 
@@ -191,12 +211,25 @@ img {
 }
 ```
 
-## 6、css 鼠标穿透点击
+## 6、css 鼠标操作
 
 ```css
+/* 鼠标穿透点击 */
 .test {
   pointer-events: none; /* 元素不再是鼠标事件的目标，鼠标不再监听当前层，而去监听下一层中的元素 */
   pointer-events: auto; /* 默认值 */
+}
+
+/* 鼠标可点击 */
+.test {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* 鼠标不可点击 */
+.test {
+  cursor: default;
+  pointer-events: none; /* 禁止点击事件 */
 }
 ```
 
@@ -207,8 +240,8 @@ img {
 .test {
   /* 边框的颜色为什么不重要，会被下面覆盖的 */
   border: 10px solid black;
-	/* 最后面跟的 10 表示内向偏移量，写成和边框设置的宽度一样即可 */
-  border-image: linear-gradient(to bottom right,yellow, green) 10;
+  /* 最后面跟的 10 表示内向偏移量，写成和边框设置的宽度一样即可 */
+  border-image: linear-gradient(to bottom right, yellow, green) 10;
 }
 
 /* 边框径向渐变 */
@@ -219,9 +252,17 @@ img {
 
 /* 文字渐变 */
 .test3 {
-　background: linear-gradient(to right, red, blue);
-　-webkit-background-clip: text;
-　background-clip: text;
-　color: transparent;
+  　background: linear-gradient(to right, red, blue);
+  　-webkit-background-clip: text;
+  　background-clip: text;
+  　color: transparent;
+}
+```
+
+## 8、首行缩进
+
+```css
+.indent {
+  text-indent: 2em; // 缩进两个字符
 }
 ```

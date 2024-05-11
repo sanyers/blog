@@ -172,6 +172,11 @@ docker inspect container_name | grep Mounts -A 20
 
 # 更新容器为自动重启
 sudo docker update --restart=always 容器ID
+
+# 宿主机执行容器命令行
+docker exec -it nextcloud ls
+# 指定用户权限执行命令行
+docker exec -it --user root nextcloud ls
 ```
 
 ## 6、docker 的运行模式与 --rm 选项的作用

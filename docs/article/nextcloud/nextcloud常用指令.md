@@ -17,4 +17,17 @@ sudo -u www-data ./occ status
 
 ## 4、扫描用户文件并更新（数据迁移）
 
-`sudo -u www-data php ./occ files:scan --all`
+```bash
+# 格式
+sudo -u www-data php ./occ files:scan [-all] [user_id] [--path]
+
+# 更新所有用户的所有文件
+sudo -u www-data php ./occ files:scan --all
+
+# 更新指定用户ID
+sudo -u www-data php ./occ files:scan sanyer
+
+# 更新指定用户的指定目录
+sudo -u www-data php ./occ files:scan --path="/sanyer/files/Music"
+```
+

@@ -122,3 +122,90 @@ export class Database {
   }
 }
 ```
+
+## 3、分页排序
+
+```js
+const where = { id: 1 }; // 查询条件
+const sort = { date: 1 }; // 排序条件，其中 1 为升序排列，-1 是降序排列
+const start = 0; // 起始位置（跳过的记录条数）
+const end = 20; // 查询条数（需要读取的记录条数）
+db.collection(tabName).find(where).sort(sort).skip(start).limit(end).toArray();
+```
+
+## 4、更新数组
+
+```js
+// 数据示例
+const item = {
+  id: 1,
+  name: 'test1',
+  list: [
+    { pid: 1001, value: 34 },
+    { pid: 1002, value: 35 },
+    { pid: 1003, value: 36 },
+  ],
+};
+
+// 修改第一个文档中的 {pid: 1002,value: 35} 为 {pid: 1002,value: 40}
+db.xx.update({ id: 1, 'list.pid': 1002 }, { $set: { 'list.$.value': 40 } });
+```
+
+## 5、查询关键字
+
+### 5.1 $in
+
+类似于 || 或，只要满足 $in [] 里面的元素，就都可以查询出来
+
+```js
+db.xxx.find({ type: { $in: ['足球', '篮球'] } }); // 可以查询出 type 等于足球和篮球的数据
+```
+
+### 5.2 $or
+
+类似于 || 或，满足其中一个字段的元素数据
+
+```js
+// 查询 name="xiaoming" 或者 name ="zhangsan"，两个条件其中一个条件成立，都返回数据
+db.xxx.find({ $or: [{ name: 'xiaoming' }, { name: 'zhangsan' }] });
+```
+
+### 5.3 $all
+
+类似于 && 且，满足所有元素的数据
+
+```js
+db.xxx.find({ type: { $all: ['足球'] } });
+```
+
+### 5.4 $and
+
+类似于 && 且，满足所有条件的数据
+
+```js
+db.xxx.find({ $and: [{ name: 'xiaoming' }, { age: 25 }] });
+```
+
+### 5.5 $gt 和 $lt
+
+匹配属性值大于和小于指定值的文档
+
+```js
+db.xxx.find({ age: { $gt: 20, $lt: 30 } }); // 年龄大于20小于30
+```
+
+### 5.6 $eq
+
+匹配属性值等于指定值的文档
+
+```js
+db.xxx.find({ age: { $eq: 25 } });
+```
+
+### 5.7 $regex
+
+查询是否包含某字符串
+
+```js
+db.xxx.find({ name: { $regex: 'zhang' } });
+```

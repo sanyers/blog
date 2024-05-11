@@ -50,6 +50,8 @@
 
 [mqtt](https://docs.emqx.com/zh/cloud/latest/)
 
+[jsjiami](https://www.jsjiami.com/)
+
 ## web 测试
 
 [vitest](https://cn.vitest.dev/guide/)
