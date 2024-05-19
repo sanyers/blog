@@ -28,6 +28,7 @@ sudo apt autoremove
 whereis npm
 
 sudo apt-get remove nodejs
+sudo apt remove npm
 sudo apt autoremove
 whereis node
 ```

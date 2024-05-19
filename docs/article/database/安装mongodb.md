@@ -158,3 +158,77 @@ use admin
 db.createUser( { user: "root", pwd: "123456", roles: [{ role: "root", db: "admin" }] } );
 db.auth('root', '123456')
 ```
+
+## 9、导出与导入集合
+
+假设数据库名为 `db_test` 集合为 `users`
+
+### 9.1 mongoexport 导出集合
+
+```bash
+mongoexport --db db_test --collection users --out /backup/test.json -h 127.0.0.1:27017 -u admin账号 -p admin密码 --authenticationDatabase admin
+```
+
+### 9.2 mongodump 备份
+
+关键参数：
+
+- -h,--host ：代表远程连接的数据库地址，默认连接本地Mongo数据库；
+- --port：代表远程连接的数据库的端口，默认连接的远程端口27017；
+- -u,--username：代表连接远程数据库的账号，如果设置数据库的认证，需要指定用户账号；
+- -p,--password：代表连接数据库的账号对应的密码；
+- -d,--db：代表连接的数据库；
+- -c,--collection：代表连接数据库中的集合；
+- -o, --out：代表导出的文件输出目录；
+- -q, --query：代表查询条件；
+- -j，--numParallelCollections =要并行转储的集合数（默认为4）
+- --gzip，使用Gzip压缩存档；
+- --oplog，使用oplog进行时间点快照；
+- --authenticationDatabase，指定用户鉴定库
+
+```bash
+# 备份所有数据库
+mongodump --out /backup/test.json -h 127.0.0.1:27017 -u admin账号 -p admin密码 --authenticationDatabase admin
+# 备份单个数据库
+mongodump --db db_test --out /backup/test.json -h 127.0.0.1:27017 -u admin账号] -p admin密码 --authenticationDatabase admin
+# 备份数据库下的集合
+mongodump --db db_test --collection users --out /backup/test.json -h 127.0.0.1:27017 -u admin账号 -p admin密码 --authenticationDatabase admin
+
+# 压缩备份单个数据库
+mongodump --db db_test --gzip --out /backup/test.json -h 127.0.0.1:27017 -u admin账号 -p admin密码 --authenticationDatabase admin
+```
+
+### 9.3 导入集合
+
+```sh
+mongoimport --db db_test --collection users --file /backup/test.json -h 127.0.0.1:27017 -u admin账号 -p admin密码 --authenticationDatabase admin
+```
+
+### 9.4 mongorestore 恢复
+
+关键参数：
+
+- -h,--host ：代表远程连接的数据库地址，默认连接本地Mongo数据库；
+- --port：代表远程连接的数据库的端口，默认连接的远程端口27017；
+- -u,--username：代表连接远程数据库的账号，如果设置数据库的认证，需要指定用户账号；
+- -p,--password：代表连接数据库的账号对应的密码；
+- -d,--db：代表连接的数据库；
+- -c,--collection：代表连接数据库中的集合；
+- -o, --out：代表导出的文件输出目录；
+- --dir = <目录名称>输入目录
+- --drop导入前删除数据库中集合；
+- --gzip，解压Gzip压缩存档还原；
+- --oplog，重放oplog以基于时间点还原；
+- --oplogFile = <文件名>指定重播oplog的oplog文件
+- --authenticationDatabase，指定用户鉴定库
+
+```bash
+# 所有库恢复
+mongorestore -h 127.0.0.1:27017 -u admin账号 -p admin密码 --authenticationDatabase admin /backup/test.json
+
+# 单库恢复
+mongorestore -h 127.0.0.1:27017 -u admin账号 -p admin密码 --authenticationDatabase admin --db db_test /backup/test.json
+
+# 恢复数据库下的集合
+mongorestore -h 127.0.0.1:27017 -u admin账号 -p admin密码 --authenticationDatabase admin --db db_test --collection users /backup/test.json
+```
