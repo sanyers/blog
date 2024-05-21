@@ -6,33 +6,33 @@
 
 更新软件包索引，并且安装必要的依赖软件，来添加一个新的 HTTPS 软件源：
 
-```
+```bash
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 ```
 
 使用下面的 curl 导入源仓库的 GPG key：
 
-```
+```bash
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
 
 将 Docker APT 软件源添加到你的系统：
 
-```sh
+```bash
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 ```
 
 ### 1.1 安装 Docker 最新版本
 
-```
+```bash
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io
 ```
 
 ### 1.2 安装指定版本
 
-```
+```bash
 sudo apt update
 apt list -a docker-ce
 
@@ -41,13 +41,13 @@ sudo apt install docker-ce=<VERSION> docker-ce-cli=<VERSION> containerd.io
 
 一旦安装完成，Docker 服务将会自动启动。你可以输入下面的命令，验证它：
 
-```
+```bash
 sudo systemctl status docker
 ```
 
 ### 1.3 更新 Docker
 
-```
+```bash
 sudo apt update && sudo apt upgrade
 # 阻止 Docker 自动更新
 sudo apt-mark hold docker-ce
@@ -59,7 +59,7 @@ sudo apt-mark hold docker-ce
 
 想要以非 root 用户执行 Docker 命令，你需要将你的用户添加到 Docker 用户组，该用户组在 Docker CE 软件包安装过程中被创建。想要这么做，输入：
 
-```
+```bash
 sudo usermod -aG docker $USER
 ```
 
@@ -69,7 +69,7 @@ sudo usermod -aG docker $USER
 
 ## 3、验证 Docker
 
-```
+```bash
 docker container run hello-world
 ```
 
@@ -83,21 +83,21 @@ docker container run hello-world
 
 运行下面的命令停止所有正在运行的容器，并且移除所有的 docker 对象：
 
-```
+```bash
 docker container stop $(docker container ls -aq)
 docker system prune -a --volumes
 ```
 
 现在你可以使用 apt 像卸载其他软件包一样来卸载 Docker：
 
-```
+```bash
 sudo apt purge docker-ce
 sudo apt autoremove
 ```
 
 ## 5、其他命令
 
-```sh
+```bash
 # 查看版本
 docker --version
 
@@ -177,6 +177,9 @@ sudo docker update --restart=always 容器ID
 docker exec -it nextcloud ls
 # 指定用户权限执行命令行
 docker exec -it --user root nextcloud ls
+
+# 查看容器日志
+sudo docker logs mongodb
 ```
 
 ## 6、docker 的运行模式与 --rm 选项的作用

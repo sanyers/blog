@@ -133,6 +133,20 @@ sudo systemctl start mongod
 
 mongodb [下载地址](https://www.mongodb.com/try/download/community)
 
+### 6.2 修改docker默认存储路径导致 mongodb 一直重启
+
+添加 /tmp 映射，并设置访问权限，设置 `--privileged=true`
+
+```bash
+cd /home/sanyer/mongodb
+mkdir tmp
+sudo chmod 777 /home/sanyer/mongodb/tmp
+sudo docker run -d -p 27017:27017 --name=mongodb --restart=always -v /home/sanyer/mongodb/db:/data/db -v /home/sanyer/mongodb/backup:/data/backup -v /home/sanyer/mongodb/conf:/data/configdb -v /home/sanyer/mongodb/tmp:/tmp --privileged=true mongo:6.0.12 --auth
+```
+
+- 错误：容器报错Permission denied，设置 `--privileged=true`
+- 错误：Socket 报错Permission denied，设置 `chmod 777 /home/sanyer/mongodb/tmp`
+
 ## 7、卸载
 
 ```bash
@@ -157,6 +171,9 @@ sudo docker exec -it mongodb mongosh
 use admin
 db.createUser( { user: "root", pwd: "123456", roles: [{ role: "root", db: "admin" }] } );
 db.auth('root', '123456')
+
+# 查看日志
+sudo docker logs mongodb
 ```
 
 ## 9、导出与导入集合
