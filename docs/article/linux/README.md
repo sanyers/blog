@@ -139,9 +139,41 @@ sudo systemctl disable ssh --now
 sudo apt autoremove openssh-server -y
 ```
 
+### 3.1 ssh OpenBSD Secure Shell server
+
+```bash
+# 查看详细错误
+/usr/sbin/sshd -T
+
+sshd: no hostkeys available -- exiting.
+
+# 输入指令解决
+ssh-keygen -A
+```
+
 ## 4、查看网络状态
 
 ```sh
 sudo apt install net-tools
 ifconfig
 ```
+
+## 5、history 命令
+
+查看命令行的历史记录
+
+```bash
+history
+
+history | more
+
+# 显示操作时间
+export HISTTIMEFORMAT="[%F-%T]"
+history
+```
+
+有三种方式设置：
+
+- 临时设置当前用户的环境变量
+- 永久设置当前/其他用户的环境变量
+- 永久设置所有用户的环境变量

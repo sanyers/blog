@@ -128,3 +128,42 @@ sudo docker run -d -p 3306:3306 -e PUID=1000 -e PGID=100 -e MYSQL_ROOT_PASSWORD=
 -e MYSQL_PASSWORD：名称为testdb的用户的密码
 
 -v：数据卷绑定 前者是宿主机的地址,后者是容器机器的位置
+
+## 5、常见问题
+
+### 5.1 mysql正确清理binlog日志的方法
+
+```bash
+mysql -uroot -p
+
+# 查看主库和从库正在使用的binlog是哪个文件
+show master status
+show slave status\G
+
+# 手动删除
+purge binary logs to 'binlog.000055'; # 将bin.000055之前的binlog清除
+purge binary logs before '2024-05-30 13:09:51'; #将指定时间之前的binlog清除
+
+# 在配置文件my.cnf中修改
+expire_logs_day = 30 # 设置过期时间为30天
+# 或者
+max_binlog_size = 10m # 二进制日志最大大小
+```
+
+注意：对于主从复制，要看从库的延迟决定过期时间，避免主库binlog还未传到从库便因过期而删除，导致主从不一致
+
+### 5.2 mysql 重置自增ID
+
+```bash
+# 设置自增ID值
+ALTER TABLE table_name AUTO_INCREMENT = value;
+
+# 清空表数据
+TRUNCATE TABLE tablename;
+
+# 保留数据重置 - 直接删除 ID
+# 把 ID 列删除，然后重新新建 ID 列
+
+# 将表导出（结构和数据、仅结构）至 sql 文件
+# 修改 sql 文件，删除 AUTO_INCREMENT
+```

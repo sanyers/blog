@@ -178,6 +178,8 @@
 
 [github nextcloud](https://github.com/nextcloud)
 
+[nextcloud应用商店](https://apps.nextcloud.com/)
+
 ## win10下载
 
 [系统之家](https://www.xitongzhijia.net/)

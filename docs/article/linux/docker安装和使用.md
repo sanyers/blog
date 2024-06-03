@@ -384,6 +384,18 @@ docker images
 sudo rm -rf /var/lib/docker/*
 ```
 
+### 7.5 the input device is not a TTY
+
+```bash
+docker exec -it xxx bash
+
+the input device is not a TTY
+
+# 可能由于脚本在后台执行，所以无需 -it
+docker exec -i xxx bash
+# 因为-t是指分配一个伪终端。这里不需要分配伪终端。
+```
+
 ## 8、docker save 和 docker export 的区别
 
 - 对于 Docker Save 方法，会保存该镜像的所有历史记录

@@ -373,6 +373,37 @@ sudo docker exec -it nextcloud ffmpeg
 sudo docker restart nextcloud
 ```
 
+### 5.13 自动扫描，允许软连接
+
+```conf
+'filesystem_check_changes' => true,
+'localstorage.allowsymlinks' => true,
+```
+
+添加外链的文件夹映射：
+
+```bash
+sudo chown -R www-data:www-data /var/vsftpd/pub
+或者
+chmod 777 /var/vsftpd/pub -R
+ 
+docker ps -a
+docker stop nextcloud
+docker rm nextcloud
+docker run --name nextcloud -p 10000:80 --restart=always -v /root/nextcloud/:/var/www/html/ -v /var/vsftpd/pub:/var/vsftpd/pub -d nextcloud 
+
+# 手动扫描
+docker exec -u www-data nextcloud php occ files:scan --all
+```
+
+### 5.14 如何将一个文件共享给所有人
+
+1、下载 [group_everyon](https://apps.nextcloud.com/apps/group_everyone) 插件
+
+2、将下载的压缩包文件解压至 nextcloud 目录中的 `/var/www/html/apps` 目录下
+
+3、以管理员用户登录到 nextcloud 中，在应用管理中，启用 `Everyone Group`，再回到用户管理下查看，会发现多了一个用户组名为 Everyone，里面包含了所有用户
+
 ## 7、nextcloud 镜像迁移
 
 ```bash

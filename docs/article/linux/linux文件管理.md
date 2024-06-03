@@ -27,6 +27,10 @@ tar -ztvf test.tar.gz
 
 tar 命令其实并不是真的解压缩的处理者，而是使用了 gzip 或者 bzip2 等其它命令来达成，但是 gzip 等命令通常只能处理单个文件，并不方便，所以一般我们都是选择使用 tar 命令间接的完成解压缩。
 
+#### 1.1.2 tar: Exiting with failure status due to previous errors
+
+可能由于用户权限导致，使用 `sudo` 或提高当前用户权限可解决
+
 ### 1.2 zip 命令
 
 ```sh
