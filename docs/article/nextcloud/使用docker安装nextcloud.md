@@ -437,7 +437,7 @@ docker exec -u www-data nextcloud php occ files:scan --all
 
 `此电脑` 空白处右键 -> `添加一个网络位置` -> `选择自定义网络位置` -> 输入WebDav地址 `https://192.168.0.101:8888/remote.php/dav/files/sanyer/` -> 输入 `网络位置名称`
 
-## 7、nextcloud 镜像迁移
+## 6、nextcloud 镜像迁移
 
 ```bash
 # 保存镜像
@@ -452,7 +452,7 @@ sudo docker run -d -p 8080:80 --name nextcloud --restart always -v /home/sanyer/
 
 注意：**nextcloud 从新部署之后，访问首页进入安装界面，需要在同一个网段内，若跨越多个网段将无法访问，无法安装成功**
 
-## 9、参考
+## 7、参考
 
 https://zhuanlan.zhihu.com/p/435516648
 
