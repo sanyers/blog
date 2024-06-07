@@ -49,7 +49,8 @@ User=root
 # 启动frps的命令，需修改为您的frps的安装路径
 ExecStart = /root/frp/frpc -c /root/frp/frpc.ini
 Restart=always
-RestartSec=5
+RestartSec=300 # 300s 间隔
+StartLimitInterval=0 # 无限制重启次数
 
 [Install]
 WantedBy = multi-user.target

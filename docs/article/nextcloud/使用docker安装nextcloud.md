@@ -126,13 +126,26 @@ Error while trying to create admin user: Failed to connect to the database: An e
 
 ### 5.2 调整上传文件大小限制
 
-```sh
+上传大文件受 PHP、Apache、Nextcloud、Nginx 等限制，需要一一配置
+
+```bash
 docker exec -it nextcloud /bin/bash
-sudo -u www-data php occ config:app:set files max_chunk_size --value 20971520
+sudo -u www-data php occ config:app:set files max_chunk_size --value 0 # 或修改为20971520
+
+# 创建上传临时目录，若该文件夹的存储空间小于上传的大文件则会上传失败
+mkdir /data/tmp
+chown -R www-data: /data/tmp/
 
 vim .user.ini
-upload_max_filesize=1000G
-post_max_size=1000G
+always_populate_raw_post_dat a= -1
+mbstring.func_overload = 0
+default_charset = 'UTF-8'
+output_buffering = 0
+upload_max_filesize = 1000G
+post_max_size = 1000G
+open_basedir = '/var/www/html:/data/' # nextcloud 主目录，data数据目录，多个目录使用分隔符分割，windows 使用分号(;)分割，其他系统使用冒号(:)分割。
+upload_tmp_dir = '/data/tmp/' # 设置上传临时文件夹
+max_execution_time = 6000 # php 执行超时时间
 
 vim .htaccess
 <IfModule mod_php.c>
@@ -151,6 +164,8 @@ vim /var/www/html/3rdparty/aws/aws-crt-php/php.ini
 #新增
 post_max_size = 1000G
 upload_max_filesize = 1000G
+output_buffering = 0
+upload_tmp_dir = /'data/tmp/'
 
 vim /etc/apache2/sites-available/000-default.conf
 #新增
@@ -161,6 +176,10 @@ LimitRequestBody 104857600 # 100M
 LimitRequestBody 1073741824 # 1G
 #或
 LimitRequestBody 107374182400 # 100G
+
+vim /usr/local/etc/php/conf.d/nextcloud.ini
+memory_limit = 1G
+upload_tmp_dir = '/data/tmp/'
 ```
 
 如果配置了nginx 代理访问，还需要配置 nginx
@@ -172,6 +191,16 @@ server {
     client_max_body_size 10000M;
     client_body_buffer_size 10000M;
   }
+}
+
+server {
+  listen 80;
+  server_name  0.0.0.0;
+  client_max_body_size 100G; # 填写在 server_name 下
+  client_body_timeout 5m;
+  proxy_connect_timeout 5m;
+  proxy_read_timeout 5m;
+  proxy_send_timeout 5m;
 }
 ```
 
@@ -403,6 +432,10 @@ docker exec -u www-data nextcloud php occ files:scan --all
 2、将下载的压缩包文件解压至 nextcloud 目录中的 `/var/www/html/apps` 目录下
 
 3、以管理员用户登录到 nextcloud 中，在应用管理中，启用 `Everyone Group`，再回到用户管理下查看，会发现多了一个用户组名为 Everyone，里面包含了所有用户
+
+### 5.15 挂载到 windows
+
+`此电脑` 空白处右键 -> `添加一个网络位置` -> `选择自定义网络位置` -> 输入WebDav地址 `https://192.168.0.101:8888/remote.php/dav/files/sanyer/` -> 输入 `网络位置名称`
 
 ## 7、nextcloud 镜像迁移
 

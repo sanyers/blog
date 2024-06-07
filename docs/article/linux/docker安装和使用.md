@@ -396,6 +396,12 @@ docker exec -i xxx bash
 # 因为-t是指分配一个伪终端。这里不需要分配伪终端。
 ```
 
+### 7.6 docker export import 后，导入镜像，启动时的错误，Error response from daemon: No command specified
+
+运行导入的镜像必须带 command，否则启动会报错：Error response from daemon: No command specified
+
+具体的 command 需要在导出容器的时候通过 `docker ps --no-trunc` 查看
+
 ## 8、docker save 和 docker export 的区别
 
 - 对于 Docker Save 方法，会保存该镜像的所有历史记录
@@ -432,4 +438,19 @@ sudo docker export [ID] or [Name] > /home/xxx.tar
 
 ```bash
 sudo docker import xxx.tar xxx:latest
+```
+
+## 9、 docker commit 提交的镜像越来越大
+
+合并多个 commit
+
+```bash
+# 安装 docker-squash 合并工具
+sudo pip install docker-squash
+
+# 查看历史提交
+sudo docker history testdocker
+
+# 合并
+sudo docker-squash -f 48 -t testdocker:004 vvcloud:003 # -f 压缩镜像的层数
 ```
