@@ -46,6 +46,7 @@ module.exports = [
       { text: "php", link: "/article/php/", firstName: "开始" },
       { text: "golang", link: "/article/golang/", firstName: "开始" },
       { text: "c++", link: "/article/c++/", firstName: "开始" },
+      { text: "c#", link: "/article/c#/", firstName: "开始" },
       { text: "wasm", link: "/article/wasm/", firstName: "开始" },
       { text: "study", link: "/article/study/", firstName: "开始" },
       { text: "nextcloud", link: "/article/nextcloud/", firstName: "开始" },
