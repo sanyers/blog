@@ -96,3 +96,69 @@ namespace MonitorService
 # 卸载
 %SystemRoot%\Microsoft.NET\Framework65\v4.0.30319\InstallUtil.exe /u D:\TestService.exe
 ```
+
+## 5、控制服务
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace StartWindowsServiceDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string windowsServiceName = "iphlpsvc";
+            StartWindowsService(windowsServiceName);
+            StopWindowsService(windowsServiceName);
+
+            Console.Read();
+        }
+
+        /// <summary>
+        /// 开启服务
+        /// </summary>
+        /// <param name="windowsServiceName">服务名称</param>
+        static void StartWindowsService(string windowsServiceName)
+        {
+            using (System.ServiceProcess.ServiceController control = new System.ServiceProcess.ServiceController(windowsServiceName))
+            {
+                if (control.Status == System.ServiceProcess.ServiceControllerStatus.Stopped)
+                {
+                    Console.WriteLine("服务启动......");
+                    control.Start();
+                    Console.WriteLine("服务已经启动......");
+                }
+                else if(control.Status == System.ServiceProcess.ServiceControllerStatus.Running)
+                {
+                    Console.WriteLine("服务已经启动......");
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 停止服务
+        /// </summary>
+        /// <param name="windowsServiceName">服务名称</param>
+        static void StopWindowsService(string windowsServiceName)
+        {
+            using (System.ServiceProcess.ServiceController control = new System.ServiceProcess.ServiceController(windowsServiceName))
+            {
+                if (control.Status == System.ServiceProcess.ServiceControllerStatus.Running)
+                {
+                    Console.WriteLine("服务停止......");
+                    control.Stop();
+                    Console.WriteLine("服务已经停止......");
+                }
+                else if (control.Status == System.ServiceProcess.ServiceControllerStatus.Stopped)
+                {
+                    Console.WriteLine("服务已经停止......");
+                }
+            }
+        }
+    }
+}
+```

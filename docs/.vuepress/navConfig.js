@@ -52,6 +52,7 @@ module.exports = [
       { text: "nextcloud", link: "/article/nextcloud/", firstName: "开始" },
       { text: "jetson", link: "/article/jetson/", firstName: "开始" },
       { text: "数据库", link: "/article/database/", firstName: "开始" },
+      { text: "ide", link: "/article/ide/", firstName: "开始" },
       // { text: '历史', link: '/article/history/', firstName: '开始' },
     ],
   },
