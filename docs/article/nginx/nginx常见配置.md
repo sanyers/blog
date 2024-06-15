@@ -240,3 +240,24 @@ server {
        }
 }
 ```
+
+## 11、支持 mjs
+
+若没有配置 mjs 则报如下错误：
+
+```
+nginx: [warn] duplicate extension "js", content type: "application/javascript", previous content type: "application/javascript" in /usr/local/nginx/conf/mime.types:33
+```
+
+需要修改配置：
+
+```bash
+vim /usr/local/nginx/conf/mime.types
+# 或
+vim /etc/nginx/mime.types
+
+# 添加 mjs 格式
+application/javascript                           js mjs;
+
+sudo nginx -s reload
+```
