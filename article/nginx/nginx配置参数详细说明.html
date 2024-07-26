@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>nginx配置参数详细说明 | sanyer</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/blog/favicon.ico">
+    <link rel="stylesheet" href="/blog/css/index.css">
+    <script src="/blog/js/index.js"></script>
+    <meta name="description" content="This is sanyer&#39;s blog.">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.1894d7db.css" as="style"><link rel="preload" href="/blog/assets/js/app.b8d7ebef.js" as="script"><link rel="preload" href="/blog/assets/js/2.ce51b73f.js" as="script"><link rel="preload" href="/blog/assets/js/103.3b626a20.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.1beb9fb6.js"><link rel="prefetch" href="/blog/assets/js/100.a9993c15.js"><link rel="prefetch" href="/blog/assets/js/101.0cbe276c.js"><link rel="prefetch" href="/blog/assets/js/102.9b2e5108.js"><link rel="prefetch" href="/blog/assets/js/104.52a109db.js"><link rel="prefetch" href="/blog/assets/js/105.ff3e3d38.js"><link rel="prefetch" href="/blog/assets/js/106.903f6e72.js"><link rel="prefetch" href="/blog/assets/js/107.455464ea.js"><link rel="prefetch" href="/blog/assets/js/108.3acbdcb1.js"><link rel="prefetch" href="/blog/assets/js/109.d93ab83a.js"><link rel="prefetch" href="/blog/assets/js/11.98cbbb1f.js"><link rel="prefetch" href="/blog/assets/js/110.87b5a5a1.js"><link rel="prefetch" href="/blog/assets/js/111.3dd15a0c.js"><link rel="prefetch" href="/blog/assets/js/112.21768c47.js"><link rel="prefetch" href="/blog/assets/js/113.bcba3227.js"><link rel="prefetch" href="/blog/assets/js/114.9aade25a.js"><link rel="prefetch" href="/blog/assets/js/115.d2330bfa.js"><link rel="prefetch" href="/blog/assets/js/116.b9de61b0.js"><link rel="prefetch" href="/blog/assets/js/117.7551bc05.js"><link rel="prefetch" href="/blog/assets/js/118.9681b7d5.js"><link rel="prefetch" href="/blog/assets/js/119.e4b6f773.js"><link rel="prefetch" href="/blog/assets/js/12.8e620bc6.js"><link rel="prefetch" href="/blog/assets/js/120.d320fd92.js"><link rel="prefetch" href="/blog/assets/js/121.90c24551.js"><link rel="prefetch" href="/blog/assets/js/122.13ea45c0.js"><link rel="prefetch" href="/blog/assets/js/123.4b188cae.js"><link rel="prefetch" href="/blog/assets/js/124.5e5c6045.js"><link rel="prefetch" href="/blog/assets/js/125.3dec9799.js"><link rel="prefetch" href="/blog/assets/js/126.0688c0ba.js"><link rel="prefetch" href="/blog/assets/js/127.ebb560c8.js"><link rel="prefetch" href="/blog/assets/js/128.9aaf1caf.js"><link rel="prefetch" href="/blog/assets/js/129.6d6dbb26.js"><link rel="prefetch" href="/blog/assets/js/13.bc9fd273.js"><link rel="prefetch" href="/blog/assets/js/130.93847aa2.js"><link rel="prefetch" href="/blog/assets/js/131.aba7f483.js"><link rel="prefetch" href="/blog/assets/js/132.5ab5802a.js"><link rel="prefetch" href="/blog/assets/js/133.76f0fa69.js"><link rel="prefetch" href="/blog/assets/js/134.6b03110f.js"><link rel="prefetch" href="/blog/assets/js/135.1e797e51.js"><link rel="prefetch" href="/blog/assets/js/136.cda9fd53.js"><link rel="prefetch" href="/blog/assets/js/137.4528981d.js"><link rel="prefetch" href="/blog/assets/js/138.3807162d.js"><link rel="prefetch" href="/blog/assets/js/139.f5490167.js"><link rel="prefetch" href="/blog/assets/js/14.d9065ee6.js"><link rel="prefetch" href="/blog/assets/js/140.bba151fe.js"><link rel="prefetch" href="/blog/assets/js/141.81ed8c20.js"><link rel="prefetch" href="/blog/assets/js/142.afc89067.js"><link rel="prefetch" href="/blog/assets/js/143.3150561f.js"><link rel="prefetch" href="/blog/assets/js/144.247a6dda.js"><link rel="prefetch" href="/blog/assets/js/145.9527e842.js"><link rel="prefetch" href="/blog/assets/js/146.9dcb9287.js"><link rel="prefetch" href="/blog/assets/js/147.20fffa02.js"><link rel="prefetch" href="/blog/assets/js/148.dd08b765.js"><link rel="prefetch" href="/blog/assets/js/149.2940133f.js"><link rel="prefetch" href="/blog/assets/js/15.3c5e8ed3.js"><link rel="prefetch" href="/blog/assets/js/150.7a97c862.js"><link rel="prefetch" href="/blog/assets/js/151.1da3f531.js"><link rel="prefetch" href="/blog/assets/js/152.12d61d67.js"><link rel="prefetch" href="/blog/assets/js/153.e3512612.js"><link rel="prefetch" href="/blog/assets/js/154.076c5ff1.js"><link rel="prefetch" href="/blog/assets/js/155.3291a16a.js"><link rel="prefetch" href="/blog/assets/js/156.0a3fa9fc.js"><link rel="prefetch" href="/blog/assets/js/157.a4fa1f20.js"><link rel="prefetch" href="/blog/assets/js/158.df02dc45.js"><link rel="prefetch" href="/blog/assets/js/159.e8c1cce1.js"><link rel="prefetch" href="/blog/assets/js/16.a1485479.js"><link rel="prefetch" href="/blog/assets/js/160.bece07ca.js"><link rel="prefetch" href="/blog/assets/js/161.38cff27f.js"><link rel="prefetch" href="/blog/assets/js/162.fd23bf8f.js"><link rel="prefetch" href="/blog/assets/js/163.aab0367c.js"><link rel="prefetch" href="/blog/assets/js/164.680ca368.js"><link rel="prefetch" href="/blog/assets/js/165.1c5e508f.js"><link rel="prefetch" href="/blog/assets/js/166.5c3044b3.js"><link rel="prefetch" href="/blog/assets/js/167.7d774312.js"><link rel="prefetch" href="/blog/assets/js/168.3f5b792f.js"><link rel="prefetch" href="/blog/assets/js/169.c30d175e.js"><link rel="prefetch" href="/blog/assets/js/17.d4a1ad41.js"><link rel="prefetch" href="/blog/assets/js/170.97f5a405.js"><link rel="prefetch" href="/blog/assets/js/171.892cbd0c.js"><link rel="prefetch" href="/blog/assets/js/172.828a53b1.js"><link rel="prefetch" href="/blog/assets/js/173.04f9f10f.js"><link rel="prefetch" href="/blog/assets/js/174.f50a6ce7.js"><link rel="prefetch" href="/blog/assets/js/175.176076ef.js"><link rel="prefetch" href="/blog/assets/js/176.fdeaa8bc.js"><link rel="prefetch" href="/blog/assets/js/177.8df7caa0.js"><link rel="prefetch" href="/blog/assets/js/178.c8f31f3a.js"><link rel="prefetch" href="/blog/assets/js/179.b71706e7.js"><link rel="prefetch" href="/blog/assets/js/18.b454227c.js"><link rel="prefetch" href="/blog/assets/js/180.8e6ec3a4.js"><link rel="prefetch" href="/blog/assets/js/181.24a4706c.js"><link rel="prefetch" href="/blog/assets/js/182.938cbb1b.js"><link rel="prefetch" href="/blog/assets/js/183.f076821c.js"><link rel="prefetch" href="/blog/assets/js/184.d0311fa1.js"><link rel="prefetch" href="/blog/assets/js/185.970c021a.js"><link rel="prefetch" href="/blog/assets/js/186.b09f412d.js"><link rel="prefetch" href="/blog/assets/js/187.68d2dfd8.js"><link rel="prefetch" href="/blog/assets/js/188.7ad4bfab.js"><link rel="prefetch" href="/blog/assets/js/189.c90c7d4c.js"><link rel="prefetch" href="/blog/assets/js/19.4b885fe2.js"><link rel="prefetch" href="/blog/assets/js/190.bb7cf36e.js"><link rel="prefetch" href="/blog/assets/js/191.24cd8a98.js"><link rel="prefetch" href="/blog/assets/js/192.729f8183.js"><link rel="prefetch" href="/blog/assets/js/193.c98d7482.js"><link rel="prefetch" href="/blog/assets/js/194.102b6e58.js"><link rel="prefetch" href="/blog/assets/js/195.a69b55e0.js"><link rel="prefetch" href="/blog/assets/js/196.c97d044a.js"><link rel="prefetch" href="/blog/assets/js/197.208c25c2.js"><link rel="prefetch" href="/blog/assets/js/198.bf2a0b23.js"><link rel="prefetch" href="/blog/assets/js/199.8caa6355.js"><link rel="prefetch" href="/blog/assets/js/20.02d46077.js"><link rel="prefetch" href="/blog/assets/js/200.e74f2308.js"><link rel="prefetch" href="/blog/assets/js/201.d1064e4d.js"><link rel="prefetch" href="/blog/assets/js/202.6bd76716.js"><link rel="prefetch" href="/blog/assets/js/203.d18cdc79.js"><link rel="prefetch" href="/blog/assets/js/204.b01e0c4c.js"><link rel="prefetch" href="/blog/assets/js/205.91e058dc.js"><link rel="prefetch" href="/blog/assets/js/206.8ac53191.js"><link rel="prefetch" href="/blog/assets/js/207.328faf11.js"><link rel="prefetch" href="/blog/assets/js/208.f5d4c3dc.js"><link rel="prefetch" href="/blog/assets/js/209.eef0b497.js"><link rel="prefetch" href="/blog/assets/js/21.21e22d6a.js"><link rel="prefetch" href="/blog/assets/js/210.103572ca.js"><link rel="prefetch" href="/blog/assets/js/211.d0a62766.js"><link rel="prefetch" href="/blog/assets/js/212.0e412caa.js"><link rel="prefetch" href="/blog/assets/js/213.f64eab2d.js"><link rel="prefetch" href="/blog/assets/js/214.5151aa35.js"><link rel="prefetch" href="/blog/assets/js/215.739ce9ea.js"><link rel="prefetch" href="/blog/assets/js/216.b2a0fecc.js"><link rel="prefetch" href="/blog/assets/js/217.866a0160.js"><link rel="prefetch" href="/blog/assets/js/218.47a7015d.js"><link rel="prefetch" href="/blog/assets/js/219.536f9a4d.js"><link rel="prefetch" href="/blog/assets/js/22.b75fd647.js"><link rel="prefetch" href="/blog/assets/js/220.220a607b.js"><link rel="prefetch" href="/blog/assets/js/221.206cf3d2.js"><link rel="prefetch" href="/blog/assets/js/222.5cfdb5dc.js"><link rel="prefetch" href="/blog/assets/js/223.93d8332d.js"><link rel="prefetch" href="/blog/assets/js/224.9b716e7f.js"><link rel="prefetch" href="/blog/assets/js/225.411c04e4.js"><link rel="prefetch" href="/blog/assets/js/226.862c7295.js"><link rel="prefetch" href="/blog/assets/js/227.858982a0.js"><link rel="prefetch" href="/blog/assets/js/228.444b144b.js"><link rel="prefetch" href="/blog/assets/js/229.d5b961ac.js"><link rel="prefetch" href="/blog/assets/js/23.2e266fc0.js"><link rel="prefetch" href="/blog/assets/js/230.76296873.js"><link rel="prefetch" href="/blog/assets/js/231.04dbcf1c.js"><link rel="prefetch" href="/blog/assets/js/232.c8bc3b74.js"><link rel="prefetch" href="/blog/assets/js/233.ade8996d.js"><link rel="prefetch" href="/blog/assets/js/234.cbba36b4.js"><link rel="prefetch" href="/blog/assets/js/235.d4e9786d.js"><link rel="prefetch" href="/blog/assets/js/236.e2c22afa.js"><link rel="prefetch" href="/blog/assets/js/237.f2d747e4.js"><link rel="prefetch" href="/blog/assets/js/238.5e347018.js"><link rel="prefetch" href="/blog/assets/js/239.b40a282a.js"><link rel="prefetch" href="/blog/assets/js/24.fbe45dc0.js"><link rel="prefetch" href="/blog/assets/js/240.d3f7a980.js"><link rel="prefetch" href="/blog/assets/js/241.0c273844.js"><link rel="prefetch" href="/blog/assets/js/242.de514c83.js"><link rel="prefetch" href="/blog/assets/js/243.508037e4.js"><link rel="prefetch" href="/blog/assets/js/244.3f1a1435.js"><link rel="prefetch" href="/blog/assets/js/245.936b8b98.js"><link rel="prefetch" href="/blog/assets/js/246.0f27aeac.js"><link rel="prefetch" href="/blog/assets/js/247.0db23b6f.js"><link rel="prefetch" href="/blog/assets/js/248.885b65a5.js"><link rel="prefetch" href="/blog/assets/js/249.33adbe45.js"><link rel="prefetch" href="/blog/assets/js/25.abbde213.js"><link rel="prefetch" href="/blog/assets/js/250.9463c685.js"><link rel="prefetch" href="/blog/assets/js/251.d93436e9.js"><link rel="prefetch" href="/blog/assets/js/252.2f4baf95.js"><link rel="prefetch" href="/blog/assets/js/253.2fc729a2.js"><link rel="prefetch" href="/blog/assets/js/254.d38ba2d7.js"><link rel="prefetch" href="/blog/assets/js/255.cb61ef78.js"><link rel="prefetch" href="/blog/assets/js/256.6592c2cc.js"><link rel="prefetch" href="/blog/assets/js/257.a67fa3ad.js"><link rel="prefetch" href="/blog/assets/js/258.4b8fdac7.js"><link rel="prefetch" href="/blog/assets/js/259.a395bed5.js"><link rel="prefetch" href="/blog/assets/js/26.34ed0a98.js"><link rel="prefetch" href="/blog/assets/js/260.662f9547.js"><link rel="prefetch" href="/blog/assets/js/261.3b0a517d.js"><link rel="prefetch" href="/blog/assets/js/262.758edebb.js"><link rel="prefetch" href="/blog/assets/js/263.2c587a6f.js"><link rel="prefetch" href="/blog/assets/js/264.ac362794.js"><link rel="prefetch" href="/blog/assets/js/265.99515ed7.js"><link rel="prefetch" href="/blog/assets/js/266.c31c522f.js"><link rel="prefetch" href="/blog/assets/js/267.16ee494c.js"><link rel="prefetch" href="/blog/assets/js/268.408b6466.js"><link rel="prefetch" href="/blog/assets/js/269.905dc285.js"><link rel="prefetch" href="/blog/assets/js/27.178481e6.js"><link rel="prefetch" href="/blog/assets/js/270.1a614aff.js"><link rel="prefetch" href="/blog/assets/js/271.3403d18c.js"><link rel="prefetch" href="/blog/assets/js/272.9a234c4f.js"><link rel="prefetch" href="/blog/assets/js/273.f5c329a9.js"><link rel="prefetch" href="/blog/assets/js/274.95a8ba52.js"><link rel="prefetch" href="/blog/assets/js/275.e529721b.js"><link rel="prefetch" href="/blog/assets/js/276.e09547c1.js"><link rel="prefetch" href="/blog/assets/js/277.d860afb2.js"><link rel="prefetch" href="/blog/assets/js/278.bf2bfeac.js"><link rel="prefetch" href="/blog/assets/js/279.7e9bf419.js"><link rel="prefetch" href="/blog/assets/js/28.26f8f3de.js"><link rel="prefetch" href="/blog/assets/js/280.555c5e43.js"><link rel="prefetch" href="/blog/assets/js/281.2f9806e5.js"><link rel="prefetch" href="/blog/assets/js/282.f04d8c98.js"><link rel="prefetch" href="/blog/assets/js/283.51b8a0b8.js"><link rel="prefetch" href="/blog/assets/js/284.34f4cd6d.js"><link rel="prefetch" href="/blog/assets/js/285.e9c4cfd4.js"><link rel="prefetch" href="/blog/assets/js/286.866cd2ae.js"><link rel="prefetch" href="/blog/assets/js/287.efbbc416.js"><link rel="prefetch" href="/blog/assets/js/288.37f68a9e.js"><link rel="prefetch" href="/blog/assets/js/289.4a5e23dc.js"><link rel="prefetch" href="/blog/assets/js/29.39e1ccb5.js"><link rel="prefetch" href="/blog/assets/js/290.98cdfb95.js"><link rel="prefetch" href="/blog/assets/js/291.05f67581.js"><link rel="prefetch" href="/blog/assets/js/292.66874c1c.js"><link rel="prefetch" href="/blog/assets/js/293.a229e2c7.js"><link rel="prefetch" href="/blog/assets/js/294.3bf73ab9.js"><link rel="prefetch" href="/blog/assets/js/295.412b5b75.js"><link rel="prefetch" href="/blog/assets/js/296.189c4620.js"><link rel="prefetch" href="/blog/assets/js/297.f375ea93.js"><link rel="prefetch" href="/blog/assets/js/298.3286b390.js"><link rel="prefetch" href="/blog/assets/js/299.4c4afe5e.js"><link rel="prefetch" href="/blog/assets/js/3.566907ce.js"><link rel="prefetch" href="/blog/assets/js/30.dac027f7.js"><link rel="prefetch" href="/blog/assets/js/300.adbd7014.js"><link rel="prefetch" href="/blog/assets/js/301.a0de1e26.js"><link rel="prefetch" href="/blog/assets/js/302.b38a5046.js"><link rel="prefetch" href="/blog/assets/js/303.3eca9522.js"><link rel="prefetch" href="/blog/assets/js/304.7244e1bd.js"><link rel="prefetch" href="/blog/assets/js/305.837d1599.js"><link rel="prefetch" href="/blog/assets/js/306.97548eaf.js"><link rel="prefetch" href="/blog/assets/js/307.f8aef455.js"><link rel="prefetch" href="/blog/assets/js/308.cad538ed.js"><link rel="prefetch" href="/blog/assets/js/309.b306c450.js"><link rel="prefetch" href="/blog/assets/js/31.837529c7.js"><link rel="prefetch" href="/blog/assets/js/310.cc67fc75.js"><link rel="prefetch" href="/blog/assets/js/311.6ec9a74e.js"><link rel="prefetch" href="/blog/assets/js/312.7377e0de.js"><link rel="prefetch" href="/blog/assets/js/313.f5f4075c.js"><link rel="prefetch" href="/blog/assets/js/314.e4566f3e.js"><link rel="prefetch" href="/blog/assets/js/315.84db262f.js"><link rel="prefetch" href="/blog/assets/js/316.8635c584.js"><link rel="prefetch" href="/blog/assets/js/317.d11cf9d4.js"><link rel="prefetch" href="/blog/assets/js/318.333a948d.js"><link rel="prefetch" href="/blog/assets/js/319.aab1dd9f.js"><link rel="prefetch" href="/blog/assets/js/32.6da85d62.js"><link rel="prefetch" href="/blog/assets/js/320.392d1297.js"><link rel="prefetch" href="/blog/assets/js/321.82a37d9c.js"><link rel="prefetch" href="/blog/assets/js/322.bb8f22ea.js"><link rel="prefetch" href="/blog/assets/js/323.8352d853.js"><link rel="prefetch" href="/blog/assets/js/324.931f3580.js"><link rel="prefetch" href="/blog/assets/js/325.b78eb69a.js"><link rel="prefetch" href="/blog/assets/js/326.47653605.js"><link rel="prefetch" href="/blog/assets/js/327.f17a36c0.js"><link rel="prefetch" href="/blog/assets/js/328.9a8c136c.js"><link rel="prefetch" href="/blog/assets/js/329.d33af281.js"><link rel="prefetch" href="/blog/assets/js/33.9d251d31.js"><link rel="prefetch" href="/blog/assets/js/330.38814bc8.js"><link rel="prefetch" href="/blog/assets/js/331.341bdeff.js"><link rel="prefetch" href="/blog/assets/js/332.3887eea1.js"><link rel="prefetch" href="/blog/assets/js/333.c2ab48cf.js"><link rel="prefetch" href="/blog/assets/js/334.39bb36f8.js"><link rel="prefetch" href="/blog/assets/js/335.555b0d53.js"><link rel="prefetch" href="/blog/assets/js/336.4a3a408a.js"><link rel="prefetch" href="/blog/assets/js/337.1c80dd3e.js"><link rel="prefetch" href="/blog/assets/js/338.c85650cb.js"><link rel="prefetch" href="/blog/assets/js/339.554a5323.js"><link rel="prefetch" href="/blog/assets/js/34.e347496c.js"><link rel="prefetch" href="/blog/assets/js/340.aacabe23.js"><link rel="prefetch" href="/blog/assets/js/341.72b92a09.js"><link rel="prefetch" href="/blog/assets/js/342.b36a4f17.js"><link rel="prefetch" href="/blog/assets/js/343.600c29d2.js"><link rel="prefetch" href="/blog/assets/js/344.9267f507.js"><link rel="prefetch" href="/blog/assets/js/345.2fb365d2.js"><link rel="prefetch" href="/blog/assets/js/346.682ac490.js"><link rel="prefetch" href="/blog/assets/js/347.739269a7.js"><link rel="prefetch" href="/blog/assets/js/348.2053923c.js"><link rel="prefetch" href="/blog/assets/js/349.8e9e5f3d.js"><link rel="prefetch" href="/blog/assets/js/35.da1dbc0a.js"><link rel="prefetch" href="/blog/assets/js/350.40df0c48.js"><link rel="prefetch" href="/blog/assets/js/351.82900817.js"><link rel="prefetch" href="/blog/assets/js/352.0caac79b.js"><link rel="prefetch" href="/blog/assets/js/353.c9f076b5.js"><link rel="prefetch" href="/blog/assets/js/36.95076267.js"><link rel="prefetch" href="/blog/assets/js/37.d2f27762.js"><link rel="prefetch" href="/blog/assets/js/38.85c7d43e.js"><link rel="prefetch" href="/blog/assets/js/39.6a238108.js"><link rel="prefetch" href="/blog/assets/js/4.ee45cdfc.js"><link rel="prefetch" href="/blog/assets/js/40.d2e2784e.js"><link rel="prefetch" href="/blog/assets/js/41.d60955d6.js"><link rel="prefetch" href="/blog/assets/js/42.e71a87e8.js"><link rel="prefetch" href="/blog/assets/js/43.678b3b15.js"><link rel="prefetch" href="/blog/assets/js/44.3d6a9494.js"><link rel="prefetch" href="/blog/assets/js/45.fd69fb4f.js"><link rel="prefetch" href="/blog/assets/js/46.330fe2c7.js"><link rel="prefetch" href="/blog/assets/js/47.e028c5d1.js"><link rel="prefetch" href="/blog/assets/js/48.50320210.js"><link rel="prefetch" href="/blog/assets/js/49.a4480550.js"><link rel="prefetch" href="/blog/assets/js/5.6658dbd1.js"><link rel="prefetch" href="/blog/assets/js/50.27b49c1f.js"><link rel="prefetch" href="/blog/assets/js/51.5afaba4b.js"><link rel="prefetch" href="/blog/assets/js/52.31981a70.js"><link rel="prefetch" href="/blog/assets/js/53.3d969cae.js"><link rel="prefetch" href="/blog/assets/js/54.5baff710.js"><link rel="prefetch" href="/blog/assets/js/55.2fa6a6f3.js"><link rel="prefetch" href="/blog/assets/js/56.7debe0d8.js"><link rel="prefetch" href="/blog/assets/js/57.52c7d3a6.js"><link rel="prefetch" href="/blog/assets/js/58.71a78f83.js"><link rel="prefetch" href="/blog/assets/js/59.c3ad425d.js"><link rel="prefetch" href="/blog/assets/js/6.2da0b1b8.js"><link rel="prefetch" href="/blog/assets/js/60.78918d52.js"><link rel="prefetch" href="/blog/assets/js/61.76bc639d.js"><link rel="prefetch" href="/blog/assets/js/62.fde7b036.js"><link rel="prefetch" href="/blog/assets/js/63.0aed9a9e.js"><link rel="prefetch" href="/blog/assets/js/64.3cddbd58.js"><link rel="prefetch" href="/blog/assets/js/65.2bf9a8ce.js"><link rel="prefetch" href="/blog/assets/js/66.baa7d866.js"><link rel="prefetch" href="/blog/assets/js/67.889e0054.js"><link rel="prefetch" href="/blog/assets/js/68.4e97f390.js"><link rel="prefetch" href="/blog/assets/js/69.3beafb2d.js"><link rel="prefetch" href="/blog/assets/js/7.9d7d0342.js"><link rel="prefetch" href="/blog/assets/js/70.5ef0c6d7.js"><link rel="prefetch" href="/blog/assets/js/71.32887463.js"><link rel="prefetch" href="/blog/assets/js/72.42998dc2.js"><link rel="prefetch" href="/blog/assets/js/73.009130fa.js"><link rel="prefetch" href="/blog/assets/js/74.345196a7.js"><link rel="prefetch" href="/blog/assets/js/75.fd73b182.js"><link rel="prefetch" href="/blog/assets/js/76.3c0e97d7.js"><link rel="prefetch" href="/blog/assets/js/77.49570c40.js"><link rel="prefetch" href="/blog/assets/js/78.1707f462.js"><link rel="prefetch" href="/blog/assets/js/79.6e19b8a6.js"><link rel="prefetch" href="/blog/assets/js/8.e3844e1c.js"><link rel="prefetch" href="/blog/assets/js/80.4320ab9e.js"><link rel="prefetch" href="/blog/assets/js/81.9d5968ca.js"><link rel="prefetch" href="/blog/assets/js/82.673797b5.js"><link rel="prefetch" href="/blog/assets/js/83.370ecab0.js"><link rel="prefetch" href="/blog/assets/js/84.efee828b.js"><link rel="prefetch" href="/blog/assets/js/85.bd2c44e2.js"><link rel="prefetch" href="/blog/assets/js/86.1a99f593.js"><link rel="prefetch" href="/blog/assets/js/87.16892507.js"><link rel="prefetch" href="/blog/assets/js/88.73b347e0.js"><link rel="prefetch" href="/blog/assets/js/89.c1af3fb0.js"><link rel="prefetch" href="/blog/assets/js/9.1f78bada.js"><link rel="prefetch" href="/blog/assets/js/90.bad19f52.js"><link rel="prefetch" href="/blog/assets/js/91.3c4e7399.js"><link rel="prefetch" href="/blog/assets/js/92.3fe66690.js"><link rel="prefetch" href="/blog/assets/js/93.73ffbcbb.js"><link rel="prefetch" href="/blog/assets/js/94.816c9984.js"><link rel="prefetch" href="/blog/assets/js/95.a85bc0e6.js"><link rel="prefetch" href="/blog/assets/js/96.4c78240f.js"><link rel="prefetch" href="/blog/assets/js/97.2196815f.js"><link rel="prefetch" href="/blog/assets/js/98.8a61f30d.js"><link rel="prefetch" href="/blog/assets/js/99.45fedf82.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.1894d7db.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/img/logo.png" alt="sanyer" class="logo"> <span class="site-name can-hide">sanyer</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端笔记" class="dropdown-title"><span class="title">前端笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端笔记" class="mobile-dropdown-title"><span class="title">前端笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue3/" class="nav-link">
+  vue3
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vite/" class="nav-link">
+  vite
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/babel/" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/weex/" class="nav-link">
+  weex
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/electron/" class="nav-link">
+  electron
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webrtc/" class="nav-link">
+  WebRTC
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/websocket/" class="nav-link">
+  WebSocket
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/" class="nav-link">
+  网络知识
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/design/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/algorithm/" class="nav-link">
+  数据结构/算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/security/" class="nav-link">
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/interview/" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/booklist/" class="nav-link">
+  书单
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/article/website/" class="nav-link">
+  站点分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/configure/" class="nav-link">
+  配置说明
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/android/" class="nav-link">
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/nginx/" class="nav-link router-link-active">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/pm2/" class="nav-link">
+  pm2
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/npm/" class="nav-link">
+  npm
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/windows/" class="nav-link">
+  windows
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/ffmpeg/" class="nav-link">
+  ffmpeg
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/python/" class="nav-link">
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/php/" class="nav-link">
+  php
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/golang/" class="nav-link">
+  golang
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/c++/" class="nav-link">
+  c++
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/csharp/" class="nav-link">
+  c#
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/wasm/" class="nav-link">
+  wasm
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/study/" class="nav-link">
+  study
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/nextcloud/" class="nav-link">
+  nextcloud
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/jetson/" class="nav-link">
+  jetson
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/database/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/ide/" class="nav-link">
+  ide
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="书籍系列" class="dropdown-title"><span class="title">书籍系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="书籍系列" class="mobile-dropdown-title"><span class="title">书籍系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/original/full-stack/" class="nav-link">
+  《全栈开发》
+</a></li><li class="dropdown-item"><!----> <a href="/blog/original/js-definitive/" class="nav-link">
+  《JavaScript权威指南 第七版》 笔记
+</a></li></ul></div></div><div class="nav-item"><a href="https://sanyers.github.io/resume/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人简历
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="导航" class="dropdown-title"><span class="title">导航</span> <span class="arrow down"></span></button> <button type="button" aria-label="导航" class="mobile-dropdown-title"><span class="title">导航</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/u/126bb2363acb" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  简书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://sanyers.github.io/qa-system/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  面试题
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端笔记" class="dropdown-title"><span class="title">前端笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端笔记" class="mobile-dropdown-title"><span class="title">前端笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/web/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/html/" class="nav-link">
+  html
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vue3/" class="nav-link">
+  vue3
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/vite/" class="nav-link">
+  vite
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/babel/" class="nav-link">
+  babel
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/weex/" class="nav-link">
+  weex
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/electron/" class="nav-link">
+  electron
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/webrtc/" class="nav-link">
+  WebRTC
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/websocket/" class="nav-link">
+  WebSocket
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/network/" class="nav-link">
+  网络知识
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/design/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/algorithm/" class="nav-link">
+  数据结构/算法
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/security/" class="nav-link">
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/interview/" class="nav-link">
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/blog/web/booklist/" class="nav-link">
+  书单
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/article/website/" class="nav-link">
+  站点分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/git/" class="nav-link">
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/configure/" class="nav-link">
+  配置说明
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/android/" class="nav-link">
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/nginx/" class="nav-link router-link-active">
+  nginx
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/pm2/" class="nav-link">
+  pm2
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/npm/" class="nav-link">
+  npm
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/windows/" class="nav-link">
+  windows
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/ffmpeg/" class="nav-link">
+  ffmpeg
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/python/" class="nav-link">
+  python
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/php/" class="nav-link">
+  php
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/golang/" class="nav-link">
+  golang
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/c++/" class="nav-link">
+  c++
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/csharp/" class="nav-link">
+  c#
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/wasm/" class="nav-link">
+  wasm
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/study/" class="nav-link">
+  study
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/nextcloud/" class="nav-link">
+  nextcloud
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/jetson/" class="nav-link">
+  jetson
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/database/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/blog/article/ide/" class="nav-link">
+  ide
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="书籍系列" class="dropdown-title"><span class="title">书籍系列</span> <span class="arrow down"></span></button> <button type="button" aria-label="书籍系列" class="mobile-dropdown-title"><span class="title">书籍系列</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/original/full-stack/" class="nav-link">
+  《全栈开发》
+</a></li><li class="dropdown-item"><!----> <a href="/blog/original/js-definitive/" class="nav-link">
+  《JavaScript权威指南 第七版》 笔记
+</a></li></ul></div></div><div class="nav-item"><a href="https://sanyers.github.io/resume/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人简历
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="导航" class="dropdown-title"><span class="title">导航</span> <span class="arrow down"></span></button> <button type="button" aria-label="导航" class="mobile-dropdown-title"><span class="title">导航</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://gitee.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/sanyers/blog.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/u/126bb2363acb" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  简书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://sanyers.github.io/qa-system/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  面试题
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/blog/article/nginx/" aria-current="page" class="sidebar-link">Nginx配置</a></li><li><a href="/blog/article/nginx/nginx中文乱码.html" class="sidebar-link">nginx中文乱码</a></li><li><a href="/blog/article/nginx/nginx内置全局变量.html" class="sidebar-link">nginx内置全局变量</a></li><li><a href="/blog/article/nginx/nginx常见配置.html" class="sidebar-link">nginx常见配置</a></li><li><a href="/blog/article/nginx/nginx搭建基于http-flv直播流媒体服务器.html" class="sidebar-link">nginx搭建基于http-flv直播流媒体服务器</a></li><li><a href="/blog/article/nginx/nginx模块.html" class="sidebar-link">nginx模块</a></li><li><a href="/blog/article/nginx/nginx部署.html" class="sidebar-link">nginx部署</a></li><li><a href="/blog/article/nginx/nginx配置参数详细说明.html" class="active sidebar-link">nginx配置参数详细说明</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/article/nginx/nginx配置参数详细说明.html#nginx多台服务器实现负载均衡" class="sidebar-link">Nginx多台服务器实现负载均衡：</a></li></ul></li><li><a href="/blog/article/nginx/nginx高并发配置.html" class="sidebar-link">nginx高并发配置</a></li><li><a href="/blog/article/nginx/启动vue站点.html" class="sidebar-link">启动vue站点</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nginx配置参数详细说明"><a href="#nginx配置参数详细说明" class="header-anchor">#</a> nginx配置参数详细说明</h1> <div class="language-conf line-numbers-mode"><pre class="language-text"><code>#定义Nginx运行的用户和用户组
+user www www;
+#
+#nginx进程数,建议设置为等于CPU总核心数.
+worker_processes 8;
+#
+#全局错误日志定义类型,[ debug | info | notice | warn | error | crit ]
+error_log /var/log/nginx/error.log info;
+#
+#进程文件
+pid /var/run/nginx.pid;
+#
+#一个nginx进程打开的最多文件描述符数目,理论值应该是最多打开文件数（系统的值ulimit -n）与nginx进程数相除,但是nginx分配请求并不均匀,所以建议与ulimit -n的值保持一致.
+worker_rlimit_nofile 65535;
+#
+#工作模式与连接数上限
+events
+{
+    #参考事件模型,use [ kqueue | rtsig | epoll | /dev/poll | select | poll ]; epoll模型是Linux 2.6以上版本内核中的高性能网络I/O模型,如果跑在FreeBSD上面,就用kqueue模型.
+    use epoll;
+    #单个进程最大连接数（最大连接数=连接数*进程数）
+    worker_connections 65535;
+}
+#
+#设定http服务器
+http
+{
+    include mime.types; #文件扩展名与文件类型映射表
+    default_type application/octet-stream; #默认文件类型
+    #charset utf-8; #默认编码
+    server_names_hash_bucket_size 128; #服务器名字的hash表大小
+    client_header_buffer_size 32k; #上传文件大小限制
+    large_client_header_buffers 4 64k; #设定请求缓
+    client_max_body_size 8m; #设定请求缓
+
+    # 开启目录列表访问,合适下载服务器,默认关闭.
+    autoindex on; # 显示目录
+    autoindex_exact_size on; # 显示文件大小 默认为on,显示出文件的确切大小,单位是bytes 改为off后,显示出文件的大概大小,单位是kB或者MB或者GB
+    autoindex_localtime on; # 显示文件时间 默认为off,显示的文件时间为GMT时间 改为on后,显示的文件时间为文件的服务器时间
+
+    sendfile on; # 开启高效文件传输模式,sendfile指令指定nginx是否调用sendfile函数来输出文件,对于普通应用设为 on,如果用来进行下载等应用磁盘IO重负载应用,可设置为off,以平衡磁盘与网络I/O处理速度,降低系统的负载.注意：如果图片显示不正常把这个改成off.
+    tcp_nopush on; # 防止网络阻塞
+    tcp_nodelay on; # 防止网络阻塞
+
+    keepalive_timeout 120; # (单位s)设置客户端连接保持活动的超时时间,在超过这个时间后服务器会关闭该链接
+
+    # FastCGI相关参数是为了改善网站的性能：减少资源占用,提高访问速度.下面参数看字面意思都能理解.
+    fastcgi_connect_timeout 300;
+    fastcgi_send_timeout 300;
+    fastcgi_read_timeout 300;
+    fastcgi_buffer_size 64k;
+    fastcgi_buffers 4 64k;
+    fastcgi_busy_buffers_size 128k;
+    fastcgi_temp_file_write_size 128k;
+
+    # gzip模块设置
+    gzip on; #开启gzip压缩输出
+    gzip_min_length 1k; #允许压缩的页面的最小字节数,页面字节数从header偷得content-length中获取.默认是0,不管页面多大都进行压缩.建议设置成大于1k的字节数,小于1k可能会越压越大
+    gzip_buffers 4 16k; #表示申请4个单位为16k的内存作为压缩结果流缓存,默认值是申请与原始数据大小相同的内存空间来存储gzip压缩结果
+    gzip_http_version 1.1; #压缩版本（默认1.1,目前大部分浏览器已经支持gzip解压.前端如果是squid2.5请使用1.0）
+    gzip_comp_level 2; #压缩等级.1压缩比最小,处理速度快.9压缩比最大,比较消耗cpu资源,处理速度最慢,但是因为压缩比最大,所以包最小,传输速度快
+    gzip_types text/plain application/x-javascript text/css application/xml;
+    #压缩类型,默认就已经包含text/html,所以下面就不用再写了,写上去也不会有问题,但是会有一个warn.
+    gzip_vary on;#选项可以让前端的缓存服务器缓存经过gzip压缩的页面.例如:用squid缓存经过nginx压缩的数据
+
+    #开启限制IP连接数的时候需要使用
+    #limit_zone crawler $binary_remote_addr 10m;
+
+    ##upstream的负载均衡,四种调度算法(下例主讲)##
+
+    #虚拟主机的配置
+    server
+    {
+        # 监听端口
+        listen 80;
+        # 域名可以有多个,用空格隔开
+        server_name ably.com;
+        # HTTP 自动跳转 HTTPS
+        rewrite ^(.*) https://$server_name$1 permanent;
+    }
+
+    server
+    {
+        # 监听端口 HTTPS
+        listen 443 ssl;
+        server_name ably.com;
+
+        # 配置域名证书
+        ssl_certificate      C:\WebServer\Certs\certificate.crt;
+        ssl_certificate_key  C:\WebServer\Certs\private.key;
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+        ssl_protocols SSLv2 SSLv3 TLSv1;
+        ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+        ssl_prefer_server_ciphers  on;
+
+        index index.html index.htm index.php;
+        root /data/www/;
+        location ~ .*\.(php|php5)?$
+        {
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            include fastcgi.conf;
+        }
+
+        # 配置地址拦截转发，解决跨域验证问题
+        location /oauth/{
+            proxy_pass https://localhost:13580/oauth/;
+            proxy_set_header HOST $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        # 图片缓存时间设置
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+            expires 10d;
+        }
+
+        # JS和CSS缓存时间设置
+        location ~ .*\.(js|css)?$ {
+            expires 1h;
+        }
+
+        # 日志格式设定
+        log_format access '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+        '$status $body_bytes_sent &quot;$http_referer&quot; '
+        '&quot;$http_user_agent&quot; $http_x_forwarded_for';
+        # 定义本虚拟主机的访问日志
+        access_log /var/log/nginx/access.log access;
+
+        # 设定查看Nginx状态的地址.StubStatus模块能够获取Nginx自上次启动以来的工作状态，此模块非核心模块，需要在Nginx编译安装时手工指定才能使用
+        location /NginxStatus {
+            stub_status on;
+            access_log on;
+            auth_basic &quot;NginxStatus&quot;;
+            auth_basic_user_file conf/htpasswd;
+            #htpasswd文件的内容可以用apache提供的htpasswd工具来产生.
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br></div></div><h2 id="nginx多台服务器实现负载均衡"><a href="#nginx多台服务器实现负载均衡" class="header-anchor">#</a> Nginx多台服务器实现负载均衡：</h2> <p>1、Nginx负载均衡服务器</p> <p>IP：192.168.0.4（Nginx-Server）</p> <p>2、Web服务器列表</p> <p>Web1:192.168.0.5（Nginx-Node1/Nginx-Web1） ；Web2:192.168.0.7（Nginx-Node2/Nginx-Web2）</p> <p>3、实现目的
+用户访问Nginx-Server（“http://mongo.demo.com:8888”）时，通过Nginx负载均衡到Web1和Web2服务器Nginx负载均衡服务器的nginx.conf配置注释如下：</p> <div class="language-conf line-numbers-mode"><pre class="language-text"><code>events
+{
+    use epoll;
+    worker_connections 65535;
+}
+http
+{
+    ##upstream的负载均衡,四种调度算法##
+    #调度算法1:轮询.每个请求按时间顺序逐一分配到不同的后端服务器,如果后端某台服务器宕机,故障系统被自动剔除,使用户访问不受影响
+    upstream webhost {
+        server 192.168.0.5:6666 ;
+        server 192.168.0.7:6666 ;
+    }
+    #调度算法2:weight(权重).可以根据机器配置定义权重.权重越高被分配到的几率越大
+    upstream webhost {
+        server 192.168.0.5:6666 weight=2;
+        server 192.168.0.7:6666 weight=3;
+    }
+    #调度算法3:ip_hash. 每个请求按访问IP的hash结果分配,这样来自同一个IP的访客固定访问一个后端服务器,有效解决了动态网页存在的session共享问题
+    upstream webhost {
+        ip_hash;
+        server 192.168.0.5:6666 ;
+        server 192.168.0.7:6666 ;
+    }
+    #调度算法4:url_hash(需安装第三方插件).此方法按访问url的hash结果来分配请求,使每个url定向到同一个后端服务器,可以进一步提高后端缓存服务器的效率.Nginx本身是不支持url_hash的,如果需要使用这种调度算法,必须安装Nginx 的hash软件包
+    upstream webhost {
+        server 192.168.0.5:6666 ;
+        server 192.168.0.7:6666 ;
+        hash $request_uri;
+    }
+    #调度算法5:fair(需安装第三方插件).这是比上面两个更加智能的负载均衡算法.此种算法可以依据页面大小和加载时间长短智能地进行负载均衡,也就是根据后端服务器的响应时间来分配请求,响应时间短的优先分配.Nginx本身是不支持fair的,如果需要使用这种调度算法,必须下载Nginx的upstream_fair模块
+    #
+    #虚拟主机的配置(采用调度算法3:ip_hash)
+    server
+    {
+        listen 80;
+        server_name mongo.demo.com;
+        #对 &quot;/&quot; 启用反向代理
+        location / {
+            proxy_pass http://webhost;
+            proxy_redirect off;
+            proxy_set_header X-Real-IP $remote_addr;
+            #后端的Web服务器可以通过X-Forwarded-For获取用户真实IP
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            #以下是一些反向代理的配置,可选.
+            proxy_set_header Host $host;
+            client_max_body_size 10m; #允许客户端请求的最大单文件字节数
+            client_body_buffer_size 128k; #缓冲区代理缓冲用户端请求的最大字节数,
+            proxy_connect_timeout 90; #nginx跟后端服务器连接超时时间(代理连接超时)
+            proxy_send_timeout 90; #后端服务器数据回传时间(代理发送超时)
+            proxy_read_timeout 90; #连接成功后,后端服务器响应时间(代理接收超时)
+            proxy_buffer_size 4k; #设置代理服务器（nginx）保存用户头信息的缓冲区大小
+            proxy_buffers 4 32k; #proxy_buffers缓冲区,网页平均在32k以下的设置
+            proxy_busy_buffers_size 64k; #高负荷下缓冲大小（proxy_buffers*2）
+            proxy_temp_file_write_size 64k;
+            #设定缓存文件夹大小,大于这个值,将从upstream服务器传
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br></div></div><p>负载均衡操作演示如下：</p> <p>操作对象：192.168.0.4（Nginx-Server）</p> <div class="language-conf line-numbers-mode"><pre class="language-text"><code># 创建文件夹准备存放配置文件
+$ mkdir -p /opt/confs
+$ vim /opt/confs/nginx.conf
+ # 编辑内容如下：
+events
+{
+  use epoll;
+  worker_connections 65535;
+}
+
+http
+{
+    upstream webhost {
+        ip_hash;
+        server 192.168.0.5:6666 ;
+        server 192.168.0.7:6666 ;
+    }
+
+    server
+    {
+        listen 80;
+        server_name mongo.demo.com;
+        location / {
+            proxy_pass http://webhost;
+            proxy_redirect off;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $host;
+            client_max_body_size 10m;
+            client_body_buffer_size 128k;
+            proxy_connect_timeout 90;
+            proxy_send_timeout 90;
+            proxy_read_timeout 90;
+            proxy_buffer_size 4k;
+            proxy_buffers 4 32k;
+            proxy_busy_buffers_size 64k;
+            proxy_temp_file_write_size 64k;
+        }
+    }
+}
+# 然后保存并退出
+ # 启动负载均衡服务器192.168.0.4（Nginx-Server）
+docker run -d -p 8888:80 --name nginx-server -v /opt/confs/nginx.conf:/etc/nginx/nginx.conf --restart always nginx&lt;/pre&gt;
+
+操作对象：192.168.0.5（Nginx-Node1/Nginx-Web1）
+
+&lt;pre style=&quot;margin: 0px; padding: 0px; max-width: 100%; background-image: none; box-sizing: border-box !important; word-wrap: break-word !important;&quot;&gt;# 创建文件夹用于存放web页面
+$ mkdir -p /opt/html
+$ vim /opt/html/index.html
+ # 编辑内容如下：
+&lt;div&gt;
+  &lt;h1&gt;
+    The host is 192.168.0.5(Docker02) - Node 1!
+  &lt;/h1&gt;
+&lt;/div&gt;
+# 然后保存并退出
+ # 启动192.168.0.5（Nginx-Node1/Nginx-Web1）
+$ docker run -d -p 6666:80 --name nginx-node1 -v /opt/html:/usr/share/nginx/html --restart always nginx
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div></div><p>操作对象：192.168.0.7（Nginx-Node2/Nginx-Web2）</p> <div class="language-conf line-numbers-mode"><pre class="language-text"><code># 创建文件夹用于存放web页面
+$ mkdir -p /opt/html
+$ vim /opt/html/index.html
+ # 编辑内容如下：
+&lt;div&gt;
+  &lt;h1&gt;
+    The host is 192.168.0.7(Docker03) - Node 2!
+  &lt;/h1&gt;
+&lt;/div&gt;
+# 然后保存并退出
+ # 启动192.168.0.7（Nginx-Node2/Nginx-Web2）
+$ docker run -d -p 6666:80 --name nginx-node2 -v $(pwd)/html:/usr/share/nginx/html --restart always nginx
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>测试：</p> <p>域名:mongo.demo.com，这里是用Windows系统主机访问服务器，要在当前主机的hosts中添加解析 “mongo.demo.com 192.168.0.4”，hosts文件所在的路径为 “C:\Windows\System32\drivers\etc”。</p> <p>这里在Windows主机上通过浏览器访问 “http://mongo.demo.com:8888” 这个站点的时候，Nginx会根据来访的主机的ip_hash值，负载均衡到192.168.0.5（Nginx-Node1/Nginx-Web1）和192.168.0.7（Nginx-Node2/Nginx-Web2）服务器上。</p> <p>如果其中一个Web服务器无效后，负载均衡服务器会自动将请求转发到正常的Web服务器。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">7/26/2024, 6:59:50 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/article/nginx/nginx部署.html" class="prev">
+        nginx部署
+      </a></span> <span class="next"><a href="/blog/article/nginx/nginx高并发配置.html">
+        nginx高并发配置
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div></div></div></div>
+    <script src="/blog/assets/js/app.b8d7ebef.js" defer></script><script src="/blog/assets/js/2.ce51b73f.js" defer></script><script src="/blog/assets/js/103.3b626a20.js" defer></script>
+  </body>
+</html>
