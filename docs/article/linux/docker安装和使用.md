@@ -452,5 +452,6 @@ sudo pip install docker-squash
 sudo docker history testdocker
 
 # 合并
-sudo docker-squash -f 48 -t testdocker:004 vvcloud:003 # -f 压缩镜像的层数
+sudo docker-squash -f 48 -t testdocker:004 testdocker:003 # -f 压缩镜像的层数
+sudo docker-squash -f 48 -t [new-docker-name] [old-docker-name] # -f 压缩镜像的层数
 ```

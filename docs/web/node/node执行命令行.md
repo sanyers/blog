@@ -66,4 +66,16 @@ child.stdin.write('another-input\n');
 
 // 结束输入流
 child.stdin.end();
+
+function runRm(path: string) {
+  const rmBash = spawn('rm', ['-rf', path]);
+
+  rmBash.stdout.on('data', (data: string) => {
+    consoleTime.log(`rm stdout: ${data}`);
+  });
+
+  rmBash.stderr.on('data', (data: string) => {
+    consoleTime.error(`rm stderr: ${data}`);
+  });
+}
 ```

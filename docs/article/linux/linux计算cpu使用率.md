@@ -1,5 +1,9 @@
 # linux 计算 cpu 使用率
 
+查看cpu核心：
+
+`cat /proc/cpuinfo| grep "processor"| wc -l`
+
 `cat /proc/stat`
 
 ```

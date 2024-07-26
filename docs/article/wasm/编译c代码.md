@@ -50,6 +50,9 @@ source ./emsdk_env.sh
 emsdk_env.bat
 
 emcc -v # 提示版本，说明安装成功
+
+# 将安装路径配置到全局path(环境变量)，例如：
+C:\emsdk\upstream\emscripten
 ```
 
 ## 2、编写并编译 c 代码为 wasm
@@ -182,3 +185,11 @@ test();
   </body>
 </html>
 ```
+
+参考说明：
+
+https://developer.mozilla.org/zh-CN/docs/WebAssembly/C_to_Wasm
+
+https://emscripten.org/docs/porting/connecting_cpp_and_javascript/Interacting-with-code.html#interacting-with-code-call-javascript-from-native
+
+https://emscripten.org/docs/tools_reference/emcc.html#emcc-js-library

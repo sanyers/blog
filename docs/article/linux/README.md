@@ -47,7 +47,7 @@ $ sudo chmod +x xxx # 设置文件为可执行文件
 
 $ sudo chown -R sanyer: /home/xxx # 设置目录的访问权限
 
-$ ln 源文件 目标文件 # 创建软连接
+$ ln -s 源文件 目标文件 # 创建软连接
 
 $ ls # 查看目录文件列表
 
