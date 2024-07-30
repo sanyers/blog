@@ -121,3 +121,7 @@ const registLogCb = lib.func('int registLogCb(log_cb *cb1, int level)')
 // 调用函数
 registLogCb(cb1, 2)
 ```
+
+https://koffi.dev/
+
+https://nongchatea.gitbook.io/koffi-chinese

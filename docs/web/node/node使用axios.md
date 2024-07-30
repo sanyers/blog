@@ -130,3 +130,17 @@ const agent = new https.Agent({
 });
 axios.get('https://something.com/foo', { httpsAgent: agent });
 ```
+
+## 3、取消下载
+
+```js
+const controller = new AbortController();
+
+axios.get('/foo/bar', {
+   signal: controller.signal
+}).then(function(response) {
+   //...
+});
+// 取消请求
+controller.abort()
+```

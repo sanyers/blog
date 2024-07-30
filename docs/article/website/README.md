@@ -52,6 +52,8 @@
 
 [jsjiami](https://www.jsjiami.com/)
 
+[axios](https://www.axios-http.cn/)
+
 ## web 测试
 
 [vitest](https://cn.vitest.dev/guide/)
