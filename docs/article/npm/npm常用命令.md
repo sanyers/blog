@@ -8,11 +8,9 @@
 
 `npm config list`
 
-设置为淘宝镜像或私有源
+设置为阿里云镜像
 
-`npm config set registry http://registry.npmmirror.com`
-
-`npm config set registry https://npmmirror.com`
+`npm config set registry https://registry.npmmirror.com`
 
 设置回官方源
 

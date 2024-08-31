@@ -437,6 +437,33 @@ docker exec -u www-data nextcloud php occ files:scan --all
 
 `此电脑` 空白处右键 -> `添加一个网络位置` -> `选择自定义网络位置` -> 输入WebDav地址 `https://192.168.0.101:8888/remote.php/dav/files/sanyer/` -> 输入 `网络位置名称`
 
+### 5.16 redis 连接错误
+
+```
+sudo docker logs nextcloud
+
+输出：
+
+Fatal error, can't open config file '/etc/redis/redis.conf': Permission denied
+
+查看 nextcloud 日志：
+
+RedisException: Redis server went away
+```
+
+可能引起的原因：由于 nextcloud 是 docker 部署，迁移了 docker 镜像的存储地址，重启后导致引起的错误
+
+解决方法：删除 nextcloud 镜像，重新导入或安装 nextcloud 镜像，然后再启动 nextcloud docker
+
+```bash
+sudo docker stop nextcloud
+sudo docker rm nextcloud
+sudo docker rmi [镜像id]
+sudo docker load -i nextcloud.tar # 重新导入镜像
+# 启动容器
+sudo docker run -d -p 8080:80 --name nextcloud --restart always -v /home/sanyer/nextcloud:/var/www/html nextcloud:27.1.5
+```
+
 ## 6、nextcloud 镜像迁移
 
 ```bash

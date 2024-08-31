@@ -261,3 +261,34 @@ application/javascript                           js mjs;
 
 sudo nginx -s reload
 ```
+
+## 12、API接口代理
+
+本地端口代理
+
+```conf
+server {
+    listen 80;
+    server_name  0.0.0.0;
+    location /my_api {
+        proxy_pass http://localhost:13000;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+域名接口代理
+
+```conf
+server {
+    listen 80;
+    server_name  0.0.0.0;
+    location /my_api/ {
+        proxy_pass http://api.sanyer.top/;
+        rewrite ^/my_api/(.*)$ /$1 break;
+    }
+}
+```

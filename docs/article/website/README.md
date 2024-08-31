@@ -54,6 +54,10 @@
 
 [axios](https://www.axios-http.cn/)
 
+[xlsx SheetJS](https://xlsx.nodejs.cn/docs/)
+
+[sheetjs](https://github.com/sheetjs/sheetjs)
+
 ## web 测试
 
 [vitest](https://cn.vitest.dev/guide/)
@@ -130,6 +134,8 @@
 
 [docker](https://registry.hub.docker.com/)
 
+[docker](https://hub.docker.com/)
+
 ## 其他网站
 
 [书栈网](https://www.bookstack.cn/cate)
@@ -197,3 +203,7 @@
 [DPlayer](https://github.com/DIYgod/DPlayer)
 
 [编写自定义播放器](https://juejin.cn/post/7139801590743072776)
+
+## 编辑器
+
+[filerobot-image-editor](https://github.com/scaleflex/filerobot-image-editor)

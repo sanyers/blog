@@ -455,3 +455,63 @@ sudo docker history testdocker
 sudo docker-squash -f 48 -t testdocker:004 testdocker:003 # -f 压缩镜像的层数
 sudo docker-squash -f 48 -t [new-docker-name] [old-docker-name] # -f 压缩镜像的层数
 ```
+
+## 10、设置 docker 镜像源
+
+```bash
+# 若没有则新建 daemon.json
+sudo vim /etc/docker/daemon.json
+
+# 配置如下：
+{
+  "registry-mirrors": [
+    "https://docker.m.daocloud.io",
+    "https://noohub.ru",
+    "https://huecker.io",
+    "https://dockerhub.timeweb.cloud"
+  ]
+}
+
+# 重启 docker
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+# 查看是否生效
+sudo docker info
+```
+
+## 11、配置 docker 命令走代理服务器下载
+
+```bash
+# 如果没有则新建这个文件夹
+sudo mkdir /etc/systemd/system/docker.service.d
+# 进入文件夹目录
+cd /etc/systemd/system/docker.service.d
+# 创建代理配置
+sudo vim proxy.conf
+
+[Service] 
+Environment="HTTP_PROXY=localhost:port" 
+Environment="HTTPS_PROXY=localhost:port"
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo docker info
+```
+
+## 12、配置 docker api 访问
+
+```bash
+sudo vim /usr/lib/systemd/system/docker.service
+
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:8801
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+https://www.runoob.com/docker/docker-install-ubuntu.html
+
+https://docs.docker.com/engine/api/
+
+https://docs.docker.com/reference/cli/docker/container/exec/

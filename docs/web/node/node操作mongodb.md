@@ -33,6 +33,11 @@ function update(where, update, tabName, callback) {
   mongodbase.collection(tabName).updateOne(where, update, callback);
 }
 
+// 更新数据
+function updates(where, update, tabName, callback) {
+  mongodbase.collection(tabName).updateOne(where, update, callback);
+}
+
 function findAll(where, tabName, callback) {
   mongodbase.collection(tabName).find(where).toArray(callback);
 }
@@ -109,6 +114,13 @@ export class Database {
       : Promise.reject('db is null');
   }
 
+  // 更新数据
+  updates(where: any, update: any, tabName: string) {
+    return this.dbs
+      ? this.dbs.collection(tabName).updateOne(where, update)
+      : Promise.reject('db is null');
+  }
+
   findAll(where: any, tabName: string) {
     return this.dbs
       ? this.dbs.collection(tabName).find(where).toArray()
@@ -119,6 +131,49 @@ export class Database {
     return this.dbs
       ? this.dbs.collection(tabName).findOne(where)
       : Promise.reject('db is null');
+  }
+
+  findLimit(
+    where: any,
+    tabName: string,
+    sort: any,
+    start: number,
+    end: number,
+  ) {
+    return this.dbs
+      ? this.dbs
+          .collection(tabName)
+          .find(where)
+          .sort(sort)
+          .skip(start)
+          .limit(end)
+          .toArray()
+      : Promise.reject(null);
+  }
+
+  findCount(where: any, tabName: string) {
+    return this.dbs
+      ? this.dbs.collection(tabName).countDocuments(where)
+      : Promise.reject(null);
+  }
+
+  delete(where: any, tabName: string) {
+    return this.dbs
+      ? this.dbs.collection(tabName).deleteOne(where)
+      : Promise.reject(null);
+  }
+  deleteAll(where: any, tabName: string) {
+    return this.dbs
+      ? this.dbs.collection(tabName).deleteMany(where)
+      : Promise.reject(null);
+  }
+  deleteTable(tabName: string) {
+    return this.dbs ? this.dbs.dropCollection(tabName) : Promise.reject(null);
+  }
+  dropDatabase(dbName?: string) {
+    return this.dbs
+      ? this.dbs.dropDatabase({ dbName: dbName || mongodb_conf.db })
+      : Promise.reject(null);
   }
 }
 ```
@@ -139,6 +194,8 @@ db.collection(tabName).find(where).sort(sort).skip(start).limit(end).toArray();
 
 ## 4、更新数组
 
+## 4.1 更新数组的值
+
 ```js
 // 数据示例
 const item = {
@@ -153,6 +210,19 @@ const item = {
 
 // 修改第一个文档中的 {pid: 1002,value: 35} 为 {pid: 1002,value: 40}
 db.xx.update({ id: 1, 'list.pid': 1002 }, { $set: { 'list.$.value': 40 } });
+```
+
+### 4.2 新增数组对象
+
+```js
+const item = { pid: 1004, value: 37 };
+db.xx.updates({ id: 1 }, { $push: { list: item } });
+```
+
+### 4.3 删除数组对象
+
+```js
+db.xx.updates({ id: 1 }, { $pull: { list: { pid: 1004 } } });
 ```
 
 ## 5、查询关键字
