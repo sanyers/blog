@@ -15,6 +15,8 @@ pm2 start npm --name "smartoffice" -- run start #nuxt部署（适用于linux）
 
 pm2 start ./dist/app.js --name xxx-name  # 启动并设置应用名字
 
+pm2 start ./dist/app.js --name xxx-name --env xxx # 导入环境变量
+
 pm2 scale <app name> <n>       #增加或减少工作线程的数量，对集群进行扩展
 
 pm2 start app.js --name my-api #命名进程
