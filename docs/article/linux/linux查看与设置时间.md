@@ -1,4 +1,4 @@
-# linux查看时间
+# linux 查看与设置时间
 
 ## 1、查看当前时间
 
@@ -44,4 +44,23 @@ $ last -x reboot | head -1 # 最后一次重启日期
 $ last -x shutdown # 关机日期
 
 $ last -x shutdown | head -1 # 最后一次关机时间
+```
+
+## 5、设置系统时间
+
+```bash
+# 设置时间
+sudo date -s "10:00:00"
+
+# 设置日期
+sudo date -s "2018/8/8"
+
+# 设置日期与时间
+sudo date -s "2018/8/8 10:00:00"
+
+# 将硬件时间写入到系统时间
+sudo hwclock -s
+
+# 将系统时间写入到硬件时间
+sudo hwclock -w
 ```
