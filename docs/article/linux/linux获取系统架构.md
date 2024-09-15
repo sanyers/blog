@@ -44,6 +44,8 @@ amd64
 
 需要自行分析
 
-```sh
-$ cat /proc/cpuinfo
+```bash
+cat /proc/cpuinfo
+
+lscpu
 ```

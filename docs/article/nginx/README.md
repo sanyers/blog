@@ -10,7 +10,7 @@ nginx -s reload                //重新加载nginx
 nginx -s quit                  //退出nginx
 ```
 
-## Nginx 服务器的文件大小的限制及 413request Entity too Large
+## Nginx 服务器的文件大小的限制及 413 request Entity too Large
 
 ```conf
 http {

@@ -293,3 +293,67 @@ Host github.com
 set http_proxy=http://127.0.0.1:1080
 set https_proxy=http://127.0.0.1:1080
 ```
+
+## 7、将代码同时提交到 gitlab 和 github
+
+
+### 7.1 配置公钥
+
+假设 gitlab 账号邮箱为 a@test.com，github 账号邮箱为 b@test.com
+
+则创建两个公钥：
+
+```bash
+ssh-keygen -t ed25519 -f ./gitlab -C "a@test.com"
+ssh-keygen -t ed25519 -f ./github -C "b@test.com"
+```
+
+将两个公钥生成的key分别添加到 gitlab 和 github ssh key
+
+### 7.2 提交代码
+
+新建一个代码库 mytest（若已有则省略这一步），提交代码到 gitlab，在生成的 git 配置文件中修改（一般在项目根目录下的`.git/config`）
+
+```conf
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = git@gitlab.sanyer.top/mytest.git # gitlab 地址
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[remote "github"] # 新添加 github 提交地址
+	url = git@github.com:sanyers/mytest.git
+	fetch = +refs/heads/*:refs/remotes/github/*
+```
+
+在 github 上创建一个空的代码库 mytest，并提交到 github
+
+```bash
+git push github
+```
+
+### 7.3 编写提交脚本
+
+> push.bat
+
+```bash
+@echo off
+git pull
+git add .
+git commit -m %1
+git push
+git push github
+```
+
+然后每次输入描述，即可同时提交到 gitlab 和 github
+
+```bash
+./push.bat testcommit
+```
