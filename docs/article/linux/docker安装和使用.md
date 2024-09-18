@@ -491,8 +491,8 @@ cd /etc/systemd/system/docker.service.d
 sudo vim proxy.conf
 
 [Service] 
-Environment="HTTP_PROXY=localhost:port" 
-Environment="HTTPS_PROXY=localhost:port"
+Environment="HTTP_PROXY=http://127.0.0.1:8080" 
+Environment="HTTPS_PROXY=http://127.0.0.1:8080"
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker

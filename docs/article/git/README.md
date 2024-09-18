@@ -11,6 +11,8 @@ $ git commit -m "comment"  # 将暂存区的修改提交到本地仓库 并填�
 
 $ git clone http://123%40qq.com:xxx@git.xxx.com/xxx  # http:#邮箱(或用户名):密码@仓库 下载一个项目和它的整个代码历史
 
+$ git clone --depth 1 http://123%40qq.com:xxx@git.xxx.com/xxx # -depth 1 参数只下载最新的提交，减少下载时间和磁盘空间占用
+
 $ git push origin master # 将本地的 master 分支推送到远程的 master 分支中
 
 $ git log  # 查看 git 的 commit 信息，每次提交的信息包括注释在内，从最新提交到最久提交

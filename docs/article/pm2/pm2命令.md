@@ -46,6 +46,8 @@ pm2 start script.sh            #启动 bash 脚本
 pm2 save                       #保存 pm2 list 列表
 
 pm2 resurrect                  #恢复 pm2 lsit 列表
+
+pm2 update                     # 更新
 ```
 
 root用户：
@@ -85,7 +87,7 @@ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -
 sudo systemctl enable pm2-sanyer
 ```
 
-## 日志备份与自动删除
+## 1、日志备份与自动删除
 
 ```bash
 sudo pm2 flush # 手动删除日志
@@ -94,4 +96,38 @@ sudo pm2 install pm2-logrotate   # 安装自动删除日志服务
  
 pm2 set pm2-logrotate-ext:retain 7   # 保存7个文件
 pm2 set pm2-logrotate-ext:max_size 100M    # 每个备份文件大小为100M
+```
+
+## 2、CLI选项
+
+```bash
+# Specify an app name
+--name <app_name>
+
+# Watch and Restart app when files change
+--watch
+
+# Set memory threshold for app reload
+--max-memory-restart <200MB>
+
+# Specify log file
+--log <log_path>
+
+# Pass extra arguments to the script
+-- arg1 arg2 arg3
+
+# Delay between automatic restarts
+--restart-delay <delay in ms>
+
+# Prefix logs with time
+--time
+
+# Do not auto restart app
+--no-autorestart
+
+# Specify cron for forced restart
+--cron <cron_pattern>
+
+# Attach to application log
+--no-daemon
 ```
