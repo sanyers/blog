@@ -23,13 +23,17 @@ $ ps aux | less # 查看所有运行中的进程
 
 $ ps aux|grep xxx # 搜索相关进程
 
-$ sudo kill -s 9 xxx # 关闭进程
-
 $ ps -U root -u root -N # 查看非root运行的进程
 
 $ ps -x # 查看属于自己的进程
 
+$ ps -p 1234 # 查看PID为1234的进程信息
+
 $ lsof -i:8080 # 查看端口占用
+
+$ lsof -p 1234 # 查看进程打开的文件
+
+$ sudo kill -s 9 xxx # 关闭进程
 
 $ bash test.sh # 运行一个shell脚本
 
@@ -82,6 +86,8 @@ $ sudo poweroff # 关机
 
 $ md5sum file_name # 根据文件生成MD5值
 $ md5sum -c xxx.md5 # 校验MD5值
+
+$ sudo dpkg -i 文件名称.deb # 安装deb格式的安装包
 ```
 
 ## 2、服务命令

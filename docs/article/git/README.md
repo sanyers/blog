@@ -271,6 +271,9 @@ git lfs install
 ```bash
 git config http.proxy http://127.0.0.1:1080
 git config https.proxy http://127.0.0.1:1080
+
+git config http.proxy socks5://127.0.0.1:1080
+git config https.proxy socks5://127.0.0.1:1080
 ```
 
 设置命令后，会在项目 `./.git/config` 下加上对应代理

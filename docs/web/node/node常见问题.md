@@ -1,6 +1,6 @@
-# node常见错误
+# node 常见问题
 
-## Vuepress项目编译时报routines的错误
+## 1、Vuepress项目编译时报routines的错误
 
 ```log
 /home/runner/work/HowToStartOpenSource/HowToStartOpenSource/node_modules/loader-runner/lib/LoaderRunner.js:114
@@ -42,7 +42,7 @@ Node.js v17.x, v18.x, and v19.x use OpenSSL v3.
 Node.js 14.x and v16.x are not affected by this OpenSSL update.
 ```
 
-### 解决方案
+解决方案
 
 （1）运行代码前，在终端内添加环境变量 `NODE_OPTIONS=--openssl-legacy-provider`
 
@@ -76,8 +76,42 @@ Win + R 打开 运行，输入 `sysdm.cpl` 后回车，选择 `高级` 选项，
 nvm install 16
 ```
 
-### 参考
+参考
 
 https://cloud.tencent.com/developer/article/2220344
 
 https://www.jianshu.com/p/edbad6875b7e
+
+## 2、解决 ts-node 中 lobal 添加属性报错
+
+### 2.1 添加类型文件
+
+> src/types/global.d.ts
+
+```ts
+declare global {
+  var test1: string;
+  var test2: any;
+}
+
+export {};
+```
+
+使用：
+
+```ts
+global.test1 = 'test';
+global.test2 = 'test2';
+```
+
+### 2.2 在 package.json 中设置 --files
+
+```json
+"scripts": {
+    "start": "node ./dist/app.js",
+    "dev": "ts-node --files ./src/app.ts",
+    "build": "tsc",
+    "startup": "tsc && node ./dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```

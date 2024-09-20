@@ -489,6 +489,8 @@ sudo mkdir /etc/systemd/system/docker.service.d
 cd /etc/systemd/system/docker.service.d
 # 创建代理配置
 sudo vim proxy.conf
+# or
+sudo vim /etc/systemd/system/docker.service.d/proxy.conf
 
 [Service] 
 Environment="HTTP_PROXY=http://127.0.0.1:8080" 
@@ -515,3 +517,43 @@ https://www.runoob.com/docker/docker-install-ubuntu.html
 https://docs.docker.com/engine/api/
 
 https://docs.docker.com/reference/cli/docker/container/exec/
+
+## 13、docker设置私库及加速镜像
+
+```bash
+##修改配置
+mkdir /etc/docker
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m",
+    "max-file":"1"
+  },
+  "storage-driver": "overlay2",
+  "storage-opts": [
+    "overlay2.override_kernel_check=true"
+  ],
+  "insecure-registries": ["192.168.56.101:5000"],
+  "registry-mirrors": ["https://qtytpky9.mirror.aliyuncs.com"]
+}
+EOF
+
+##然后重启docker
+```
+
+- insecure-registries:指定私库的地址
+- registry-mirrors：指定官网加速的地址
+- log-driver:指定docker的日志为json形式的
+- log-opts：指定日志为100M一个，最多一个文件
+- live-restore: 设置值为true时，将在重启docker的时候，docker正在运行的进行不重启
+
+```bash
+##通过下面的方式进行私库镜像拉取如：
+docker pull 192.168.56.101:5000/mysql:latest
+```
+
+## 14、Error response from daemon: Get “https://registry-1.docker.io/v2/“: dial
+
+请使用代理方式，或者修改镜像源

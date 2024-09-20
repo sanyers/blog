@@ -31,3 +31,15 @@ source ~/.bashrc
 # 测试
 wget www.google.com
 ```
+
+## 4、临时配置代理
+
+```bash
+export http_proxy=http://192.168.0.101:8080
+export https_proxy=http://192.168.0.101:8080
+
+export http_proxy="socks5://127.0.0.1:1080"
+export https_proxy="socks5://127.0.0.1:1080"
+
+export ALL_PROXY=socks5://127.0.0.1:1080
+```

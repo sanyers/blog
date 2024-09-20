@@ -142,6 +142,12 @@
 
 [从 Fetch 到 Streams —— 以流的角度处理网络请求](https://juejin.cn/post/6844904029244358670)
 
+[Electron / Chromium 屏幕录制](https://zhuanlan.zhihu.com/p/402580887)
+
+[notes](https://github.com/Eished/notes)
+
+[getUserMedia](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
+
 ## Linux
 
 [linux kill 关闭进程命令](http://www.zzvips.com/article/1929.html)
@@ -149,6 +155,8 @@
 [docker](https://registry.hub.docker.com/)
 
 [docker](https://hub.docker.com/)
+
+[清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/)
 
 ## 其他网站
 
@@ -175,6 +183,12 @@
 [minigpt4.cpp](https://github.com/Maknee/minigpt4.cpp/)
 
 [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca)
+
+## 向量数据库
+
+[facebookresearch](https://github.com/facebookresearch/faiss/tree/main)
+
+[ollama](https://ollama.com/)
 
 ## 书库
 

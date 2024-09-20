@@ -8,3 +8,8 @@ cd /usr/local/bin/
 rm -rf node
 # 重新建立连接
 ```
+
+## 2、Homebrew 不支持的平台
+
+- 不支持 32 位 x86 平台上运行
+- 不支持 arm 平台上运行
