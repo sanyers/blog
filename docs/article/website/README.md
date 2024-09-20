@@ -184,6 +184,8 @@
 
 [Chinese-LLaMA-Alpaca](https://github.com/ymcui/Chinese-LLaMA-Alpaca)
 
+[gradio](https://www.gradio.app/docs/interface)
+
 ## 向量数据库
 
 [facebookresearch](https://github.com/facebookresearch/faiss/tree/main)
@@ -257,3 +259,9 @@ https://blog.csdn.net/bittingCat/article/details/119727337
 https://juejin.cn/post/6844903920108568583
 
 https://blog.csdn.net/weixin_41192489/article/details/111083527
+
+## c++
+
+[详解-vector](https://zhuanlan.zhihu.com/p/648650828)
+
+[plusaes aes](https://github.com/kkAyataka/plusaes)
